@@ -1,0 +1,51 @@
+<div class="userform-container">
+  <h2>Add New User</h2>
+
+  <form (ngSubmit)="saveUser()">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" [(ngModel)]="user.Name" name="name" type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" [(ngModel)]="user.Email" name="email" type="email" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" [(ngModel)]="user.Password" name="password" type="password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input id="phone" [(ngModel)]="user.Phone" name="phone" type="text" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input id="address" [(ngModel)]="user.Address" name="address" type="text" required>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" [(ngModel)]="user.Gender" name="gender" required>
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+
+   <div class="form-action-row">
+  <button type="submit" class="btn-save">Save</button>
+  <button type="button" class="btn-cancel" (click)="cancel()">Cancel</button>
+</div>
+  </form>
+</div>

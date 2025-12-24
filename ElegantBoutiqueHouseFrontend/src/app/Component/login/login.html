@@ -1,0 +1,55 @@
+<div class="container-fluid vh-100">
+  <div class="row h-100">
+
+    <!-- Left Side (Carousel) -->
+    <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center image-side p-0">
+      <div id="loginCarousel" class="carousel slide w-100 h-100" data-bs-ride="carousel" data-bs-interval="2000">
+        <div class="carousel-inner h-80 w-90">
+
+          <div class="carousel-item active">
+            <img src="assets/images/fashion pic 1.jpg" class="d-block w-100 object-fit-cover rounded-0 slider-img" alt="Slide 1">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/images/fas12.avif" class="d-block w-100 object-fit-cover rounded-0 slider-img" alt="Slide 2">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/images/fas13.jpg" class="d-block w-100 object-fit-cover rounded-0 slider-img" alt="Slide 3">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/images/fas8.jpg" class="d-block w-100 object-fit-cover rounded-0 slider-img" alt="Slide 4">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/images/cartoon pic.png" class="d-block w-100 object-fit-cover rounded-0 slider-img" alt="Slide 5">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side (Login Form) -->
+    <div class="col-md-6 d-flex align-items-center justify-content-center p-4">
+      <form (ngSubmit)="onLogin()" #loginForm="ngForm" class="p-4 w-75 shadow-lg rounded-4 bg-white">
+        <h2 class="text-center mb-4">Welcome to AEiouR</h2>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" [(ngModel)]="loginFormData.email" name="email" #email="ngModel" class="form-control" placeholder="Enter your email" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" [(ngModel)]="loginFormData.password" name="password" #password="ngModel" class="form-control" placeholder="Enter your password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+        <div class="text-center mt-3">
+          <span>Don't have an account?</span>
+          <a routerLink="/register" class="fw-bold text-decoration-none ms-1">
+            Sign Up
+          </a>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

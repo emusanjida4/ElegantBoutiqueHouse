@@ -1,0 +1,41 @@
+<div class="category-container">
+
+  <h2>Category Management</h2>
+
+  <!-- FORM -->
+  <div class="form-box">
+    <input
+      type="text"
+      placeholder="Category Name"
+      [(ngModel)]="categoryModel.name"
+    />
+
+    <button *ngIf="!isEdit" (click)="addCategory()">Add Category</button>
+    <button *ngIf="isEdit" (click)="updateCategory()">Update Category</button>
+    <button class="cancel" *ngIf="isEdit" (click)="resetForm()">Cancel</button>
+  </div>
+
+  <!-- TABLE -->
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+       
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let cat of categories">
+        <td>{{ cat.id }}</td>
+        <td>{{ cat.name }}</td>
+        
+        <td>
+          <button class="edit" (click)="editCategory(cat)">Edit</button>
+          <button class="delete" (click)="deleteCategory(cat.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

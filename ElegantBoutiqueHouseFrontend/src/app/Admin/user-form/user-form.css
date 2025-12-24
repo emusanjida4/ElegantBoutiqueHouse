@@ -1,0 +1,98 @@
+.userform-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fdfdfd;
+}
+
+h2 {
+  text-align: center;
+  color: #4b0082; /* Deep Mazanda purple-ish */
+  margin-bottom: 30px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.save-btn {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+  padding: 12px;
+  background-color: #6a0dad; /* Deep Mazanda purple */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #520b99;
+}
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
+}
+/* Button container */
+.form-action-row {
+  display: flex;
+  justify-content: space-between; /* left & right */
+  margin-top: 40px;
+}
+
+/* Common button style */
+.form-action-row button {
+  width: 160px;
+  height: 45px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Save Button - Mazanda Purple */
+.btn-save {
+  background-color: #6a0dad;
+  color: #ffffff;
+}
+
+.btn-save:hover {
+  background-color: #520b99;
+}
+
+/* Cancel Button - Red */
+.btn-cancel {
+  background-color: #d32f2f;
+  color: #ffffff;
+}
+
+.btn-cancel:hover {
+  background-color: #b71c1c;
+}

@@ -1,0 +1,108 @@
+<div class="container-fluid vh-100">
+  <div class="row h-100">
+
+    <!-- Left Side (Registration Form) -->
+    <div class="col-md-6 d-flex align-items-center justify-content-center form-side p-4">
+      <form
+        (ngSubmit)="onRegister()"
+        #registerForm="ngForm"
+        class="card shadow p-4 rounded-4 form-card bg-white"
+      >
+        <h2 class="mb-4 text-center">Welcome to AEiouR</h2>
+
+        <div class="mb-3">
+          <label class="form-label">User Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            [(ngModel)]="registerFormData.name"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="registerFormData.email"
+            placeholder="example@mail.com"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="registerFormData.password"
+            placeholder="Enter password"
+            required
+          />
+        </div>
+
+        
+        <div class="mb-3">
+          <label class="form-label">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phone"
+            [(ngModel)]="registerFormData.phone"
+            placeholder="01xxxxxxxxx"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+  <label class="form-label">Address</label>
+  <textarea
+    class="form-control"
+    name="address"
+    [(ngModel)]="registerFormData.address"
+    placeholder="Enter your address"
+    rows="3"
+    required>
+  </textarea>
+</div>
+
+
+
+        <div class="mb-3">
+          <label class="form-label">Gender</label>
+          <select
+            class="form-select"
+            name="gender"
+            [(ngModel)]="registerFormData.gender"
+            required
+          >
+            <option value="" disabled>Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mt-3">
+          Register
+        </button>
+      </form>
+    </div>
+
+    <!-- Right Side (Image Slideshow) -->
+    <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center image-side">
+      <img
+        [src]="currentImage"
+        class="img-fluid slide-img shadow-lg"
+        alt="Dress Image"
+      />
+    </div>
+
+  </div>
+</div>
+

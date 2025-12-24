@@ -1,0 +1,83 @@
+/* ===== Global Styles ===== */
+body {
+  background-color: #f8f6f3;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-side {
+  background-color: #f1ece6;
+}
+
+/* ===== Form Card ===== */
+.form-card {
+  width: 80%;
+  background-color: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e4ded7;
+}
+
+/* ===== Inputs & Selects ===== */
+.form-control,
+.form-select {
+  border-radius: 10px;
+  border: 1px solid #d6cec5;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #c9184a; /* deep magenta */
+  box-shadow: 0 0 0 0.15rem rgba(201, 24, 74, 0.25);
+}
+
+/* ===== Labels ===== */
+.form-label {
+  font-weight: 500;
+  color: #7b2cbf; /* purple */
+}
+
+/* ===== Buttons ===== */
+.btn-primary {
+  background: linear-gradient(135deg, #c9184a, #7b2cbf); /* magenta → purple */
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #a4133c, #5a189a);
+}
+
+/* ===== Image Side ===== */
+.image-side {
+  background-color: #e6dfd7;
+}
+
+/* ===== Slider Image ===== */
+.slide-img {
+  width: 600px;  /* unchanged */
+  height: 700px; /* unchanged */
+  object-fit: cover;
+  border-radius: 22px;
+  transition: opacity 0.8s ease-in-out;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Heading ===== */
+h2 {
+  color: #6a0572; /* deep purple */
+  font-weight: 700;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .form-card {
+    width: 100%;
+  }
+
+  .slide-img {
+    width: 100%;
+    height: auto;
+  }
+}
