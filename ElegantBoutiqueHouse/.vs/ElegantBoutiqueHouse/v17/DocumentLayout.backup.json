@@ -1,0 +1,219 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\model\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\model\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\controllers\\subcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\controllers\\subcategorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\model\\subcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\model\\subcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\model\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\model\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\controllers\\userinfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\controllers\\userinfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\model\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\model\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\model\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\model\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\context\\dappercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\context\\dappercontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Controllers\\ProductController.cs",
+              "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\ProductController.cs*",
+              "RelativeToolTip": "ElegantBoutiqueHouse\\Controllers\\ProductController.cs*",
+              "ViewState": "AgIAADgAAAAAAAAAAAAgwD8AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T06:29:34.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SubCategory.cs",
+              "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\SubCategory.cs",
+              "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Model\\SubCategory.cs",
+              "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\SubCategory.cs",
+              "RelativeToolTip": "ElegantBoutiqueHouse\\Model\\SubCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T08:44:13.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\Category.cs",
+              "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Model\\Category.cs",
+              "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\Category.cs",
+              "RelativeToolTip": "ElegantBoutiqueHouse\\Model\\Category.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwBEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T08:43:46.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SubCategoryController.cs",
+              "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\SubCategoryController.cs",
+              "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Controllers\\SubCategoryController.cs",
+              "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\SubCategoryController.cs",
+              "RelativeToolTip": "ElegantBoutiqueHouse\\Controllers\\SubCategoryController.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAAwIsAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T07:55:06.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\Product.cs",
+              "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Model\\Product.cs",
+              "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\Product.cs*",
+              "RelativeToolTip": "ElegantBoutiqueHouse\\Model\\Product.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T08:43:24.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Controllers\\CategoryController.cs",
+              "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "ElegantBoutiqueHouse\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAAAGMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-23T07:54:34.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\appsettings.json",
+              "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\appsettings.json",
+              "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\appsettings.json",
+              "RelativeToolTip": "ElegantBoutiqueHouse\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-17T09:46:37.425Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserInfo.cs",
+              "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\UserInfo.cs",
+              "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Model\\UserInfo.cs",
+              "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\UserInfo.cs",
+              "RelativeToolTip": "ElegantBoutiqueHouse\\Model\\UserInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T10:02:09.435Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserInfoController.cs",
+              "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\UserInfoController.cs",
+              "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Controllers\\UserInfoController.cs",
+              "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\UserInfoController.cs",
+              "RelativeToolTip": "ElegantBoutiqueHouse\\Controllers\\UserInfoController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T09:55:08.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Program.cs",
+              "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Program.cs",
+              "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Program.cs",
+              "RelativeToolTip": "ElegantBoutiqueHouse\\Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB4AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T08:26:51.829Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Login.cs",
+              "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\Login.cs",
+              "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Model\\Login.cs",
+              "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\Login.cs",
+              "RelativeToolTip": "ElegantBoutiqueHouse\\Model\\Login.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T06:34:12.13Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DapperContext.cs",
+              "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Context\\DapperContext.cs",
+              "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Context\\DapperContext.cs",
+              "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Context\\DapperContext.cs",
+              "RelativeToolTip": "ElegantBoutiqueHouse\\Context\\DapperContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T09:54:25.733Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
