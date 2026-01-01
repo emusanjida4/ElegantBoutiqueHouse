@@ -1,50 +1,112 @@
-.dashboard-container {
-  padding: 30px;
-  background-color: #f5f3ef;
+/* Layout */
+.admin-wrapper {
+  display: flex;
   min-height: 100vh;
+  background: #f4f6f9;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.dashboard-title {
-  text-align: center;
-  font-size: 28px;
-  font-weight: 600;
+/* Sidebar */
+.sidebar {
+  width: 230px;
+  background: linear-gradient(180deg, #050b2c, #0a1b44);
+  color: #fff;
+  padding: 25px 20px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
   margin-bottom: 40px;
-  color: #333;
+  line-height: 1.2;
 }
 
+.logo span {
+  font-size: 13px;
+  font-weight: 400;
+  color: #cbd5ff;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  padding: 14px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu li:hover,
+.menu .active {
+  background: #2563eb;
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  padding: 30px 40px;
+}
+
+/* Top bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.top-bar h2 {
+  font-size: 24px;
+  color: #222;
+}
+
+.logout-btn {
+  background: #ef4444;
+  border: none;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Dashboard Cards */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 25px;
 }
 
 .dashboard-card {
-  background: #ffffff;
-  border-radius: 14px;
+  background: white;
   padding: 30px 20px;
+  border-radius: 15px;
   text-align: center;
   cursor: pointer;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .dashboard-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.15);
 }
 
 .icon {
-  font-size: 40px;
+  font-size: 42px;
   margin-bottom: 15px;
 }
 
 .dashboard-card h3 {
   font-size: 20px;
-  margin-bottom: 6px;
-  color: #222;
+  margin-bottom: 5px;
 }
 
 .dashboard-card p {
-  font-size: 14px;
   color: #666;
+  font-size: 14px;
 }

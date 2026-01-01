@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  justify-content: space-between; /* quote left, contact right */
+  align-items: flex-start;
+  background: linear-gradient(to right, #7c2ba1, #2b0a3d);
+  color: white;
+  padding: 50px 50px;
+  flex-wrap: wrap; /* responsive জন্য */
+}
+
+.footer .quote {
+  font-size: 18px;
+  font-style: italic;
+}
+
+.footer .contact p {
+  margin: 3px 0;
+  text-align: right;
+}

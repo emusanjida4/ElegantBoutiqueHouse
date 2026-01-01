@@ -1,1 +1,64 @@
-<p>admin-sub-category works!</p>
+<div class="category-container">
+
+  <h2>Sub Category Management</h2>
+
+  <!-- SEARCH -->
+  <div class="search-box">
+    <input
+      type="text"
+      placeholder="Search SubCategory..."
+      [(ngModel)]="searchText"
+      (input)="searchCategory()"
+    />
+  </div>
+
+  <!-- FORM -->
+  <div class="form-box">
+
+    <input
+      type="text"
+      placeholder="Sub Category Name"
+      [(ngModel)]="subCategoryModel.name"
+    />
+
+    <select [(ngModel)]="subCategoryModel.categoryId">
+      <option value="0">Select Category</option>
+      <option *ngFor="let cat of categories" [value]="cat.id">
+        {{ cat.name }}
+      </option>
+    </select>
+
+    <button type="button" *ngIf="!isEdit" (click)="addSubCategory1()">Add</button>
+
+<button type="button" *ngIf="isEdit" (click)="updateSubCategory()">Update</button>
+
+<button type="button" class="cancel" *ngIf="isEdit" (click)="resetForm()">Cancel</button>
+
+
+  </div>
+
+  <!-- TABLE -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Sub Category</th>
+        <th>CategoryId</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let sub of filteredSubCategories">
+        <td>{{ sub.id }}</td>
+        <td>{{ sub.name }}</td>
+        <td>{{ sub.categoryId }}</td>
+        <td>
+          <button class="edit" (click)="editSubCategory(sub)">Edit</button>
+          <button class="delete" (click)="deleteSubCategory(sub.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

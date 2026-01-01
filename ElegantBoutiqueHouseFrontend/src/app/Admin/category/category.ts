@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -26,7 +27,7 @@ export class CategoryAdminComponent implements OnInit {
 
   isEdit = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.getAllCategories();
@@ -36,7 +37,9 @@ export class CategoryAdminComponent implements OnInit {
   getAllCategories() {
     debugger;
     this.http.get<any[]>(this.apiUrl).subscribe(res => {
+      console.log(res);
       this.categories = res;
+      this.cdr.detectChanges();
     });
   }
 
@@ -74,10 +77,11 @@ export class CategoryAdminComponent implements OnInit {
 
   // 🔹 UPDATE
   updateCategory() {
+    debugger;
     this.http.put(`${this.apiUrl}/${this.categoryModel.id}`, {
-      name: this.categoryModel.name,
-      updatedBy: this.categoryModel.updatedBy,
-      isactive: this.categoryModel.isactive
+      id:this.categoryModel.id,
+      name: this.categoryModel.name
+     
     }).subscribe(() => {
       this.resetForm();
       this.getAllCategories();
@@ -102,6 +106,7 @@ export class CategoryAdminComponent implements OnInit {
       createdBy: 'Admin',
       updatedBy: 'Admin',
       isactive: true,
+      
       
     };
   }

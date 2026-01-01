@@ -1,37 +1,53 @@
-<div class="dashboard-container">
+<div class="admin-wrapper">
 
-  <h2 class="dashboard-title">Admin Dashboard</h2>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2 class="logo">Elegant Boutique House<br><span>Admin Panel</span></h2>
 
-  <div class="card-grid">
+    <ul class="menu">
+      <li class="active">Dashboard</li>
+      <li (click)="navigate('/admin/users')">Admin User</li>
+      <li (click)="navigate('/admin/products')">Admin Product</li>
+      <li (click)="navigate('/admin/category')">Admin Category</li>
+      <li (click)="navigate('/admin/subcategories')">Admin SubCategory</li>
+     
+    </ul>
+  </aside>
 
-    <!-- User -->
-    <div class="dashboard-card" (click)="navigate('/admin/users')">
-      <div class="icon">👤</div>
-      <h3>User</h3>
-      <p>Manage users</p>
+  <!-- Main Content -->
+  <main class="content">
+    <div class="top-bar">
+      <h2>Admin Dashboard</h2>
+      <button class="logout-btn">Logout</button>
     </div>
 
-    <!-- Product -->
-    <div class="dashboard-card" (click)="navigate('/admin/products')">
-      <div class="icon">👗</div>
-      <h3>Product</h3>
-      <p>Manage products</p>
-    </div>
+    <div class="card-grid">
 
-    <!-- Category -->
-    <div class="dashboard-card" (click)="navigate('/admin/category')">
-      <div class="icon">📂</div>
-      <h3>Category</h3>
-      <p>Manage categories</p>
-    </div>
+      <div class="dashboard-card" (click)="navigate('/admin/users')">
+        <div class="icon">👤</div>
+        <h3>User</h3>
+        <p>Manage users</p>
+      </div>
 
-    <!-- SubCategory -->
-    <div class="dashboard-card" (click)="navigate('/admin/subcategories')">
-      <div class="icon">📁</div>
-      <h3>SubCategory</h3>
-      <p>Manage subcategories</p>
-    </div>
+      <div class="dashboard-card" (click)="navigate('/admin/products')">
+        <div class="icon">🛍️</div>
+        <h3>Product</h3>
+        <p>Manage products</p>
+      </div>
 
-  </div>
+      <div class="dashboard-card" (click)="navigate('/admin/category')">
+        <div class="icon">📂</div>
+        <h3>Category</h3>
+        <p>Manage categories</p>
+      </div>
+
+      <div class="dashboard-card" (click)="navigate('/admin/subcategories')">
+        <div class="icon">📁</div>
+        <h3>SubCategory</h3>
+        <p>Manage subcategories</p>
+      </div>
+
+    </div>
+  </main>
 
 </div>

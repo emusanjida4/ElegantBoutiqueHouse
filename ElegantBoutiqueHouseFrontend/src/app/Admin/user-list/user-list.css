@@ -58,3 +58,16 @@ tr:hover {
 .save-btn:hover {
   opacity: 0.9;
 }
+.search-box {
+  width: 300px;
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-box:focus {
+  border-color: #6a0dad;
+}

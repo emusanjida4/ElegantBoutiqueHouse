@@ -1,0 +1,93 @@
+.subcategory-container {
+  padding: 30px;
+  background: #f5f3ef;
+  min-height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* SEARCH */
+.search-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.search-box input {
+  padding: 10px;
+  width: 300px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* FORM */
+.form-box {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.form-box input,
+.form-box select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.form-box button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #4a148c;
+  color: white;
+}
+
+.form-box .cancel {
+  background: #6a1b9a;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+th {
+  padding: 12px;
+  color: white;
+  background: linear-gradient(135deg, #8e0038, #6a1b9a);
+}
+
+td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+button.edit {
+  background: #7e4796;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+button.delete {
+  background: #c2185b;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button.edit:hover {
+  background: #9c27b0;
+}

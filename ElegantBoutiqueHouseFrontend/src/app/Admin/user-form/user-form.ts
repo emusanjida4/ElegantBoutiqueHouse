@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -8,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './user-form.html',
   styleUrls: ['./user-form.css']
 })
-export class Userform {
+export class Userform implements OnInit {
   user = {
     Id: '',
     Name: '',
@@ -18,11 +19,31 @@ export class Userform {
     Address: '',
     Gender: ''
   };
+  private apiUrl = 'https://localhost:7254/api/UserInfo/Register';
+
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
+
+  ngOnInit(): void {
+    // this.getAllCategories();
+  }
+
 
   saveUser() {
-    console.log('User data:', this.user);
+    // console.log('User data:', this.user);
+    // alert('User saved successfully!');
+
+    this.http.post(this.apiUrl, {
+      Name: this.user.Name,
+      Email: this.user.Email,
+      Password: this.user.Password,
+      Phone: this.user.Phone,
+      Address: this.user.Address,
+      Gender: this.user.Gender
+    }
+  ).subscribe(() => {
     alert('User saved successfully!');
-    // Here you can call your API to save data
+    this.cancel();
+  });
   }
 
   cancel() {

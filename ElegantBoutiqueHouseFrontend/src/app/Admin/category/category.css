@@ -7,8 +7,10 @@
 h2 {
   text-align: center;
   margin-bottom: 25px;
+  color: #6a1b9a;
 }
 
+/* FORM */
 .form-box {
   display: flex;
   gap: 10px;
@@ -20,41 +22,52 @@ h2 {
   padding: 10px;
   width: 250px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #c084d2;
 }
 
+/* BUTTONS */
 .form-box button {
   padding: 10px 16px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  background: #333;
+  background: linear-gradient(135deg, #8e004d, #6a1b9a);
   color: white;
+  transition: 0.3s ease;
+}
+
+.form-box button:hover {
+  opacity: 0.9;
 }
 
 .form-box .cancel {
-  background: #777;
+  background: linear-gradient(135deg, #9c27b0, #7b1fa2);
 }
 
+/* TABLE */
 table {
   width: 100%;
   border-collapse: collapse;
   background: #fff;
 }
 
-th, td {
+/* HEADER BAR */
+th {
+  padding: 12px;
+  color: white;
+  text-align: center;
+  background: linear-gradient(135deg, #8e004d, #6a1b9a);
+}
+
+td {
   padding: 12px;
   border-bottom: 1px solid #ddd;
   text-align: center;
 }
 
-th {
-  background: #333;
-  color: white;
-}
-
+/* ACTION BUTTONS */
 button.edit {
-  background: #4caf50;
+  background: linear-gradient(135deg, #ab47bc, #8e24aa);
   color: white;
   border: none;
   padding: 6px 10px;
@@ -64,10 +77,17 @@ button.edit {
 }
 
 button.delete {
-  background: #e53935;
+  background: linear-gradient(135deg, #d81b60, #ad1457);
   color: white;
   border: none;
   padding: 6px 10px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+/* HOVER EFFECT */
+button.edit:hover,
+button.delete:hover,
+.form-box button:hover {
+  opacity: 0.85;
 }

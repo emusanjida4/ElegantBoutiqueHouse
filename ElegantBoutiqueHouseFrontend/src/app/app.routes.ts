@@ -5,6 +5,11 @@ import { AdminDashboardComponent } from './Admin/admin-dash-board/admin-dash-boa
 import { CategoryAdminComponent } from './Admin/category/category';
 import { AdminUserListComponent } from './Admin/user-list/user-list';
 import { Userform } from './Admin/user-form/user-form';
+import { SubCategoryComponent } from './Admin/admin-sub-category/admin-sub-category';
+import { NavbarComponent } from './Component/navbar/navbar';  
+  import { FooterComponent } from './Component/footer/footer';
+import { HomeComponent } from './Component/homecarousel/homecarousel';
+
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -12,5 +17,10 @@ export const routes: Routes = [
   { path: 'admin', component: AdminDashboardComponent },
   { path: 'admin/category', component: CategoryAdminComponent },
   { path: 'admin/users', component: AdminUserListComponent } ,
-  {path: 'admin/users/add', component: Userform } 
+  {path: 'admin/users/add', component: Userform } ,
+  { path: 'admin/subcategory', component: SubCategoryComponent },
+  { path: 'navbar', component: NavbarComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'footer', component: FooterComponent }
+
 ];

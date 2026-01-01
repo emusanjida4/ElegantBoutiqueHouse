@@ -1,0 +1,13 @@
+<nav class="navbar">
+ <div class="logo text-white">EioRFashion</div>
+  <ul class="nav-links">
+    <li><a routerLink="">Home</a></li>
+    <li><a routerLink="about-us">About Us</a></li>
+    <li><a routerLink="men">Men</a></li>
+    <li><a routerLink="women">Women</a></li>
+  </ul>
+  <div class="auth">
+    <span *ngIf="!isLoggedIn"> <a href="#" (click)="login()">Sign In</a> / <a (click)="signup()">Sign Up</a> </span>
+    <span *ngIf="isLoggedIn">Welcome, {{ username }}</span>
+  </div>
+</nav>
