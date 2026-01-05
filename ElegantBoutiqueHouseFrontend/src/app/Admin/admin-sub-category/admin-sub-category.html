@@ -1,4 +1,4 @@
-<div class="category-container">
+<div class="subcategory-container">
 
   <h2>Sub Category Management</h2>
 
@@ -28,12 +28,17 @@
       </option>
     </select>
 
-    <button type="button" *ngIf="!isEdit" (click)="addSubCategory1()">Add</button>
+    <button *ngIf="!isEdit" (click)="addSubCategory1()">
+      Add SubCategory
+    </button>
 
-<button type="button" *ngIf="isEdit" (click)="updateSubCategory()">Update</button>
+    <button *ngIf="isEdit" (click)="updateSubCategory()">
+      Update SubCategory
+    </button>
 
-<button type="button" class="cancel" *ngIf="isEdit" (click)="resetForm()">Cancel</button>
-
+    <button class="cancel" *ngIf="isEdit" (click)="resetForm()">
+      Cancel
+    </button>
 
   </div>
 
@@ -43,19 +48,21 @@
       <tr>
         <th>ID</th>
         <th>Sub Category</th>
-        <th>CategoryId</th>
+        <th>Category Name</th>
         <th>Action</th>
       </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let sub of filteredSubCategories">
-        <td>{{ sub.id }}</td>
-        <td>{{ sub.name }}</td>
-        <td>{{ sub.categoryId }}</td>
+        <td>{{ sub.Id }}</td>
+        <td>{{ sub.Name }}</td>
+        <td>{{ sub.CategoryName }}</td>
         <td>
+
           <button class="edit" (click)="editSubCategory(sub)">Edit</button>
           <button class="delete" (click)="deleteSubCategory(sub.id)">Delete</button>
+
         </td>
       </tr>
     </tbody>

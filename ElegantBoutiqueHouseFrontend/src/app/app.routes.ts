@@ -6,21 +6,32 @@ import { CategoryAdminComponent } from './Admin/category/category';
 import { AdminUserListComponent } from './Admin/user-list/user-list';
 import { Userform } from './Admin/user-form/user-form';
 import { SubCategoryComponent } from './Admin/admin-sub-category/admin-sub-category';
-import { NavbarComponent } from './Component/navbar/navbar';  
-  import { FooterComponent } from './Component/footer/footer';
-import { HomeComponent } from './Component/homecarousel/homecarousel';
+import { FooterComponent } from './Component/footer/footer';
 
+import { NavbarCategoryComponent } from './Component/navbar/navbar';
+
+import { HomeComponent } from './Component/homecarousel/homecarousel';
+import { AdminProductComponent } from './Admin/admin-product/admin-product';
 
 export const routes: Routes = [
+
   { path: '', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
-  { path: 'admin', component: AdminDashboardComponent },
-  { path: 'admin/category', component: CategoryAdminComponent },
-  { path: 'admin/users', component: AdminUserListComponent } ,
-  {path: 'admin/users/add', component: Userform } ,
-  { path: 'admin/subcategory', component: SubCategoryComponent },
-  { path: 'navbar', component: NavbarComponent },
+
+  {
+    path: 'admin',
+    component: AdminDashboardComponent,
+    children: [
+      { path: 'users', component: AdminUserListComponent },
+      { path: 'users/add', component: Userform },
+      { path: 'products', component: AdminProductComponent },
+      { path: 'category', component: CategoryAdminComponent },
+      { path: 'subcategory', component: SubCategoryComponent }
+    ]
+  },
+
+  { path: 'navbar', component: NavbarCategoryComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'footer', component: FooterComponent }
+  { path: 'footer', component: FooterComponent },
 
 ];

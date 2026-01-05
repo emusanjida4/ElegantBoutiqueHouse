@@ -1,7 +1,7 @@
 .container {
   padding: 20px;
   background: #f9f9f9;
-  position: relative; /* Required for absolute positioning of button */
+  position: relative;
 }
 
 .title {
@@ -39,35 +39,56 @@ tr:hover {
   color: #777;
 }
 
-/* ---------- Save New User Button ---------- */
-
 .save-btn {
   position: absolute;
-  top: 10px;      /* slightly above */
-  right: 20px;    /* right corner */
+  top: 10px;
+  right: 20px;
   padding: 10px 18px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   color: white;
-
-  background: linear-gradient(135deg, #8e004f, #6a0dad); /* Deep magenta → purple */
+  background: linear-gradient(135deg, #8e004f, #6a0dad);
 }
 
-.save-btn:hover {
-  opacity: 0.9;
-}
 .search-box {
   width: 300px;
   padding: 10px;
   margin: 15px 0;
   border-radius: 6px;
   border: 1px solid #ccc;
-  outline: none;
-  font-size: 14px;
 }
 
-.search-box:focus {
-  border-color: #6a0dad;
+/* 🔥 Action buttons */
+.edit-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin-right: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin-right: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.details-btn {
+  background: #059669;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.details-btn:hover {
+  background: #047857;
 }

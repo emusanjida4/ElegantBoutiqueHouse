@@ -151,6 +151,11 @@
         "IsRequired": false
       },
       {
+        "Name": "Gender",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "CategoryId",
         "Type": "System.Int32",
         "IsRequired": false
@@ -158,6 +163,11 @@
       {
         "Name": "SubCategoryId",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "dressImageUrl",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -258,6 +268,11 @@
         "IsRequired": false
       },
       {
+        "Name": "Gender",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "CategoryId",
         "Type": "System.Int32",
         "IsRequired": false
@@ -265,6 +280,11 @@
       {
         "Name": "SubCategoryId",
         "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "dressImageUrl",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],

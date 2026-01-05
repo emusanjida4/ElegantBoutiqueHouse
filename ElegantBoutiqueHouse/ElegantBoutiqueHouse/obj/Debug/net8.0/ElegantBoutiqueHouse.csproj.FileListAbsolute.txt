@@ -80,3 +80,4 @@ D:\Project\ElegantBoutiqueHouse\ElegantBoutiqueHouse\ElegantBoutiqueHouse\obj\De
 D:\Project\ElegantBoutiqueHouse\ElegantBoutiqueHouse\ElegantBoutiqueHouse\obj\Debug\net8.0\ElegantBoutiqueHouse.genruntimeconfig.cache
 D:\Project\ElegantBoutiqueHouse\ElegantBoutiqueHouse\ElegantBoutiqueHouse\obj\Debug\net8.0\ref\ElegantBoutiqueHouse.dll
 D:\Project\ElegantBoutiqueHouse\ElegantBoutiqueHouse\ElegantBoutiqueHouse\obj\Debug\net8.0\ElegantBoutiqueHouse.sourcelink.json
+D:\Project\ElegantBoutiqueHouse\ElegantBoutiqueHouse\ElegantBoutiqueHouse\bin\Debug\net8.0\ElegantBoutiqueHouse.staticwebassets.runtime.json

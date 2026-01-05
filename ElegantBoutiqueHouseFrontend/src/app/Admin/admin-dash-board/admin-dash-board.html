@@ -1,27 +1,50 @@
 <div class="admin-wrapper">
 
-  <!-- Sidebar -->
+  <!-- Sidebar (STATIC) -->
   <aside class="sidebar">
-    <h2 class="logo">Elegant Boutique House<br><span>Admin Panel</span></h2>
+    <h2 class="logo">
+      Elegant Boutique House<br>
+      <span>Admin Panel</span>
+    </h2>
 
     <ul class="menu">
-      <li class="active">Dashboard</li>
-      <li (click)="navigate('/admin/users')">Admin User</li>
-      <li (click)="navigate('/admin/products')">Admin Product</li>
-      <li (click)="navigate('/admin/category')">Admin Category</li>
-      <li (click)="navigate('/admin/subcategories')">Admin SubCategory</li>
-     
+      <li routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        Dashboard
+      </li>
+
+      <li routerLink="/admin/users" routerLinkActive="active">
+        Admin User
+      </li>
+
+      <li routerLink="/admin/products" routerLinkActive="active">
+        Admin Product
+      </li>
+
+      <li routerLink="/admin/category" routerLinkActive="active">
+        Admin Category
+      </li>
+
+      <li routerLink="/admin/subcategory" routerLinkActive="active">
+        Admin SubCategory
+      </li>
+
+      <li routerLink="/admin/orders" routerLinkActive="active">
+        Orders
+      </li>
     </ul>
   </aside>
 
   <!-- Main Content -->
   <main class="content">
+
     <div class="top-bar">
+      <button class="back-btn" (click)="goBack()">⬅ Back</button>
       <h2>Admin Dashboard</h2>
-      <button class="logout-btn">Logout</button>
+      <button type="button" class="logout-btn" (click)="logout()">Logout</button>
     </div>
 
-    <div class="card-grid">
+    <!-- Dashboard cards only for main dashboard -->
+    <div class="card-grid" *ngIf="router.url === '/admin'">
 
       <div class="dashboard-card" (click)="navigate('/admin/users')">
         <div class="icon">👤</div>
@@ -41,13 +64,23 @@
         <p>Manage categories</p>
       </div>
 
-      <div class="dashboard-card" (click)="navigate('/admin/subcategories')">
+      <div class="dashboard-card" (click)="navigate('/admin/subcategory')">
         <div class="icon">📁</div>
         <h3>SubCategory</h3>
         <p>Manage subcategories</p>
       </div>
 
+      <div class="dashboard-card" (click)="navigate('/admin/orders')">
+        <div class="icon">📦</div>
+        <h3>Orders</h3>
+        <p>Manage orders</p>
+      </div>
+
     </div>
+
+    <!-- Dynamic admin pages load here -->
+    <router-outlet> </router-outlet>
+
   </main>
 
 </div>

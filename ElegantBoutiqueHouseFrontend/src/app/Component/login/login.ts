@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { DataService } from '../../../Service/data-service';
 import { CommonModule } from '@angular/common';
@@ -9,9 +9,9 @@ import { CommonModule } from '@angular/common';
   templateUrl: './login.html',
   styleUrls: ['./login.css'],
   standalone: true,
-  imports: [FormsModule ,RouterLink,CommonModule]
+  imports: [FormsModule, RouterLink, CommonModule]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   loginFormData = {
     email: '',
@@ -23,8 +23,19 @@ export class LoginComponent {
     private dataService: DataService
   ) {}
 
+  ngOnInit(): void {
+    // ✅ Login page e aslei form clear
+    this.clearForm();
+  }
+
+  clearForm() {
+    this.loginFormData = {
+      email: '',
+      password: ''
+    };
+  }
+
   onLogin() {
-    debugger;
     console.log(this.loginFormData);
 
     this.dataService
@@ -32,7 +43,13 @@ export class LoginComponent {
       .subscribe(
         (data: any) => {
           alert('Login Successful');
-          this.router.navigate(['/home']); // or dashboard/home
+
+          // 🔐 ROLE BASED REDIRECT
+          if (data.UserType && data.UserType.toLowerCase() === 'admin') {
+            this.router.navigate(['/admin']);
+          } else {
+            this.router.navigate(['/home']);
+          }
         },
         (error: any) => {
           alert('Login Failed');

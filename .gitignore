@@ -1,0 +1,68 @@
+# =========================
+# .NET Core
+# =========================
+
+## Build artifacts
+bin/
+obj/
+out/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Visual Studio
+.vs/
+*.vsp
+*.vspscc
+*.vssscc
+
+## Dotnet publish folder
+publish/
+
+## Rider IDE
+.idea/
+
+## NuGet packages
+*.nupkg
+# Uncomment if you have packages folder
+#packages/
+
+## OS generated files
+.DS_Store
+Thumbs.db
+
+## Dotnet secrets
+secrets.json
+*.pfx
+*.snk
+
+# =========================
+# Angular / Node.js
+# =========================
+
+# Node modules
+node_modules/
+
+# Angular build / dist folder
+dist/
+out-tsc/
+tmp/
+temp/
+.angular/
+
+# IDE / Editor
+.idea/
+.vscode/
+*.code-workspace
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.*.local

@@ -180,6 +180,9 @@
                   "isdelete": {
                     "type": "boolean"
                   },
+                  "Gender": {
+                    "type": "string"
+                  },
                   "CategoryId": {
                     "type": "integer",
                     "format": "int32"
@@ -187,6 +190,9 @@
                   "SubCategoryId": {
                     "type": "integer",
                     "format": "int32"
+                  },
+                  "dressImageUrl": {
+                    "type": "string"
                   }
                 }
               },
@@ -233,10 +239,16 @@
                 "isdelete": {
                   "style": "form"
                 },
+                "Gender": {
+                  "style": "form"
+                },
                 "CategoryId": {
                   "style": "form"
                 },
                 "SubCategoryId": {
+                  "style": "form"
+                },
+                "dressImageUrl": {
                   "style": "form"
                 }
               }
@@ -375,6 +387,13 @@
             }
           },
           {
+            "name": "Gender",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "CategoryId",
             "in": "query",
             "schema": {
@@ -388,6 +407,13 @@
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "dressImageUrl",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           }
         ],

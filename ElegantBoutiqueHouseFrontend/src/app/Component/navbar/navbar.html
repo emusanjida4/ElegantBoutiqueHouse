@@ -1,13 +1,46 @@
 <nav class="navbar">
- <div class="logo text-white">EioRFashion</div>
+  <div class="logo text-white">EioRFashion</div>
+
   <ul class="nav-links">
-    <li><a routerLink="">Home</a></li>
-    <li><a routerLink="about-us">About Us</a></li>
-    <li><a routerLink="men">Men</a></li>
-    <li><a routerLink="women">Women</a></li>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/about-us">About Us</a></li>
+
+    <!-- Men Menu -->
+    <li class="dropdown"
+        (mouseenter)="showMen()"
+        (mouseleave)="hideMen()">
+      <a routerLink="/men">Men</a>
+      <ul class="submenu" *ngIf="showMenDropdown">
+        <li *ngFor="let cat of menCategories">{{ cat.name }}</li>
+      </ul>
+    </li>
+
+    <!-- Women Menu -->
+    <li class="dropdown"
+        (mouseenter)="showWomen()"
+        (mouseleave)="hideWomen()">
+      <a routerLink="/women">Women</a>
+      <ul class="submenu" *ngIf="showWomenDropdown">
+        <li *ngFor="let cat of womenCategories">{{ cat.name }}</li>
+      </ul>
+    </li>
   </ul>
+
   <div class="auth">
-    <span *ngIf="!isLoggedIn"> <a href="#" (click)="login()">Sign In</a> / <a (click)="signup()">Sign Up</a> </span>
-    <span *ngIf="isLoggedIn">Welcome, {{ username }}</span>
+    <ng-container *ngIf="!isLoggedIn">
+      <a (click)="login()">Sign In</a> /
+      <a (click)="signup()">Sign Up</a>
+    </ng-container>
+
+    <ng-container *ngIf="isLoggedIn">
+      <div class="user-menu" (click)="toggleDropdown()">
+        <span class="username">Welcome, {{ username }}</span>
+        <span class="arrow">▼</span>
+
+        <div class="dropdown" *ngIf="showDropdown">
+          <a (click)="logout()">Logout</a>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </nav>

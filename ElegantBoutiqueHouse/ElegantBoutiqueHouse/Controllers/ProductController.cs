@@ -24,17 +24,29 @@ namespace ElegantBoutiqueHouse.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var parameters = new DynamicParameters();
-            parameters.Add("@flag", 1);
+            try
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@flag", 1);
 
-            using var connection = _context.CreateConnection();
-            var products = await connection.QueryAsync<Product>(
-                "SP_Product",
-                parameters,
-                commandType: CommandType.StoredProcedure
-            );
+                using var connection = _context.CreateConnection();
+                var products = await connection.QueryAsync<dynamic>(
+                    "SP_Product",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
 
-            return Ok(products);
+                return Ok(products);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = "An error occurred while fetching products.",
+                    error = ex.Message
+                });
+            }
+
         }
 
         // ===============================
@@ -63,18 +75,37 @@ namespace ElegantBoutiqueHouse.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] Product model)
         {
+            //save image to wwwroot/images
+            var imageFile = model.DressImage;
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                var imagesPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+                if (!Directory.Exists(imagesPath))
+                {
+                    Directory.CreateDirectory(imagesPath);
+                }
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+                var filePath = Path.Combine(imagesPath, fileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+                model.dressImageUrl = "/images/" + fileName;
+            }
+
             var parameters = new DynamicParameters();
             parameters.Add("@flag", 3);
-
             parameters.Add("@Name", model.Name);
             parameters.Add("@Brand", model.Brand);
             parameters.Add("@Description", model.Description);
             parameters.Add("@Price", model.Price);
             parameters.Add("@StockQuantity", model.StockQuantity);
             parameters.Add("@Status", model.Status);
+            parameters.Add("@Gender", model.Gender); // ✅ Gender added
             parameters.Add("@CreatedBy", model.CreatedBy);
             parameters.Add("@CategoryId", model.CategoryId);
-            parameters.Add("@SubcategoryId", model.SubCategoryId);
+            parameters.Add("@SubCategoryId", model.SubCategoryId);
+            parameters.Add("@DressImage", model.dressImageUrl);
 
             using var connection = _context.CreateConnection();
             var result = await connection.QueryFirstOrDefaultAsync(
@@ -102,10 +133,12 @@ namespace ElegantBoutiqueHouse.Controllers
             parameters.Add("@Price", model.Price);
             parameters.Add("@StockQuantity", model.StockQuantity);
             parameters.Add("@Status", model.Status);
+            parameters.Add("@Gender", model.Gender); // ✅ Gender added
             parameters.Add("@UpdatedBy", model.UpdatedBy);
-            parameters.Add("@isactive", model.isactive);
+            parameters.Add("@IsActive", model.isactive);
             parameters.Add("@CategoryId", model.CategoryId);
-            parameters.Add("@SubcategoryId", model.SubCategoryId);
+            parameters.Add("@SubCategoryId", model.SubCategoryId);
+            parameters.Add("@DressImage", model.dressImageUrl);
 
             using var connection = _context.CreateConnection();
             var result = await connection.QueryAsync(
@@ -136,7 +169,27 @@ namespace ElegantBoutiqueHouse.Controllers
 
             return Ok(message);
         }
+        [HttpGet("GenderProducts/{gender}")]
+        public IActionResult GetProductsByGender(string gender)
+        {
+            using (var connection = _context.CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@flag", 6);
+                parameters.Add("@Gender", gender); // men / women
+
+                var products = connection.Query<dynamic>(
+                    "SP_Product",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                ).ToList();
+
+                if (products.Count == 0)
+                    return NotFound(new { Message = $"No {gender} products found." });
+
+                return Ok(products);
+            }
+        }
     }
 
 }
-

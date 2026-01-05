@@ -88,6 +88,3 @@ button.delete {
   border-radius: 4px;
   cursor: pointer;
 }
-button.edit:hover {
-  background: #9c27b0;
-}

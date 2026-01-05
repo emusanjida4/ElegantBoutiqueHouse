@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -24,95 +24,93 @@ export class SubCategoryComponent implements OnInit {
   subCategoryModel = {
     id: 0,
     name: '',
-    categoryId: 0,
-    
+    categoryId: 0
   };
 
   isEdit = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.getAllSubCategories();
     this.getCategories();
   }
 
-  // 🔹 GET ALL SUB-CATEGORIES
   getAllSubCategories() {
     this.http.get<any[]>(this.apiUrl).subscribe(res => {
+      console
       this.subCategories = res;
       this.filteredSubCategories = res;
+      this.cdr.detectChanges();
     });
   }
 
-  // 🔹 GET CATEGORY LIST
   getCategories() {
     this.http.get<any[]>(this.categoryApi).subscribe(res => {
       this.categories = res;
+      this.cdr.detectChanges();
     });
   }
 
-  // 🔹 SEARCH
-  searchCategory() {
-    this.filteredSubCategories = this.subCategories.filter(x =>
-      x.name.toLowerCase().includes(this.searchText.toLowerCase())
-    );
+searchCategory() {
+  const text = this.searchText.toLowerCase().trim();
+
+  if (!text) {
+    this.filteredSubCategories = this.subCategories;
+    return;
   }
 
-  // 🔹 ADD
+  this.filteredSubCategories = this.subCategories.filter(x =>
+    x.Name && x.Name.toLowerCase().includes(text)
+  );
+}
+
+
   addSubCategory1() {
-    debugger;
-    console.table(this.subCategoryModel);
+    this.subCategoryModel.categoryId = Number(this.subCategoryModel.categoryId);
+
     this.http.post(this.apiUrl, {
       name: this.subCategoryModel.name,
-      categoryId: this.subCategoryModel.categoryId,
-      
+      categoryId: this.subCategoryModel.categoryId
     }).subscribe(() => {
       this.resetForm();
       this.getAllSubCategories();
     });
   }
 
-  // 🔹 EDIT
   editSubCategory(sub: any) {
     this.isEdit = true;
     this.subCategoryModel = {
       id: sub.id,
       name: sub.name,
-      categoryId: sub.categoryId,
-     
+      categoryId: sub.categoryId
     };
   }
 
-  // 🔹 UPDATE
   updateSubCategory() {
     this.http.put(`${this.apiUrl}/${this.subCategoryModel.id}`, {
       name: this.subCategoryModel.name,
-      categoryId: this.subCategoryModel.categoryId,
-     
+      categoryId: this.subCategoryModel.categoryId
     }).subscribe(() => {
       this.resetForm();
       this.getAllSubCategories();
     });
   }
 
-  // 🔹 DELETE
   deleteSubCategory(id: number) {
-    if (confirm('Are you sure you want to delete this subcategory?')) {
+    if (confirm('Are you sure?')) {
       this.http.delete(`${this.apiUrl}/${id}`).subscribe(() => {
         this.getAllSubCategories();
       });
     }
   }
 
-  // 🔹 RESET
   resetForm() {
     this.isEdit = false;
     this.subCategoryModel = {
       id: 0,
       name: '',
-      categoryId: 0,
-      
+      categoryId: 0
     };
   }
 }

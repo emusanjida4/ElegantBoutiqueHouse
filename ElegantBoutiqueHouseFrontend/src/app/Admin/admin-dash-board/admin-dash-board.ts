@@ -1,18 +1,41 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { CommonModule, Location } from '@angular/common';
 
 @Component({
   selector: 'app-admin-dashboard',
+  standalone: true,
   templateUrl: './admin-dash-board.html',
   styleUrls: ['./admin-dash-board.css'],
-  imports: [RouterLink, CommonModule]
+  imports: [
+    CommonModule,
+    RouterLink,
+    RouterLinkActive,
+    RouterOutlet
+  ]
 })
-export class AdminDashboardComponent  {
+export class AdminDashboardComponent {
 
-  constructor(private router: Router) {}
+  constructor(
+    public router: Router,
+    private location: Location
+  ) {}
 
   navigate(path: string) {
     this.router.navigate([path]);
   }
+
+  goBack() {
+    this.location.back();
+  }
+ logout() {
+  localStorage.clear();
+  sessionStorage.clear();
+
+  // logout flag
+  localStorage.setItem('logout', 'true');
+
+  this.router.navigateByUrl('/');
+}
+
 }

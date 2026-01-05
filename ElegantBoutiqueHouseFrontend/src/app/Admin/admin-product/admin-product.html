@@ -1,1 +1,101 @@
-<p>admin-product works!</p>
+<div class="product-page">
+
+  <div class="page-header">
+    <h2>Product Management</h2>
+  </div>
+
+  <!-- Form -->
+  <div class="form-card">
+    <input placeholder="Product Name" [(ngModel)]="name" />
+    <input placeholder="Brand" [(ngModel)]="brand" />
+    <input placeholder="Description" [(ngModel)]="description" />
+
+    <!-- ✅ Gender -->
+    <select [(ngModel)]="gender">
+      <option value="">Select Gender</option>
+      <option value="Men">Men</option>
+      <option value="Women">Women</option>
+    </select>
+
+    <input type="number" placeholder="Price" [(ngModel)]="price" />
+    <input type="number" placeholder="Stock Quantity" [(ngModel)]="stockQuantity" />
+    <input placeholder="Status" [(ngModel)]="status" />
+
+    <select [(ngModel)]="categoryid" (change)="loadSubCategories(categoryid!)">
+      <option value="">Select Category</option>
+      <option *ngFor="let c of categories" [value]="c.id">
+        {{ c.name }}
+      </option>
+    </select>
+
+    <select [(ngModel)]="subcategoryid">
+      <option value="">Select Sub Category</option>
+      
+      <option *ngFor="let sc of subCategories" [value]="sc.Id">
+        {{ sc.Name }}
+      </option>
+    </select>
+
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+
+    <button class="btn-primary" (click)="saveProduct()">
+      {{ id ? 'Update Product' : 'Add Product' }}
+    </button>
+
+    <button *ngIf="id" class="btn-cancel" (click)="resetForm()">Cancel</button>
+  </div>
+
+  <!-- Table -->
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Category</th>
+          <th>SubCategory</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Status</th>
+          <th>Created By</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let p of products; let i = index">
+          <td>{{ i + 1 }}</td>
+
+          <td>
+            <img
+              [src]="getImageUrl(p.DressImageUrl)"
+              alt="product"
+              class="product-img"
+            />
+          </td>
+
+          <td>{{ p.Name }}</td>
+          <td>{{ p.Gender }}</td>
+          <td>{{ p.CategoryName }}</td>
+          <td>{{ p.SubCategoryName }}</td>
+          <td>{{ p.Price }}</td>
+          <td>{{ p.Stockquantity }}</td>
+          <td>{{ p.Status }}</td>
+          <td>{{ p.Createdby }}</td>
+
+          <td>
+            <button class="btn-edit" (click)="editProduct(p)">Edit</button>
+            <button class="btn-delete" (click)="deleteProduct(p.id)">Delete</button>
+          </td>
+        </tr>
+
+        <tr *ngIf="products.length === 0">
+          <td colspan="11" class="no-data">No Products Found</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

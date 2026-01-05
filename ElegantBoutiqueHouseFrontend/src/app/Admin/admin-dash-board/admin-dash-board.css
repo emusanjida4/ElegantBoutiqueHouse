@@ -42,7 +42,7 @@
 }
 
 .menu li:hover,
-.menu .active {
+.menu li.active {
   background: #2563eb;
 }
 
@@ -70,6 +70,15 @@
   border: none;
   color: white;
   padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.back-btn {
+  background: #2563eb;
+  border: none;
+  color: #fff;
+  padding: 8px 14px;
   border-radius: 6px;
   cursor: pointer;
 }

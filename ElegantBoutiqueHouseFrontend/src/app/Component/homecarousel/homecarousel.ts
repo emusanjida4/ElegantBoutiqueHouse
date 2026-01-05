@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from '../navbar/navbar';
+import { NavbarCategoryComponent } from '../navbar/navbar';
 import { FooterComponent } from '../footer/footer';
 
 @Component({
   selector: 'app-home',
   templateUrl: './homecarousel.html',
   styleUrls: ['./homecarousel.css'],
-  imports: [CommonModule,NavbarComponent,FooterComponent]
+  imports: [CommonModule,NavbarCategoryComponent,FooterComponent]
 })
 export class HomeComponent {
   carouselImages = [

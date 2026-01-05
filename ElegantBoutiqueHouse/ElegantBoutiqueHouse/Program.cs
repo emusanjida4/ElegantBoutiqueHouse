@@ -1,4 +1,5 @@
 using ElegantBoutiqueHouse.Context;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors("AllowAngular");
+app.UseStaticFiles(); // this serves wwwroot by default
+
+// Optional: if you want to serve images from wwwroot/images specifically
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")),
+    RequestPath = "/images"
+});
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

@@ -38,7 +38,7 @@ namespace ElegantBoutiqueHouse.Controllers
             var param = new DynamicParameters();
             param.Add("@flag", 1);
 
-            var data = await connection.QueryAsync<SubCategory>(
+            var data = await connection.QueryAsync<dynamic>(
                 "SP_SubCategory",
                 param,
                 commandType: CommandType.StoredProcedure
@@ -155,7 +155,7 @@ namespace ElegantBoutiqueHouse.Controllers
             param.Add("@flag", 6);
             param.Add("@Id", id);
 
-            var data = await connection.QueryFirstOrDefaultAsync<SubCategory>(
+            var data = await connection.QueryAsync<dynamic>(
                 "SP_SubCategory",
                 param,
                 commandType: CommandType.StoredProcedure

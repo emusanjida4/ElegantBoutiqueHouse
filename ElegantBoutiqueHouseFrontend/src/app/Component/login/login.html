@@ -7,19 +7,19 @@
         <div class="carousel-inner h-80 w-90">
 
           <div class="carousel-item active">
-            <img src="assets/images/fashion pic 1.jpg" class="d-block w-100 object-fit-cover rounded-0 slider-img" alt="Slide 1">
+            <img src="assets/images/fashion pic 1.jpg" class="d-block w-100 object-fit-cover rounded-0 slider-img">
           </div>
           <div class="carousel-item">
-            <img src="assets/images/fas12.avif" class="d-block w-100 object-fit-cover rounded-0 slider-img" alt="Slide 2">
+            <img src="assets/images/fas12.avif" class="d-block w-100 object-fit-cover rounded-0 slider-img">
           </div>
           <div class="carousel-item">
-            <img src="assets/images/fas13.jpg" class="d-block w-100 object-fit-cover rounded-0 slider-img" alt="Slide 3">
+            <img src="assets/images/fas13.jpg" class="d-block w-100 object-fit-cover rounded-0 slider-img">
           </div>
           <div class="carousel-item">
-            <img src="assets/images/fas8.jpg" class="d-block w-100 object-fit-cover rounded-0 slider-img" alt="Slide 4">
+            <img src="assets/images/fas8.jpg" class="d-block w-100 object-fit-cover rounded-0 slider-img">
           </div>
           <div class="carousel-item">
-            <img src="assets/images/cartoon pic.png" class="d-block w-100 object-fit-cover rounded-0 slider-img" alt="Slide 5">
+            <img src="assets/images/cartoon pic.png" class="d-block w-100 object-fit-cover rounded-0 slider-img">
           </div>
 
         </div>
@@ -28,20 +28,40 @@
 
     <!-- Right Side (Login Form) -->
     <div class="col-md-6 d-flex align-items-center justify-content-center p-4">
-      <form (ngSubmit)="onLogin()" #loginForm="ngForm" class="p-4 w-75 shadow-lg rounded-4 bg-white">
+      <form
+        (ngSubmit)="onLogin()"
+        #loginForm="ngForm"
+        class="p-4 w-75 shadow-lg rounded-4 bg-white"
+        autocomplete="off">
+
         <h2 class="text-center mb-4">Welcome to EioRFashion</h2>
 
         <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" [(ngModel)]="loginFormData.email" name="email" #email="ngModel" class="form-control" placeholder="Enter your email" required>
+          <label class="form-label">Email</label>
+          <input
+            type="email"
+            [(ngModel)]="loginFormData.email"
+            name="email"
+            class="form-control"
+            placeholder="Enter your email"
+            required
+            autocomplete="off">
         </div>
 
         <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" [(ngModel)]="loginFormData.password" name="password" #password="ngModel" class="form-control" placeholder="Enter your password" required>
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            [(ngModel)]="loginFormData.password"
+            name="password"
+            class="form-control"
+            placeholder="Enter your password"
+            required
+            autocomplete="new-password">
         </div>
 
         <button type="submit" class="btn btn-primary w-100">Login</button>
+
         <div class="text-center mt-3">
           <span>Don't have an account?</span>
           <a routerLink="/register" class="fw-bold text-decoration-none ms-1">

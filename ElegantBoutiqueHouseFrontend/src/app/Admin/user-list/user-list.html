@@ -1,14 +1,13 @@
 <div class="container">
 
   <h2 class="title">Admin Panel – User List</h2>
-  <button class="save-btn" type="button" (click)="goToBack()">
-  Back
-</button>
 
-  <!-- Save New User Button -->
- <button class="save-btn" type="button" (click)="goToAddUser()">
-  Save New User
-</button>
+  <button class="save-btn" type="button" (click)="goToAddUser()">
+    Save New User
+  </button>
+
+  <!-- 🔥 EDIT BOX (same page) -->
+  
 
   <input
     type="text"
@@ -24,7 +23,6 @@
         <th>ID</th>
         <th>Name</th>
         <th>Email</th>
-       
         <th>Phone</th>
         <th>Address</th>
         <th>User Type</th>
@@ -38,27 +36,14 @@
         <td>{{ user.Id }}</td>
         <td>{{ user.Name }}</td>
         <td>{{ user.Email }}</td>
-        
         <td>{{ user.Phone }}</td>
         <td>{{ user.Address }}</td>
         <td>{{ user.UserType }}</td>
         <td>{{ user.Gender }}</td>
         <td>
-
-            <button class="edit-btn" type="button">
-                Edit
-            </button>
-            <button class="delete-btn" type="button">
-                Delete
-            </button>
-             <button class="delete-btn" type="button">
-                Details
-            </button>
+          
+          <button class="delete-btn" (click)="deleteUser(user.Id)">Delete</button>
         </td>
-      </tr>
-
-      <tr *ngIf="users.length === 0">
-        <td colspan="8" class="no-data">No users found</td>
       </tr>
     </tbody>
   </table>
