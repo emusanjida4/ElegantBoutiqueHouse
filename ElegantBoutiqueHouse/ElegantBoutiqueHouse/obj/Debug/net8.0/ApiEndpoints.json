@@ -307,6 +307,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ElegantBoutiqueHouse.Controllers.ProductController",
+    "Method": "GetProductsByGender",
+    "RelativePath": "api/Product/GenderProducts/{gender}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "gender",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ElegantBoutiqueHouse.Controllers.SubCategoryController",
     "Method": "GetAll",
     "RelativePath": "api/SubCategory",

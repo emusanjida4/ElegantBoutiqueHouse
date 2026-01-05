@@ -8,10 +8,12 @@ import { Userform } from './Admin/user-form/user-form';
 import { SubCategoryComponent } from './Admin/admin-sub-category/admin-sub-category';
 import { FooterComponent } from './Component/footer/footer';
 
+
 import { NavbarCategoryComponent } from './Component/navbar/navbar';
 
 import { HomeComponent } from './Component/homecarousel/homecarousel';
 import { AdminProductComponent } from './Admin/admin-product/admin-product';
+import { UserProduct } from './User/user-product/user-product';
 
 export const routes: Routes = [
 
@@ -30,8 +32,14 @@ export const routes: Routes = [
     ]
   },
 
-  { path: 'navbar', component: NavbarCategoryComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'footer', component: FooterComponent },
+  { path: 'navbar', component: NavbarCategoryComponent ,
+    children: [
+      {path: 'userproduct', component: UserProduct},
+        { path: 'home', component: HomeComponent },
+    ]
+      
+  },
+
+  // {path: 'userproduct', component: UserProduct},
 
 ];

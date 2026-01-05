@@ -465,6 +465,28 @@
         }
       }
     },
+    "/api/Product/GenderProducts/{gender}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "gender",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/SubCategory": {
       "get": {
         "tags": [

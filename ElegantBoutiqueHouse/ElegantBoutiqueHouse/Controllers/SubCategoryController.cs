@@ -154,7 +154,7 @@ namespace ElegantBoutiqueHouse.Controllers
             var param = new DynamicParameters();
             param.Add("@flag", 6);
             param.Add("@Id", id);
-
+             
             var data = await connection.QueryAsync<dynamic>(
                 "SP_SubCategory",
                 param,

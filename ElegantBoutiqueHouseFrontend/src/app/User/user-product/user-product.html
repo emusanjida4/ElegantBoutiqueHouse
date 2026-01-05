@@ -1,1 +1,39 @@
-<p>user-product works!</p>
+<div class="container mt-4">
+  <h3 class="text-center mb-4 text-capitalize">
+    {{ category }} Collection
+  </h3>
+
+  <div class="row" *ngIf="products.length > 0; else noData">
+
+    <div class="col-md-3 mb-4" *ngFor="let p of products">
+      <div class="card h-100 shadow-sm">
+
+        <img
+          [src]="'https://localhost:7254/' + p.DressImageUrl"
+          class="card-img-top"
+          alt="product image"
+          style="height: 250px; object-fit: cover;"
+        />
+
+        <div class="card-body text-center">
+          <h6>{{ p.Name }}</h6>
+          <p class="text-muted mb-1">{{ p.Brand }}</p>
+          <p class="fw-bold text-danger">৳ {{ p.Price }}</p>
+
+          <!-- ✅ ADD TO CART BUTTON -->
+          <button
+            class="btn btn-dark btn-sm w-100 mt-2"
+            (click)="addToCart(p)">
+            Add to Cart
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <ng-template #noData>
+    <p class="text-center text-muted">No products found.</p>
+  </ng-template>
+</div>

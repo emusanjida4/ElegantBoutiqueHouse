@@ -15,6 +15,7 @@ export class AdminProductComponent implements OnInit {
   productApi = 'https://localhost:7254/api/Product';
   categoryApi = 'https://localhost:7254/api/Category';
   subCategoryApi = 'https://localhost:7254/api/SubCategory';
+  
 
   products: any[] = [];
   categories: any[] = [];
