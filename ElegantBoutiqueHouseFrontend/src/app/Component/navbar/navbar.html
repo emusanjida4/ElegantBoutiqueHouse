@@ -5,16 +5,12 @@
     <li><a routerLink="/navbar/home">Home</a></li>
     <li><a routerLink="/about-us">About Us</a></li>
 
-    <!-- Men Menu -->
     <li class="dropdown">
-      <a (click) ="showproducts('men')">Men</a>
-
+      <a (click)="showproducts('men')">Men</a>
     </li>
 
-    <!-- Women Menu -->
     <li class="dropdown">
-      <a (click) ="showproducts('women')">Women</a>
-     
+      <a (click)="showproducts('women')">Women</a>
     </li>
   </ul>
 
@@ -25,16 +21,32 @@
     </ng-container>
 
     <ng-container *ngIf="isLoggedIn">
-      <div class="user-menu" (click)="toggleDropdown()">
-        <span class="username">Welcome, {{ username }}</span>
-        <span class="arrow">▼</span>
+      <div class="user-cart">
 
-        <div class="dropdown" *ngIf="showDropdown">
-          <a (click)="logout()">Logout</a>
+        <!-- Add to Cart Icon -->
+        <div class="cart" >
+          <span width="100px">
+            <i (click)="goToCart()" class="fa-solid fa-cart-shopping"></i>
+          </span>
+          <span class="cart-count" *ngIf="cartCount > 0">
+            {{ cartCount }}
+          </span>
         </div>
+
+        <!-- Username Dropdown -->
+        <div class="user-menu" (click)="toggleDropdown()">
+          <span class="username">Welcome, {{ username }}</span>
+          <span class="arrow">▼</span>
+
+          <div class="dropdown" *ngIf="showDropdown">
+            <a (click)="logout()">Logout</a>
+          </div>
+        </div>
+
       </div>
     </ng-container>
   </div>
 </nav>
-    <router-outlet> </router-outlet>
+
+<router-outlet></router-outlet>
 <app-footer></app-footer>

@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-category-admin',
   templateUrl: './category.html',
   styleUrls: ['./category.css'],
-  imports: [FormsModule, RouterLink,CommonModule]
+  imports: [FormsModule,CommonModule]
 })
 export class CategoryAdminComponent implements OnInit {
 

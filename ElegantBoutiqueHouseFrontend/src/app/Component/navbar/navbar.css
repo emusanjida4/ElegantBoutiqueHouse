@@ -3,15 +3,14 @@
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(to right, #2b0a3d, #9c1d5f);
- /* Magenta style */
   padding: 15px 40px;
+  overflow: visible; /* 🔥 VERY IMPORTANT */
 }
 
-.logo a {
-  color: rgba(255, 255, 255, 0.87);
-  font-size: 100px !important;
-  text-decoration: none;
+.logo {
+  color: white;
   font-weight: bold;
+  font-size: 22px;
 }
 
 .nav-links {
@@ -23,9 +22,70 @@
 .nav-links a {
   color: white;
   text-decoration: none;
-  font-size: 16px;
 }
 
-.nav-links a:hover {
-  border-bottom: 2px solid white;
+.auth {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+/* User + Cart wrapper */
+.user-cart {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Cart */
+.cart {
+  position: relative;
+  cursor: pointer;
+}
+
+.cart i {
+  font-size: 22px;
+  color: white;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* User menu */
+.user-menu {
+  position: relative; /* 🔥 REQUIRED */
+  cursor: pointer;
+}
+
+.username {
+  margin-right: 5px;
+}
+
+/* Dropdown FIX */
+.user-menu .dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: white;
+  color: black;
+  min-width: 120px;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 9999; /* 🔥 THIS FIXES CUT OFF */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.user-menu .dropdown a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
 }

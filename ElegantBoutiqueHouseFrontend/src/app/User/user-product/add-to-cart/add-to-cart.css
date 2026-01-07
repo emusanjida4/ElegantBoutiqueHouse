@@ -1,0 +1,139 @@
+.cart-card {
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cart-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.cart-img {
+  height: 260px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  text-align: center;
+  line-height: 1;
+}
+
+button i {
+  font-size: 16px;
+}
+
+.card-footer button {
+  min-width: 80px;
+}
+
+/* ============================= */
+/* Cart Action Buttons */
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.cart-actions h5 {
+  margin-bottom: 10px;
+}
+
+.cart-actions .btn {
+  min-width: 140px;       /* Box width fixed */
+  height: 40px;           /* Box height fixed */
+  padding: 0 15px;        /* Left/right padding for text */
+  font-size: 1rem;        /* Text size */
+  font-weight: 600;
+  border-radius: 8px;     /* Rounded edges */
+  white-space: nowrap;     /* Text stays inside */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-actions .btn-warning {
+  background-color: #ffc107;
+  color: #000;
+  border: none;
+}
+
+.cart-actions .btn-warning:hover {
+  background-color: #e0a800;
+  color: #fff;
+}
+
+.cart-actions .btn-success {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+}
+
+.cart-actions .btn-success:hover {
+  background-color: #218838;
+}
+/* Cart action container */
+.d-flex.justify-content-between.mt-4 {
+  display: flex;
+  justify-content: space-between; /* Total left, buttons right */
+  align-items: center;             /* vertically align center */
+  flex-wrap: wrap;                 /* responsive wrap if screen small */
+  margin-top: 20px;
+}
+
+/* Total amount styling */
+.d-flex.justify-content-between.mt-4 span {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Buttons container */
+.d-flex.justify-content-between.mt-4 > div {
+  display: flex;
+  gap: 10px;           /* space between buttons */
+}
+
+/* Buttons styling */
+.d-flex.justify-content-between.mt-4 button {
+  min-width: 140px;    /* fixed width */
+  height: 45px;        /* fixed height */
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  white-space: nowrap; /* text stays inside button */
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Clear Cart button */
+.d-flex.justify-content-between.mt-4 button.btn-warning {
+  background-color: #ffc107;
+  color: #000;
+  border: none;
+}
+
+.d-flex.justify-content-between.mt-4 button.btn-warning:hover {
+  background-color: #e0a800;
+  color: #fff;
+}
+
+/* Proceed to Order button */
+.d-flex.justify-content-between.mt-4 button.btn-success {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+}
+
+.d-flex.justify-content-between.mt-4 button.btn-success:hover {
+  background-color: #218838;
+}

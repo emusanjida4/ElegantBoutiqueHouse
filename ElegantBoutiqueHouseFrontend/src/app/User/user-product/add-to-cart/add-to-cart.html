@@ -1,0 +1,59 @@
+<div class="container my-4">
+  <h3 class="mb-4 fw-bold">🛒 My Cart</h3>
+
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let item of cartItems">
+      <div class="card shadow-sm h-100 cart-card">
+
+        <!-- Product Image -->
+        <img
+          [src]="'https://localhost:7254' + item.ImageUrl"
+          class="card-img-top cart-img"
+          alt="product image"
+        />
+
+        <!-- Card Body -->
+        <div class="card-body">
+          <h5 class="card-title">{{ item.ProductName }}</h5>
+
+          <p class="mb-1 text-muted">
+            Price: <strong>৳ {{ item.Price }}</strong>
+          </p>
+
+          <!-- Quantity with + / - -->
+          <p class="mb-1">
+            Quantity:
+            <button class="btn btn-sm btn-outline-dark me-1" (click)="decreaseQty(item)">−</button>
+            <span class="badge bg-dark">{{ item.Quantity }}</span>
+            <button class="btn btn-sm btn-outline-dark ms-1" (click)="increaseQty(item)">+</button>
+          </p>
+
+          <p class="fw-bold text-danger">
+            Total: ৳ {{ item.TotalPrice }}
+          </p>
+        </div>
+
+        <!-- Card Footer -->
+        <div class="card-footer bg-white border-0 text-end">
+          <button class="btn btn-danger btn-sm" title="Remove from cart" (click)="removeItem(item.Id)">
+            🗑️ Remove
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Action Buttons -->
+  <div *ngIf="cartItems.length > 0" class="d-flex justify-content-between mt-4">
+    <span>Total: ৳ {{ totalAmount }}</span>
+    <div>
+      <button class="btn btn-warning me-2" (click)="clearCart()">Clear Cart</button>
+      <button class="btn btn-success" (click)="proceedToOrder()">Proceed to Order</button>
+    </div>
+  </div>
+
+  <!-- Empty Cart -->
+  <div *ngIf="cartItems.length === 0" class="text-center text-muted mt-5">
+    <h5>Your cart is empty 🛍️</h5>
+  </div>
+</div>

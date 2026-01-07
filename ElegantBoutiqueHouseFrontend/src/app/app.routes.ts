@@ -1,25 +1,43 @@
 import { Routes } from '@angular/router';
+
 import { RegistrationComponent } from './Component/registration/registration';
 import { LoginComponent } from './Component/login/login';
+
 import { AdminDashboardComponent } from './Admin/admin-dash-board/admin-dash-board';
 import { CategoryAdminComponent } from './Admin/category/category';
 import { AdminUserListComponent } from './Admin/user-list/user-list';
 import { Userform } from './Admin/user-form/user-form';
 import { SubCategoryComponent } from './Admin/admin-sub-category/admin-sub-category';
-import { FooterComponent } from './Component/footer/footer';
-
+import { AdminProductComponent } from './Admin/admin-product/admin-product';
 
 import { NavbarCategoryComponent } from './Component/navbar/navbar';
-
 import { HomeComponent } from './Component/homecarousel/homecarousel';
-import { AdminProductComponent } from './Admin/admin-product/admin-product';
 import { UserProduct } from './User/user-product/user-product';
+import { AddToCartComponent } from './User/user-product/add-to-cart/add-to-cart';
+
 
 export const routes: Routes = [
 
-  { path: '', component: LoginComponent },
+  {
+path: '', redirectTo: '/navbar', pathMatch: 'full'
+  },
+  /* ✅ App start → Home page */
+  {
+    path: 'navbar',
+    component: NavbarCategoryComponent,
+    children: [
+      { path: '', component: HomeComponent },   // default home
+      { path: 'home', component: HomeComponent },
+      { path: 'userproduct', component: UserProduct },
+       { path: 'cart', component: AddToCartComponent }
+    ]
+  },
+
+  /* ✅ Auth pages */
+  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
 
+  /* ✅ Admin (unchanged) */
   {
     path: 'admin',
     component: AdminDashboardComponent,
@@ -31,15 +49,6 @@ export const routes: Routes = [
       { path: 'subcategory', component: SubCategoryComponent }
     ]
   },
-
-  { path: 'navbar', component: NavbarCategoryComponent ,
-    children: [
-      {path: 'userproduct', component: UserProduct},
-        { path: 'home', component: HomeComponent },
-    ]
-      
-  },
-
-  // {path: 'userproduct', component: UserProduct},
+ 
 
 ];

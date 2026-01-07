@@ -2,13 +2,12 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sub-category',
   templateUrl: './admin-sub-category.html',
   styleUrls: ['./admin-sub-category.css'],
-  imports: [FormsModule, CommonModule, RouterLink]
+  imports: [FormsModule, CommonModule]
 })
 export class SubCategoryComponent implements OnInit {
 
@@ -78,13 +77,13 @@ searchCategory() {
     });
   }
 
-  editSubCategory(sub: any) {
-    this.isEdit = true;
-    this.subCategoryModel = {
-      id: sub.id,
-      name: sub.name,
-      categoryId: sub.categoryId
-    };
+ editSubCategory(sub: any) {
+  this.isEdit = true;
+  this.subCategoryModel = {
+    id: sub.Id,
+    name: sub.Name,
+    categoryId: sub.CategoryId
+  };
   }
 
   updateSubCategory() {

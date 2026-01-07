@@ -115,19 +115,20 @@ debugger;
   }
 
   editProduct(item: any) {
-    this.id = item.id;
-    this.name = item.name;
-    this.brand = item.brand;
-    this.description = item.description;
-    this.gender = item.gender; // ✅ added
-    this.price = item.price;
-    this.stockQuantity = item.stockquantity;
-    this.status = item.status;
-    this.categoryid = item.categoryId;
+  this.id = item.Id;
+  this.name = item.Name;
+  this.brand = item.Brand;
+  this.description = item.Description;
+  this.gender = item.Gender;
+  this.price = item.Price;
+  this.stockQuantity = item.StockQuantity;
+  this.status = item.Status;
+  this.categoryid = item.CategoryId;
 
-    this.loadSubCategories(item.categoryId);
-    this.subcategoryid = item.subCategoryId;
-  }
+  this.loadSubCategories(item.CategoryId);
+  this.subcategoryid = item.SubCategoryId;
+}
+
 
   deleteProduct(id: number) {
     if (!confirm('Are you sure?')) return;

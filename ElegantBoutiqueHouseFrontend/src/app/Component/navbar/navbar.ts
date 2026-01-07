@@ -28,6 +28,7 @@ export class NavbarCategoryComponent implements OnInit {
   menCategories: Category[] = [];
   womenCategories: Category[] = [];
 
+  cartCount = 0; // New: Cart item count
 
   constructor(
     private router: Router,
@@ -44,12 +45,22 @@ export class NavbarCategoryComponent implements OnInit {
     this.dataService.username$.subscribe(name => {
       this.username = name;
     });
+
+    // Optional: Fetch cart count
+    this.loadCartCount();
   }
 
-  
+  loadCartCount() {
+    // Replace API URL with your actual backend endpoint
+    this.http.get<number>('https://localhost:7254/api/AddToCart/Count').subscribe(
+      count => this.cartCount = count,
+      err => console.error(err)
+    );
+  }
+
   login() {
-    this.dataService.login('Sanjida');
-    this.router.navigate(['/']);
+    this.dataService.login('');
+    this.router.navigate(['/login']);
   }
 
   signup() {
@@ -66,9 +77,11 @@ export class NavbarCategoryComponent implements OnInit {
     this.showDropdown = !this.showDropdown;
   }
 
-  // Men/Women dropdown toggle
   showproducts(type: string) {
     this.router.navigate(['/navbar/userproduct'], { queryParams: { category: type } });
   }
-  
+
+  goToCart() {
+    this.router.navigate(['/navbar/cart']); // Route to your cart page
+  }
 }

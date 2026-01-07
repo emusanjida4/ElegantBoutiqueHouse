@@ -2,6 +2,7 @@
 using ElegantBoutiqueHouse.Context;
 using ElegantBoutiqueHouse.Model;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace SportsHubBackend.Controllers
 {
@@ -30,7 +31,7 @@ namespace SportsHubBackend.Controllers
             }
 
             var query = @"
-        SELECT Name,Email,Password,Phone,Address,UserType,Gender
+        SELECT *
         FROM UserInfo
         WHERE Email = @Email AND Password = @Password
     ";
@@ -91,5 +92,31 @@ namespace SportsHubBackend.Controllers
             return Ok(users);
 
         }
+        [HttpDelete("DeleteUser/{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            try
+            {
+                using (var connection = _context.CreateConnection())
+                {
+                    var param = new DynamicParameters();
+                    param.Add("@flag", 3);
+                    param.Add("@Id", id);
+
+                    await connection.ExecuteAsync(
+                        "SP_UserInfo",
+                        param,
+                        commandType: CommandType.StoredProcedure
+                    );
+                }
+
+                return Ok(new { message = "User deleted successfully" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 } 

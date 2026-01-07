@@ -75,11 +75,17 @@ export class AdminUserListComponent implements OnInit {
 
   // 🔥 DELETE (frontend only)
   deleteUser(id: number) {
-    if (confirm('Are you sure you want to delete this user?')) {
-      this.users = this.users.filter(u => u.Id !== id);
-      this.filteredUsers = [...this.users];
-    }
+  if (confirm('Are you sure you want to delete this user?')) {
+    this.http
+      .delete(`https://localhost:7254/api/UserInfo/DeleteUser/${id}`)
+      .subscribe(() => {
+        this.users = this.users.filter(u => u.Id !== id);
+        this.filteredUsers = [...this.users];
+      });
   }
+}
+
+    
 
   goToAddUser() {
     this.router.navigate(['/admin/users/add']);
