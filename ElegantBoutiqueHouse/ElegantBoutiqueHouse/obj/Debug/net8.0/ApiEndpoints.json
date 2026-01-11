@@ -70,6 +70,38 @@
   },
   {
     "ContainingType": "ElegantBoutiqueHouse.Controllers.AddToCartController",
+    "Method": "DecrementCart",
+    "RelativePath": "api/AddToCart/decrement/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ElegantBoutiqueHouse.Controllers.AddToCartController",
+    "Method": "IncrementCart",
+    "RelativePath": "api/AddToCart/increment/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ElegantBoutiqueHouse.Controllers.AddToCartController",
     "Method": "GetCartByUser",
     "RelativePath": "api/AddToCart/User/{userId}",
     "HttpMethod": "GET",

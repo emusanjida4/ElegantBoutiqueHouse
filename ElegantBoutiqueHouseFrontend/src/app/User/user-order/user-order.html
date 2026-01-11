@@ -1,70 +1,62 @@
 <div class="confirm-page">
 
-    <!-- TOP BAR -->
-    <div class="top-bar">
-        <div class="brand">EORFashion</div>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="brand">EORFashion</div>
 
-        <div class="user-box">
-            <span>{{ user?.name }}</span>
-            <button (click)="logout()">Logout</button>
+    <div class="user-box">
+      <span>{{ user?.name }}</span>
+      <button (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="confirm-container">
+
+    <!-- LEFT -->
+    <div class="glass">
+
+      <div class="section">
+        <h3>User Details</h3>
+        <input placeholder="Name" [(ngModel)]="order.userName">
+        <input placeholder="Phone" [(ngModel)]="order.phone">
+        <textarea placeholder="Address" [(ngModel)]="order.address"></textarea>
+      </div>
+
+      <div class="section">
+        <h3>Products</h3>
+
+        <div class="product-line" *ngFor="let p of cartItems">
+          <span>{{ p.ProductName }} × {{ p.Quantity }}</span>
+          <span>৳ {{ p.TotalPrice }}</span>
         </div>
+
+        <div class="grand-total">
+          Total: ৳ {{ getTotal() }}
+        </div>
+      </div>
+
     </div>
 
-    <div class="confirm-container">
+    <!-- RIGHT -->
+    <div class="glass">
 
-        <!-- LEFT -->
-        <div class="glass">
+      <h3>Payment Method</h3>
 
-            <div class="section">
-                <h3>User Details</h3>
-                <input placeholder="Name" [(ngModel)]="order.userName">
-                <input placeholder="Phone" [(ngModel)]="order.phone">
-                <textarea placeholder="Address" [(ngModel)]="order.address"></textarea>
-            </div>
+      <div class="payment-box"
+           *ngFor="let m of payments"
+           [class.active]="order.payment === m"
+           (click)="order.payment = m">
 
-            <div class="section">
-                <h3>Products</h3>
+        {{ m }}
+      </div>
 
-                <div class="product-line" *ngFor="let p of cartItems">
-                    <span>{{ p.ProductName }} × {{ p.Quantity }}</span>
-                    <span>৳ {{ p.TotalPrice }}</span>
-                </div>
+      <button class="confirm-btn" (click)="confirmOrder()">
+        Confirm Order
+      </button>
 
-                <div class="grand-total">
-                    Total: ৳ {{ getTotal() }}
-                </div>
-            </div>
-
-        </div>
-
-        <!-- RIGHT -->
-        <div class="glass">
-
-            <h3>Payment Method</h3>
-
-            <div class="payment-box" *ngFor="let m of payments" [class.active]="order.payment === m"
-                (click)="selectPayment(m)">
-                {{ m }}
-            </div>
-
-            <!-- Mobile Number -->
-            <div *ngIf="showMobileInput" class="mt-3">
-                <input type="text" class="form-control" placeholder="Enter Mobile Number" [(ngModel)]="mobileNumber">
-            </div>
-
-            <!-- PIN / Card -->
-            <div *ngIf="showPinInput" class="mt-2">
-                <input type="password" class="form-control" [placeholder]="pinPlaceholder" [(ngModel)]="pinOrCard">
-            </div>
-
-            <button class="confirm-btn mt-3" (click)="confirmOrder()">
-                Confirm Order
-            </button>
-
-            <p class="secure-text">🔒 Secure Checkout</p>
-
-        </div>
-
+      <p class="secure-text">🔒 Secure Checkout</p>
 
     </div>
+
+  </div>
 </div>

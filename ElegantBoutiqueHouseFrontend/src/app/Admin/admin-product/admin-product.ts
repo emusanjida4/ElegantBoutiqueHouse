@@ -27,7 +27,7 @@ export class AdminProductComponent implements OnInit {
   description = '';
   gender = '';        // ✅ added
   price: number | null = null;
-  stockQuantity: number | null = null;
+  stockQuantity: number | null = 0;
   status = '';
 
   categoryid: number | null = null;
@@ -93,7 +93,7 @@ debugger;
     formData.append('Gender', this.gender); // ✅ added
     formData.append('Price', this.price.toString());
     formData.append('Stockquantity', this.stockQuantity?.toString() || '0');
-    formData.append('Status', this.status);
+    formData.append('Status', this.status); 
     formData.append('CategoryId', this.categoryid.toString());
     formData.append('SubCategoryId', this.subcategoryid.toString());
     formData.append('DressImage', this.selectedFile);

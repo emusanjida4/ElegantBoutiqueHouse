@@ -143,6 +143,52 @@
         }
       }
     },
+    "/api/AddToCart/increment/{id}": {
+      "get": {
+        "tags": [
+          "AddToCart"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AddToCart/decrement/{id}": {
+      "get": {
+        "tags": [
+          "AddToCart"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Category": {
       "get": {
         "tags": [
@@ -1315,6 +1361,10 @@
           "specialReq": {
             "type": "string",
             "nullable": true
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
           },
           "orderDetails": {
             "type": "array",

@@ -69,6 +69,7 @@ namespace ElegantBoutiqueHouse.Controllers
             parameters.Add("@ProductId", model.ProductId);
             parameters.Add("@UserId", model.UserId);
             parameters.Add("@Quantity", model.Quantity);
+            parameters.Add("@Create", DateTime.Now);
 
             using var connection = _context.CreateConnection();
             var result = await connection.QueryFirstOrDefaultAsync(
@@ -120,5 +121,42 @@ namespace ElegantBoutiqueHouse.Controllers
 
             return Ok(result);
         }
+        [HttpGet("increment/{id}")]
+        public async Task<IActionResult> IncrementCart(int id)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@flag", 6);
+            parameters.Add("@Id", id);
+
+            using var connection = _context.CreateConnection();
+            var result = await connection.QueryFirstOrDefaultAsync(
+                "SP_AddToCart",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
+
+            return Ok(result);
+        }
+
+        // ===============================
+        // 7️⃣ DECREMENT CART ITEM (flag=7)
+        // ===============================
+        [HttpGet("decrement/{id}")]
+        public async Task<IActionResult> DecrementCart(int id)
+        {
+            var parameters = new DynamicParameters();
+            parameters.Add("@flag", 7);
+            parameters.Add("@Id", id);
+
+            using var connection = _context.CreateConnection();
+            var result = await connection.QueryFirstOrDefaultAsync(
+                "SP_AddToCart",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
+
+            return Ok(result);
+        }
     }
 }
+

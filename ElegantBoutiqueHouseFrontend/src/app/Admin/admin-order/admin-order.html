@@ -1,0 +1,72 @@
+<div class="order-wrapper">
+
+  <h2>Order Management</h2>
+
+  <!-- SEARCH BAR -->
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search by Order ID, Product ID or Product Name"
+      [(ngModel)]="searchQuery"
+      (input)="searchOrders()"
+    />
+  </div>
+
+  <table *ngIf="!loading" class="order-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Order ID</th>
+        <th>Customer</th>
+        <th>Phone</th>
+        <th>Payment</th>
+        <th>Total</th>
+        <th>Status</th>
+        <th>Created</th>
+        <th>Products</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let order of filteredOrders; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ order.Id }}</td>
+        <td>{{ order.UserName }}</td>
+        <td>{{ order.Phone }}</td>
+        <td>{{ order.Payment|| 'N/A' }}</td>
+        <td>{{ order.TotalAmount }} ৳</td>
+        
+        
+        
+
+        <td>
+          <select
+            #statusSelect
+            [value]="order.Status"
+            (change)="updateStatus(order.Id, statusSelect.value)"
+          >
+            <option value="Pending">Pending</option>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </td>
+
+        <td>{{ order.Created | date:'short' }}</td>
+
+        <td>
+          <span *ngFor="let item of order.orderItems; let last = last">
+            {{ item.ProductId }} - {{ item.ProductName }}{{ last ? '' : ', ' }}
+          </span>
+        </td>
+
+        <td>
+          <button class="delete-btn" (click)="deleteOrder(order.Id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

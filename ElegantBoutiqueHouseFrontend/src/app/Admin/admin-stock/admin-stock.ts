@@ -13,11 +13,14 @@ import { CommonModule } from '@angular/common';
 export class StockAdminComponent implements OnInit {
 
   apiUrl = 'https://localhost:7254/api/Stock';
+  productApi = 'https://localhost:7254/api/Product';
 
   stocks: any[] = [];
+  products: any[] = [];
 
   stockModel = {
     id: 0,
+    productId: 0,
     productName: '',
     quantity: 0,
     size: '',
@@ -35,12 +38,21 @@ export class StockAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllStock();
+    this.getAllProducts();
   }
 
-  // 🔹 GET ALL
+  // 🔹 GET ALL STOCK
   getAllStock() {
     this.http.get<any[]>(this.apiUrl).subscribe(res => {
       this.stocks = res;
+      this.cdr.detectChanges();
+    });
+  }
+
+  // 🔹 GET ALL PRODUCTS
+  getAllProducts() {
+    this.http.get<any[]>(this.productApi).subscribe(res => {
+      this.products = res;
       this.cdr.detectChanges();
     });
   }
@@ -53,10 +65,20 @@ export class StockAdminComponent implements OnInit {
     });
   }
 
-  // 🔹 EDIT
+  // 🔹 EDIT (FIXED)
   editStock(stock: any) {
     this.isEdit = true;
-    this.stockModel = { ...stock };
+
+    this.stockModel = {
+      id: stock.Id,
+      productId: stock.ProductId,
+      productName: stock.ProductName,
+      quantity: stock.Quantity,
+      size: stock.Size,
+      batchNumber: stock.BatchNumber,
+      purchasePrice: stock.PurchasePrice,
+      sellPrice: stock.SellPrice
+    };
   }
 
   // 🔹 UPDATE
@@ -67,7 +89,7 @@ export class StockAdminComponent implements OnInit {
     });
   }
 
-  // 🔹 DELETE
+  // 🔹 DELETE (FIXED)
   deleteStock(id: number) {
     if (confirm('Are you sure you want to delete this stock?')) {
       this.http.delete(`${this.apiUrl}/${id}`).subscribe(() => {
@@ -76,11 +98,24 @@ export class StockAdminComponent implements OnInit {
     }
   }
 
+  // 🔹 PRODUCT CHANGE
+  onProductChange() {
+    const selectedProduct = this.products.find(
+      p => p.Id === Number(this.stockModel.productId)
+    );
+
+    if (selectedProduct) {
+      this.stockModel.productName = selectedProduct.Name;
+      this.stockModel.sellPrice = selectedProduct.Price;
+    }
+  }
+
   // 🔹 RESET
   resetForm() {
     this.isEdit = false;
     this.stockModel = {
       id: 0,
+      productId: 0,
       productName: '',
       quantity: 0,
       size: '',

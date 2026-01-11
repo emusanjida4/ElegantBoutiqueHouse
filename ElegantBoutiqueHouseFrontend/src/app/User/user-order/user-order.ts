@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { form } from '@angular/forms/signals';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-confirm',
   templateUrl: './user-order.html',
   styleUrls: ['./user-order.css'],
+  standalone: true,
   imports: [CommonModule, FormsModule]
 })
 export class OrderComponent implements OnInit {
@@ -30,32 +31,49 @@ export class OrderComponent implements OnInit {
     totalAmount: 0
   };
 
-  // 🔽 New variables
   showMobileInput = false;
   showPinInput = false;
   mobileNumber = '';
   pinOrCard = '';
   pinPlaceholder = '';
 
-  constructor(private router: Router) {}
+  private ORDER_API = 'https://localhost:7254/api/Order';
+
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
 
     this.order.userName = this.user?.Name || '';
     this.order.phone = this.user?.Phone || '';
     this.order.address = this.user?.Address || '';
+
+    this.getCartData();
+  }
+
+  // ================= CART DATA =================
+  getCartData(): void {
+    this.http
+      .get<any[]>(`https://localhost:7254/api/AddToCart/User/${this.user.id}`)
+      .subscribe(res => {
+        this.cartItems = res;
+        this.cdr.detectChanges();
+      });
   }
 
   getTotal(): number {
     return this.cartItems.reduce(
-      (sum, item) => sum + (item.TotalPrice || 0), 0
+      (sum, item) => sum + (item.TotalPrice || 0),
+      0
     );
   }
 
-  // ✅ payment select logic
-  selectPayment(method: string) {
+  // ================= PAYMENT SELECT =================
+  selectPayment(method: string): void {
     this.order.payment = method;
 
     this.showMobileInput = method !== 'Cash on Delivery';
@@ -65,6 +83,7 @@ export class OrderComponent implements OnInit {
     this.pinOrCard = '';
   }
 
+  // ================= CONFIRM ORDER =================
   confirmOrder(): void {
 
     if (!this.order.payment) {
@@ -72,13 +91,11 @@ export class OrderComponent implements OnInit {
       return;
     }
 
-    // Cash on Delivery
     if (this.order.payment === 'Cash on Delivery') {
       this.finalConfirm();
       return;
     }
 
-    // Mobile validation
     if (!this.mobileNumber || this.mobileNumber.length < 11) {
       alert('Enter valid mobile number');
       return;
@@ -86,38 +103,51 @@ export class OrderComponent implements OnInit {
 
     this.showPinInput = true;
 
-    // PIN/Card validation
-    if (this.order.payment === 'Bkash') {
-      this.pinPlaceholder = 'Enter 5 digit Bkash PIN';
-      if (this.pinOrCard.length !== 5) {
-        alert('Bkash PIN must be 5 digits');
-        return;
-      }
+    if (this.order.payment === 'Bkash' && this.pinOrCard.length !== 5) {
+      alert('Bkash PIN must be 5 digits');
+      return;
     }
 
-    if (this.order.payment === 'Nagad') {
-      this.pinPlaceholder = 'Enter 4 digit Nagad PIN';
-      if (this.pinOrCard.length !== 4) {
-        alert('Nagad PIN must be 4 digits');
-        return;
-      }
+    if (this.order.payment === 'Nagad' && this.pinOrCard.length !== 4) {
+      alert('Nagad PIN must be 4 digits');
+      return;
     }
 
-    if (this.order.payment === 'Card') {
-      this.pinPlaceholder = 'Enter 16 digit Card Number';
-      if (this.pinOrCard.length !== 16) {
-        alert('Card number must be 16 digits');
-        return;
-      }
+    if (this.order.payment === 'Card' && this.pinOrCard.length !== 16) {
+      alert('Card number must be 16 digits');
+      return;
     }
 
     this.finalConfirm();
   }
 
-  finalConfirm() {
-    this.order.totalAmount = this.getTotal();
-    console.log('ORDER DATA:', this.order);
-    alert('🎉 Order Confirmed Successfully!');
+  // ================= FINAL CONFIRM (API CALL) =================
+  finalConfirm(): void {
+
+    const payload = {
+      UserId: this.user.id,
+      Name: this.order.userName,
+      Phone: this.order.phone,
+      Address: this.order.address,
+      PaymentMethod: this.order.payment,
+      TotalPrice: this.getTotal(),
+      OrderItems: this.cartItems.map(item => ({
+        ProductId: item.ProductId,
+        Quantity: item.Quantity,
+        Price: item.Price
+      }))
+    };
+
+    this.http.post(this.ORDER_API, payload).subscribe({
+      next: () => {
+        alert('🎉 Order Confirmed Successfully!');
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Order failed!');
+      }
+    });
   }
 
   logout(): void {

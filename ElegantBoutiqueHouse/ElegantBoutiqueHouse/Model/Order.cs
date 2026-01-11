@@ -11,6 +11,7 @@
         public string? Payment { get; set; }      // Payment Method
         public decimal? TotalAmount { get; set; } // Total Order Amount
         public string? SpecialReq { get; set; }   // Special Request
+        public DateTime Created { get; set; }
 
         // Nested order details
         public List<OrderDetails> OrderDetails { get; set; } = new List<OrderDetails>();

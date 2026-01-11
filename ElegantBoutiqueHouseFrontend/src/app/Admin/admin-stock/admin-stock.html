@@ -4,7 +4,14 @@
 
   <!-- FORM -->
   <div class="form-box">
-    <input type="text" placeholder="Product Name" [(ngModel)]="stockModel.productName" />
+
+    <select [(ngModel)]="stockModel.productId" (change)="onProductChange()">
+      <option value="">-- Select Product --</option>
+      <option *ngFor="let p of products" [value]="p.Id">
+        {{ p.Name }} ({{ p.CategoryName }})
+      </option>
+    </select>
+
     <input type="number" placeholder="Quantity" [(ngModel)]="stockModel.quantity" />
     <input type="text" placeholder="Size" [(ngModel)]="stockModel.size" />
     <input type="text" placeholder="Batch Number" [(ngModel)]="stockModel.batchNumber" />
@@ -33,16 +40,16 @@
 
     <tbody>
       <tr *ngFor="let stock of stocks">
-        <td>{{ stock.id }}</td>
-        <td>{{ stock.productName }}</td>
-        <td>{{ stock.quantity }}</td>
-        <td>{{ stock.size }}</td>
-        <td>{{ stock.batchNumber }}</td>
-        <td>{{ stock.purchasePrice }}</td>
-        <td>{{ stock.sellPrice }}</td>
+        <td>{{ stock.Id }}</td>
+        <td>{{ stock.ProductName }}</td>
+        <td>{{ stock.Quantity }}</td>
+        <td>{{ stock.Size }}</td>
+        <td>{{ stock.BatchNumber }}</td>
+        <td>{{ stock.PurchasePrice }}</td>
+        <td>{{ stock.SellPrice }}</td>
         <td>
           <button class="edit" (click)="editStock(stock)">Edit</button>
-          <button class="delete" (click)="deleteStock(stock.id)">Delete</button>
+          <button class="delete" (click)="deleteStock(stock.Id)">Delete</button>
         </td>
       </tr>
     </tbody>

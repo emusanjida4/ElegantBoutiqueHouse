@@ -62,6 +62,7 @@ export class UserProduct {
   // ✅ ADD TO CART (NEW)
   // ==============================
 addToCart(product: any) {
+  debugger;
 
   const user = JSON.parse(localStorage.getItem('user') ?? 'null');
 
@@ -76,7 +77,7 @@ addToCart(product: any) {
     productId: product.Id,
     userId: user.id,
     quantity: 1,
-    id: 0
+    
   };
 
   this.http.post(

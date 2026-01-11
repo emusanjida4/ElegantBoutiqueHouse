@@ -27,6 +27,9 @@
       <li routerLink="/admin/subcategory" routerLinkActive="active">
         Admin SubCategory
       </li>
+      <li routerLink="/admin/stock" routerLinkActive="active">
+        Stock Management
+      </li>
 
       <li routerLink="/admin/orders" routerLinkActive="active">
         Orders
@@ -68,6 +71,12 @@
         <div class="icon">📁</div>
         <h3>SubCategory</h3>
         <p>Manage subcategories</p>
+      </div>
+
+      <div class="dashboard-card" (click)="navigate('/admin/stock')">
+        <div class="icon">📦</div>
+        <h3>Stock</h3>
+        <p>Manage stock</p>
       </div>
 
       <div class="dashboard-card" (click)="navigate('/admin/orders')">

@@ -34,9 +34,10 @@ export class AddToCartComponent implements OnInit {
   loadCart(userId: number) {
     this.http.get<any[]>(`${this.apiUrl}/User/${userId}`).subscribe({
       next: (res) => {
-           localStorage.setItem('cart', JSON.stringify(res));
+          //  localStorage.setItem('cart', JSON.stringify(res));
 
         this.cartItems = res;
+        
         this.updateTotal();
         this.cdr.detectChanges();
       },
@@ -46,10 +47,10 @@ export class AddToCartComponent implements OnInit {
     });
   }
 
-  removeItem(cartId: number) {
-    this.http.delete(`${this.apiUrl}/${cartId}`).subscribe({
+  removeItem(Id: number) {
+    this.http.delete(`${this.apiUrl}/${Id}`).subscribe({
       next: () => {
-        this.cartItems = this.cartItems.filter(i => i.Id !== cartId);
+        this.cartItems = this.cartItems.filter(i => i.Id !== Id);
         this.updateTotal();
       }
     });
@@ -59,9 +60,15 @@ export class AddToCartComponent implements OnInit {
   // ✅ Increase / Decrease Quantity
   // ===============================
   increaseQty(item: any) {
-    item.Quantity += 1;
+
+   item.Quantity += 1;
     item.TotalPrice = item.Price * item.Quantity;
     this.updateTotal();
+    this.http.get(`${this.apiUrl}/increment/${item.Id}`).subscribe((data:any)=>
+    [
+      this.cdr.detectChanges()
+    ]);
+
   }
 
   decreaseQty(item: any) {
@@ -69,6 +76,10 @@ export class AddToCartComponent implements OnInit {
       item.Quantity -= 1;
       item.TotalPrice = item.Price * item.Quantity;
       this.updateTotal();
+      this.http.get(`${this.apiUrl}/decrement/${item.Id}`).subscribe((data:any)=>
+      [
+        this.cdr.detectChanges()
+      ]);
     }
   }
 

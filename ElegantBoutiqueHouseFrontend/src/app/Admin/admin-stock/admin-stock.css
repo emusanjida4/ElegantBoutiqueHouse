@@ -82,3 +82,9 @@ button.delete {
 button:hover {
   opacity: 0.85;
 }
+.form-box select {
+  padding: 10px;
+  width: 200px;
+  border-radius: 6px;
+  border: 1px solid #c084d2;
+}

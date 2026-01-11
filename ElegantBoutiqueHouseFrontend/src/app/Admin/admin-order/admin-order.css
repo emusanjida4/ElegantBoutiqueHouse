@@ -1,0 +1,48 @@
+
+.order-wrapper {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+.loading {
+  padding: 20px;
+  font-weight: bold;
+}
+
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-table th,
+.order-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.order-table th {
+  background: #f5f5f5;
+}
+
+select {
+  padding: 5px;
+}
+
+.delete-btn {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #c0392b;
+}
