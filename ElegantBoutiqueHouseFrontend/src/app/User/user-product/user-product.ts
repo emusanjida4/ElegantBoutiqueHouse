@@ -33,16 +33,26 @@ export class UserProduct {
   }
 
   loadProductsByCategory(category: string) {
-    const apiUrl = `https://localhost:7254/api/Product/GenderProducts/${category}`;
+    const apiUrl = `https://localhost:7254/api/Product/GetProductsByCat/${category}`;
+
 
 
     this.http.get<any[]>(apiUrl).subscribe({
       next: (res) => {
+        if (res.length === 0) {
+          alert('No products found in this category.');
+          this.products = [];
+          this.cdr.detectChanges();
+          return;
+        }
         this.products = res;
         console.log('Products:', this.products);
         this.cdr.detectChanges();
       },
       error: (err) => {
+        alert('No products found in this category.');
+          this.products = [];
+          this.cdr.detectChanges();
         console.error('Product load error', err);
       }
     });
@@ -53,17 +63,18 @@ export class UserProduct {
   // ==============================
 addToCart(product: any) {
 
-  const userId = JSON.parse(localStorage.getItem('user') ??'{}'); // login user id
+  const user = JSON.parse(localStorage.getItem('user') ?? 'null');
 
-  if (!userId) {
+  // ✅ proper login check
+  if (!user || !user.id) {
     alert('Please login first');
-     this.router.navigate(['/login']);
+    this.router.navigate(['/login']);
     return;
   }
-debugger;
+
   const cartData = {
     productId: product.Id,
-    userId: userId.id,
+    userId: user.id,
     quantity: 1,
     id: 0
   };
@@ -75,6 +86,7 @@ debugger;
     next: (res) => {
       console.log('Added to cart:', res);
       alert('Product added to cart 🛒');
+      this.cdr.detectChanges();
     },
     error: (err) => {
       console.error(err);

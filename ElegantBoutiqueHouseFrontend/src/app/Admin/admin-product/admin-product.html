@@ -20,6 +20,7 @@
     <input type="number" placeholder="Price" [(ngModel)]="price" />
     <input type="number" placeholder="Stock Quantity" [(ngModel)]="stockQuantity" />
     <input placeholder="Status" [(ngModel)]="status" />
+    <input placeholder="Id" [(ngModel)]="id" type="hidden" />
 
     <select [(ngModel)]="categoryid" (change)="loadSubCategories(categoryid!)">
       <option value="">Select Category</option>

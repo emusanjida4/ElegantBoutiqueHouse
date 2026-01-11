@@ -14,6 +14,9 @@ import { NavbarCategoryComponent } from './Component/navbar/navbar';
 import { HomeComponent } from './Component/homecarousel/homecarousel';
 import { UserProduct } from './User/user-product/user-product';
 import { AddToCartComponent } from './User/user-product/add-to-cart/add-to-cart';
+import { OrderComponent } from './User/user-order/user-order';
+import { CustomerProfileComponent } from './User/user-profile/user-profile';
+import { StockAdminComponent } from './Admin/admin-stock/admin-stock';
 
 
 export const routes: Routes = [
@@ -29,7 +32,10 @@ path: '', redirectTo: '/navbar', pathMatch: 'full'
       { path: '', component: HomeComponent },   // default home
       { path: 'home', component: HomeComponent },
       { path: 'userproduct', component: UserProduct },
-       { path: 'cart', component: AddToCartComponent }
+       { path: 'cart', component: AddToCartComponent },
+       { path: 'checkout', component: OrderComponent },
+       { path: 'profile', component: CustomerProfileComponent }
+    
     ]
   },
 
@@ -46,9 +52,11 @@ path: '', redirectTo: '/navbar', pathMatch: 'full'
       { path: 'users/add', component: Userform },
       { path: 'products', component: AdminProductComponent },
       { path: 'category', component: CategoryAdminComponent },
-      { path: 'subcategory', component: SubCategoryComponent }
+      { path: 'subcategory', component: SubCategoryComponent },
+      { path: 'stock', component: StockAdminComponent }
     ]
   },
- 
+  { path: 'order', component: OrderComponent }
+  
 
 ];

@@ -78,12 +78,39 @@ namespace SportsHubBackend.Controllers
 
         }
 
+        [HttpGet("userInfo/{userId}")]
+        public async Task<IActionResult> GetProfile(int userId)
+        {
+            using var connection = _context.CreateConnection();
+
+            var multi = await connection.QueryMultipleAsync(
+                "SP_UserProfile",
+                new { UserId = userId },
+                commandType: CommandType.StoredProcedure
+            );
+
+            var user = multi.ReadFirstOrDefault(); // User info
+            var orderSummary = multi.ReadFirstOrDefault(); // TotalOrders + TotalAmount
+            var cartItems = multi.Read(); // Cart items
+
+            var result = new
+            {
+                User = user,
+                OrderSummary = orderSummary,
+                CartItems = cartItems
+            };
+
+            return Ok(result);
+        }
+
+
+
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAllUsers()
         {
             var query = @"
         SELECT Id, Name, Email,Password, Phone, Address,UserType, Gender
-        FROM UserInfo
+        FROM UserInfo 
     ";
 
             using var connection = _context.CreateConnection();

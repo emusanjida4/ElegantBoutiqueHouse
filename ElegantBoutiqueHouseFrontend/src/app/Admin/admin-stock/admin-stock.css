@@ -1,0 +1,84 @@
+.category-container {
+  padding: 30px;
+  background: #f5f3ef;
+  min-height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #6a1b9a;
+}
+
+/* FORM */
+.form-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+  justify-content: center;
+}
+
+.form-box input {
+  padding: 10px;
+  width: 200px;
+  border-radius: 6px;
+  border: 1px solid #c084d2;
+}
+
+/* BUTTONS */
+.form-box button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #8e004d, #6a1b9a);
+  color: white;
+  transition: 0.3s ease;
+}
+
+.form-box .cancel {
+  background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+th {
+  padding: 12px;
+  color: white;
+  text-align: center;
+  background: linear-gradient(135deg, #8e004d, #6a1b9a);
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+/* ACTION BUTTONS */
+button.edit {
+  background: linear-gradient(135deg, #ab47bc, #8e24aa);
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin-right: 6px;
+  border-radius: 4px;
+}
+
+button.delete {
+  background: linear-gradient(135deg, #d81b60, #ad1457);
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+button:hover {
+  opacity: 0.85;
+}

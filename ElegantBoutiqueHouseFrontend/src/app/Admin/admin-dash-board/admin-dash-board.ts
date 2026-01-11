@@ -30,10 +30,7 @@ export class AdminDashboardComponent {
   }
  logout() {
   localStorage.clear();
-  sessionStorage.clear();
-
-  // logout flag
-  localStorage.setItem('logout', 'true');
+  sessionStorage.clear()
 
   this.router.navigateByUrl('/');
 }

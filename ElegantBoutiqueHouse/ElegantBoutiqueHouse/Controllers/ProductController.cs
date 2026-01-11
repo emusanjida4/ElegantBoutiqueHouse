@@ -4,6 +4,7 @@ using ElegantBoutiqueHouse.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using System.Reflection;
 
 namespace ElegantBoutiqueHouse.Controllers
 {
@@ -120,13 +121,31 @@ namespace ElegantBoutiqueHouse.Controllers
         // ===============================
         // 4️⃣ UPDATE PRODUCT (flag = 4)
         // ===============================
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Product model)
+        [HttpPut]
+        public async Task<IActionResult> Update([FromForm] Product model)
         {
+            //save image to wwwroot/images
+            var imageFile = model.DressImage;
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                var imagesPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+                if (!Directory.Exists(imagesPath))
+                {
+                    Directory.CreateDirectory(imagesPath);
+                }
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+                var filePath = Path.Combine(imagesPath, fileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+                model.dressImageUrl = "/images/" + fileName;
+            }
+
             var parameters = new DynamicParameters();
             parameters.Add("@flag", 4);
 
-            parameters.Add("@Id", id);
+            parameters.Add("@Id", model.Id);
             parameters.Add("@Name", model.Name);
             parameters.Add("@Brand", model.Brand);
             parameters.Add("@Description", model.Description);
@@ -169,7 +188,29 @@ namespace ElegantBoutiqueHouse.Controllers
 
             return Ok(message);
         }
-        [HttpGet("GenderProducts/{gender}")]
+        [HttpGet("GetProductsByCat/{cat}")]
+        public IActionResult GetProductsByCat(string cat)
+        {
+            using (var connection = _context.CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@flag", 6);
+                parameters.Add("@Gender", cat); // men / women
+
+                var products = connection.Query<dynamic>(
+                    "SP_Product",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                ).ToList();
+
+                if (products.Count == 0)
+                    return BadRequest(new { Message = $"No {cat} products found." });
+
+                return Ok(products);
+            }
+        }
+
+            [HttpGet("GenderProducts/{gender}")]
         public IActionResult GetProductsByGender(string gender)
         {
             using (var connection = _context.CreateConnection())

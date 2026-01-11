@@ -97,6 +97,7 @@ debugger;
     formData.append('CategoryId', this.categoryid.toString());
     formData.append('SubCategoryId', this.subcategoryid.toString());
     formData.append('DressImage', this.selectedFile);
+    formData.append('Id', (this.id ?? 0).toString());
 
     if (this.id === null) {
       formData.append('createdby', 'admin');
@@ -107,7 +108,7 @@ debugger;
     } else {
       formData.append('UpdatedBy', 'admin');
       formData.append('isactive', 'true');
-      this.http.put(`${this.productApi}/${this.id}`, formData).subscribe(() => {
+      this.http.put(`${this.productApi}`, formData).subscribe(() => {
         this.resetForm();
         this.loadProducts();
       });

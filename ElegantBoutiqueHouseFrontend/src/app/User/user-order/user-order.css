@@ -1,0 +1,119 @@
+.confirm-page {
+  min-height: 100vh;
+  padding: 25px;
+  background: linear-gradient(to right, #2b0a3d, #9c1d5f);
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+}
+
+/* TOP BAR */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.brand {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.user-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-box button {
+  background: transparent;
+  border: 1px solid #ff9ad5;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* CONTAINER */
+.confirm-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+
+/* GLASS EFFECT */
+.glass {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 30px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* SECTION */
+.section h3 {
+  margin-bottom: 15px;
+  border-left: 4px solid #ff80c8;
+  padding-left: 12px;
+}
+
+/* INPUTS */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+}
+
+/* PRODUCT */
+.product-line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* TOTAL */
+.grand-total {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* PAYMENT */
+.payment-box {
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.payment-box:hover,
+.payment-box.active {
+  background: linear-gradient(to right, #ff8bd8, #ff6ea8);
+  transform: scale(1.05);
+}
+
+/* BUTTON */
+.confirm-btn {
+  width: 100%;
+  padding: 16px;
+  margin-top: 20px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(to right, #ff4fd8, #ff6a88);
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(255,100,200,0.6);
+}
+
+.secure-text {
+  margin-top: 15px;
+  text-align: center;
+  opacity: 0.8;
+}

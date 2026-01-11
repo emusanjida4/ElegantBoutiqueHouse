@@ -1,50 +1,82 @@
-<nav class="navbar">
-  <div class="logo text-white">EioRFashion</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold" (click)="goHome()">EORFashion</a>
 
-  <ul class="nav-links">
-    <li><a routerLink="/navbar/home">Home</a></li>
-    <li><a routerLink="/about-us">About Us</a></li>
+    <!-- Toggler for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <li class="dropdown">
-      <a (click)="showproducts('men')">Men</a>
-    </li>
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/navbar/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about-us">About Us</a>
+        </li>
 
-    <li class="dropdown">
-      <a (click)="showproducts('women')">Women</a>
-    </li>
-  </ul>
+        <!-- Men Dropdown -->
+        <li class="nav-item dropdown" [ngClass]="{'show': activeDropdown==='men'}"
+            (mouseenter)="showDropdownMenu('men')" (mouseleave)="showDropdownMenu('')">
+          <a class="nav-link dropdown-toggle" href="#" role="button">
+            Men
+          </a>
+          <ul class="dropdown-menu" [ngClass]="{'show': activeDropdown==='men'}">
+            <li *ngFor="let cat of menCategories" (click)="showproducts(cat.name)">
+              <a class="dropdown-item">{{ cat.name }}</a>
+            </li>
+          </ul>
+        </li>
 
-  <div class="auth">
-    <ng-container *ngIf="!isLoggedIn">
-      <a (click)="login()">Sign In</a> /
-      <a (click)="signup()">Sign Up</a>
-    </ng-container>
+        <!-- Women Dropdown -->
+        <li class="nav-item dropdown" [ngClass]="{'show': activeDropdown==='women'}"
+            (mouseenter)="showDropdownMenu('women')" (mouseleave)="showDropdownMenu('')">
+          <a class="nav-link dropdown-toggle" href="#" role="button">
+            Women
+          </a>
+          <ul class="dropdown-menu" [ngClass]="{'show': activeDropdown==='women'}">
+            <li *ngFor="let cat of womenCategories" (click)="showproducts(cat.name)">
+              <a class="dropdown-item">{{ cat.name }}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
 
-    <ng-container *ngIf="isLoggedIn">
-      <div class="user-cart">
+      <!-- Right Side: Auth + Cart + Profile -->
+      <div class="d-flex align-items-center gap-3">
+        <ng-container *ngIf="!isLoggedIn">
+          <a class="btn btn-outline-light btn-sm" (click)="login()">Sign In</a>
+          <a class="btn btn-outline-light btn-sm" (click)="signup()">Sign Up</a>
+        </ng-container>
 
-        <!-- Add to Cart Icon -->
-        <div class="cart" >
-          <span width="100px">
-            <i (click)="goToCart()" class="fa-solid fa-cart-shopping"></i>
-          </span>
-          <span class="cart-count" *ngIf="cartCount > 0">
-            {{ cartCount }}
-          </span>
-        </div>
-
-        <!-- Username Dropdown -->
-        <div class="user-menu" (click)="toggleDropdown()">
-          <span class="username">Welcome, {{ username }}</span>
-          <span class="arrow">▼</span>
-
-          <div class="dropdown" *ngIf="showDropdown">
-            <a (click)="logout()">Logout</a>
+        <ng-container *ngIf="isLoggedIn">
+          <div class="position-relative me-3" (click)="goToCart()" style="cursor:pointer;">
+            <i class="fa-solid fa-cart-shopping fa-lg text-light"></i>
+            <span *ngIf="cartCount > 0"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              {{ cartCount }}
+            </span>
           </div>
-        </div>
 
+          <!-- User Dropdown -->
+          <div class="dropdown" [ngClass]="{'show': showDropdown}">
+            <a class="d-flex align-items-center text-light text-decoration-none dropdown-toggle"
+               (click)="toggleDropdown($event)">
+              <span class="me-2">Hi, {{ username }}</span>
+              <i class="fa-solid fa-user-circle fa-lg"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" [ngClass]="{'show': showDropdown}">
+              <li><a class="dropdown-item" (click)="goToProfile()">My Profile</a></li>
+              <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+            </ul>
+          </div>
+        </ng-container>
       </div>
-    </ng-container>
+    </div>
   </div>
 </nav>
 

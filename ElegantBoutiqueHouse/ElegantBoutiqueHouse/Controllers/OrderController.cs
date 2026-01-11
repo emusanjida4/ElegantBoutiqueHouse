@@ -145,6 +145,27 @@ namespace ElegantBoutiqueHouse.Controllers
 
             return Ok(result);
         }
+        // ===============================
+        // 6️⃣ GET ORDERS BY USER ID
+        // ===============================
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetByUserId(int userId)
+        {
+            using var connection = _context.CreateConnection();
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@flag", 6);
+            parameters.Add("@UserId", userId);
+
+            var orders = await connection.QueryAsync<dynamic>(
+                "SP_Order",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
+
+            return Ok(orders);
+        }
+
     }
 }
 

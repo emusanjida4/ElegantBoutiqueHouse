@@ -34,6 +34,8 @@ export class AddToCartComponent implements OnInit {
   loadCart(userId: number) {
     this.http.get<any[]>(`${this.apiUrl}/User/${userId}`).subscribe({
       next: (res) => {
+           localStorage.setItem('cart', JSON.stringify(res));
+
         this.cartItems = res;
         this.updateTotal();
         this.cdr.detectChanges();
@@ -94,10 +96,11 @@ export class AddToCartComponent implements OnInit {
   // ✅ Proceed to Order
   // ===============================
   proceedToOrder() {
+    debugger;
     if (this.cartItems.length === 0) {
       alert('Your cart is empty!');
       return;
     }
-    this.router.navigate(['/checkout']); // replace with your actual order page route
+    this.router.navigate(['/navbar/checkout']); // replace with your actual order page route
   }
 }
