@@ -1,0 +1,57 @@
+.order-details-wrapper {
+  padding: 40px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.order-card {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.order-card p {
+  margin: 8px 0;
+}
+
+.status {
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.product-table th,
+.product-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.product-table th {
+  background: #f1f1f1;
+}
+
+.back-btn {
+  padding: 10px 18px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #000;
+}

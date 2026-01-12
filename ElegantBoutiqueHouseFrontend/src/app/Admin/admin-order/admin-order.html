@@ -50,11 +50,16 @@
 
         <td>{{ order.Created | date:'short' }}</td>
 
-        <td>
+        <td class="action-buttons">
+          <button class="view-btn" (click)="viewOrder(order.Id)">
+            View
+          </button>
+
           <button class="delete-btn" (click)="deleteOrder(order.Id)">
             Delete
           </button>
         </td>
+
       </tr>
     </tbody>
   </table>

@@ -95,6 +95,9 @@ export class AdminOrderComponent implements OnInit {
       }
     });
   }
+  viewOrder(orderId: number) {
+    this.router.navigate(['/admin/order-details', orderId]);
+  }
 
   // ================= DELETE =================
   deleteOrder(orderId: number): void {

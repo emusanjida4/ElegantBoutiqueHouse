@@ -48,7 +48,7 @@ namespace ElegantBoutiqueHouse.Controllers
             parameters.Add("@flag", 2);
             parameters.Add("@Id", id);
 
-            var order = await connection.QueryAsync<dynamic>(
+            var order = await connection.QueryFirstOrDefaultAsync<dynamic>(
                 "SP_Order",
                 parameters,
                 commandType: CommandType.StoredProcedure
@@ -56,6 +56,26 @@ namespace ElegantBoutiqueHouse.Controllers
 
             return Ok(order);
         }
+        [HttpGet("items/{orderId}")]
+        public async Task<IActionResult> GetOrderItems(int orderId)
+        {
+            var query = @"
+                SELECT 
+                    oi.ProductId,
+                    p.Name,
+                    oi.Price,
+                    oi.Quantity
+                FROM OrderDetails oi
+                INNER JOIN [Product] p ON oi.ProductId = p.Id
+                WHERE oi.OderId = @OrderId
+            ";
+
+            using var connection = _context.CreateConnection();
+            var items = await connection.QueryAsync(query, new { OrderId = orderId });
+
+            return Ok(items);
+        }
+
 
         // ===============================
         // 3️⃣ CREATE ORDER
@@ -75,6 +95,7 @@ namespace ElegantBoutiqueHouse.Controllers
             parameters.Add("@TotalAmount", model.TotalAmount);
             parameters.Add("@SpecialReq", model.SpecialReq);
             parameters.Add("@Created", DateTime.Now);
+            parameters.Add("@Size", model.Size);
 
             // 🔹 NEW
             parameters.Add("@Status", model.Status);
@@ -91,6 +112,15 @@ namespace ElegantBoutiqueHouse.Controllers
             var result = await connection.QueryFirstOrDefaultAsync(
                 "SP_Order",
                 parameters,
+                commandType: CommandType.StoredProcedure
+            );
+
+            var Cartparameters = new DynamicParameters();
+            Cartparameters.Add("@flag", 8);
+            Cartparameters.Add("@UserId", model.UserId);
+            await connection.QueryFirstOrDefaultAsync(
+                "SP_AddToCart",
+                Cartparameters,
                 commandType: CommandType.StoredProcedure
             );
 
@@ -115,6 +145,7 @@ namespace ElegantBoutiqueHouse.Controllers
             parameters.Add("@Payment", model.Payment);
             parameters.Add("@TotalAmount", model.TotalAmount);
             parameters.Add("@SpecialReq", model.SpecialReq);
+            parameters.Add("@Size", model.Size);
 
             // 🔹 NEW
             parameters.Add("@Status", model.Status);

@@ -1,0 +1,65 @@
+.about-container {
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+  padding: 80px 10%;
+}
+
+/* About Us Section */
+.about-us {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-text h2 {
+  font-size: 42px;
+  margin-bottom: 25px;
+  position: relative;
+  font-weight: 600;
+}
+
+.about-text h2::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background: #c59d5f;
+  display: block;
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+.about-text p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .about-us {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text h2 {
+    font-size: 36px;
+  }
+}

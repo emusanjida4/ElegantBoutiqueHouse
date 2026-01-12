@@ -46,3 +46,38 @@ select {
 .delete-btn:hover {
   background: #c0392b;
 }
+
+
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.view-btn {
+  padding: 6px 12px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.view-btn:hover {
+  background: #43a047;
+}
+
+.delete-btn {
+  padding: 6px 12px;
+  background: #e53935;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.delete-btn:hover {
+  background: #c62828;
+}

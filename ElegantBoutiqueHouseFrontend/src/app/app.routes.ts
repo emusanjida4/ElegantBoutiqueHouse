@@ -18,6 +18,8 @@ import { OrderComponent } from './User/user-order/user-order';
 import { CustomerProfileComponent } from './User/user-profile/user-profile';
 import { StockAdminComponent } from './Admin/admin-stock/admin-stock';
 import { AdminOrderComponent } from './Admin/admin-order/admin-order';
+import { AboutUsComponent } from './Component/about-us/about-us';
+import { OrderDetailsComponent } from './Admin/order-details-component/order-details-component';
 
 
 export const routes: Routes = [
@@ -35,7 +37,8 @@ path: '', redirectTo: '/navbar', pathMatch: 'full'
       { path: 'userproduct', component: UserProduct },
        { path: 'cart', component: AddToCartComponent },
        { path: 'checkout', component: OrderComponent },
-       { path: 'profile', component: CustomerProfileComponent }
+       { path: 'profile', component: CustomerProfileComponent },
+       { path: 'about', component: AboutUsComponent },
     
     ]
   },
@@ -55,7 +58,9 @@ path: '', redirectTo: '/navbar', pathMatch: 'full'
       { path: 'category', component: CategoryAdminComponent },
       { path: 'subcategory', component: SubCategoryComponent },
       { path: 'stock', component: StockAdminComponent },
-      {path: 'orders', component: AdminOrderComponent}
+      {path: 'orders', component: AdminOrderComponent},
+  { path: 'order-details/:id', component: OrderDetailsComponent },
+
     ]
   },
   { path: 'order', component: OrderComponent }

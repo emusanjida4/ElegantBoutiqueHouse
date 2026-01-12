@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ChangeDetectorRef, Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-product',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, FormsModule],
   templateUrl: './user-product.html',
   styleUrl: './user-product.css',
 })
@@ -58,7 +59,12 @@ export class UserProduct {
 
     this.http.get<any[]>(apiUrl).subscribe({
       next: (res) => {
-        this.products = res || [];
+        // 🔹 ensure Sizes and selectedSize exist
+        this.products = res.map(p => ({
+          ...p,
+          Sizes: p.Sizes || ['S', 'M', 'L', 'XL'], // default sizes
+          selectedSize: p.Sizes ? p.Sizes[0] : 'M'
+        }));
         this.cdr.detectChanges();
       },
       error: () => {
@@ -74,12 +80,15 @@ export class UserProduct {
     // 🔴 SECOND LEVEL SECURITY
     if (!this.isLoggedIn) {
       alert('Please login first to add product to cart');
-     this.router.navigate(['/login'], {
-  queryParams: {
-    returnUrl: this.router.url
-  }
-});
+      this.router.navigate(['/login'], {
+        queryParams: { returnUrl: this.router.url }
+      });
+      return;
+    }
 
+    // 🔹 ensure user selected a size
+    if (!product.selectedSize) {
+      alert('Please select a size');
       return;
     }
 
@@ -88,7 +97,8 @@ export class UserProduct {
     const cartData = {
       productId: product.Id,
       userId: user.id,
-      quantity: 1
+      quantity: 1,
+      size: product.selectedSize // 🔹 send size to backend
     };
 
     this.http.post(

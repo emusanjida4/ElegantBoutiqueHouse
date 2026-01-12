@@ -121,14 +121,19 @@ export class OrderComponent implements OnInit {
   // ================= FINAL CONFIRM =================
   finalConfirm(): void {
 
+    // 🔹 Correct payload names to match backend SP / Controller
     const payload = {
       UserId: this.user.id,
-      Name: this.order.userName,
+      UserName: this.order.userName,      // backend expects UserName
       Phone: this.order.phone,
       Address: this.order.address,
-      PaymentMethod: this.order.payment,
-      TotalPrice: this.getTotal(),
-      OrderItems: this.cartItems.map(item => ({
+      Payment: this.order.payment,        // backend expects Payment
+      TotalAmount: this.getTotal(),       // backend expects TotalAmount
+      SpecialReq: '',                     // optional, can leave empty
+      Created: new Date(),                // backend expects Created
+      MethodNum: this.mobileNumber,       // mobile number
+      OTP: this.pinOrCard,                // OTP for Bkash/Nagad/Card
+      OrderDetails: this.cartItems.map(item => ({
         ProductId: item.ProductId,
         Quantity: item.Quantity,
         Price: item.Price
@@ -139,8 +144,11 @@ export class OrderComponent implements OnInit {
       next: () => {
         alert('🎉 Order Confirmed Successfully!');
         this.router.navigate(['/']);
+        //Clear the cart localstorage
+        
       },
-      error: () => {
+      error: (err) => {
+        console.error(err);
         alert('Order failed!');
       }
     });

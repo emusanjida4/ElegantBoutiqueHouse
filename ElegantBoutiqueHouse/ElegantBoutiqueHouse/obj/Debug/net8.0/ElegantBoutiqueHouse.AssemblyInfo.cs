@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ElegantBoutiqueHouse")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d87fb7cc22ede54e9d083272a2696df8deec0de")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02929eafd43583649ca869e211273088d30d2199")]
 [assembly: System.Reflection.AssemblyProductAttribute("ElegantBoutiqueHouse")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ElegantBoutiqueHouse")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

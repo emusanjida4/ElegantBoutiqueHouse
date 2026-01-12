@@ -1,0 +1,48 @@
+<div class="order-details-wrapper" *ngIf="order">
+
+  <h2>Order Details</h2>
+
+  <div class="order-card">
+    <p><strong>Order ID:</strong> {{ order.Id }}</p>
+    <p><strong>Customer Name:</strong> {{ order.UserName }}</p>
+    <p><strong>Phone:</strong> {{ order.Phone }}</p>
+    <p><strong>Payment Method:</strong> {{ order.Payment }}</p>
+    <p><strong>Status:</strong>
+      <span class="status">{{ order.Status }}</span>
+    </p>
+    <p><strong>Total Amount:</strong> {{ order.TotalAmount }} ৳</p>
+    <p><strong>Order Date:</strong> {{ order.Created }}</p>
+  </div>
+
+  <h3>Ordered Products</h3>
+
+  <table class="product-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Product</th>
+        <th>Size</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of orderItems; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ item.Name }}</td>
+        <td>{{ item.Size }}</td>
+        <td>{{ item.Price }} ৳</td>
+        <td>{{ item.Quantity }}</td>
+        <td>{{ item.Price * item.Quantity }} ৳</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="back-btn" routerLink="/admin/orders">
+  ⬅ Back to Orders
+</button>
+
+
+</div>

@@ -20,11 +20,23 @@
           <p class="text-muted mb-1">{{ p.Brand }}</p>
           <p class="fw-bold text-danger">৳ {{ p.Price }}</p>
 
+          <!-- 🔹 SIZE SELECT -->
+          <div class="mb-2">
+            <label for="sizeSelect">Size:</label>
+            <select
+              id="sizeSelect"
+              [(ngModel)]="p.selectedSize"
+              class="form-select form-select-sm"
+            >
+              <option *ngFor="let s of p.Sizes" [value]="s">{{ s }}</option>
+            </select>
+          </div>
+
           <!-- 🔒 PROTECTED ADD TO CART BUTTON -->
           <button
             class="btn btn-dark btn-sm w-100 mt-2"
-           
-            (click)="addToCart(p)">
+            (click)="addToCart(p)"
+          >
             {{ isLoggedIn ? 'Add to Cart' : 'Login' }}
           </button>
         </div>
