@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 import { DataService } from '../../../Service/data-service';
 import { CommonModule } from '@angular/common';
 
@@ -17,14 +17,20 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   };
-
+returnUrl: string = '';
   constructor(
     private router: Router,
-    private dataService: DataService
+    private dataService: DataService,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
     this.clearForm();
+     this.route.queryParams.subscribe(params => {
+     
+      this.returnUrl = params['returnUrl'] || '/';
+      
+    });
   }
 
   clearForm() {
@@ -41,7 +47,7 @@ export class LoginComponent implements OnInit {
         (data: any) => {
 
           alert('Login Successful');
-debugger;
+
           // ✅ username API থেকে নিলাম
           const username =
             data.name || data.username || this.loginFormData.email;
@@ -53,7 +59,11 @@ debugger;
           if (data.UserType && data.UserType.toLowerCase() === 'admin') {
             this.router.navigate(['/admin']);
           } else {
-            this.router.navigate(['/']);
+            if( this.returnUrl !='' && this.returnUrl !='/'){
+              this.router.navigateByUrl(this.returnUrl);
+            } else{
+              this.router.navigate(['/']);
+            }
           }
         },
         (error: any) => {

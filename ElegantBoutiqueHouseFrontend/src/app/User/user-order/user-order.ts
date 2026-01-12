@@ -33,8 +33,9 @@ export class OrderComponent implements OnInit {
 
   showMobileInput = false;
   showPinInput = false;
+
   mobileNumber = '';
-  pinOrCard = '';
+  pinOrCard = ''; // 🔹 now used as OTP
   pinPlaceholder = '';
 
   private ORDER_API = 'https://localhost:7254/api/Order';
@@ -76,11 +77,20 @@ export class OrderComponent implements OnInit {
   selectPayment(method: string): void {
     this.order.payment = method;
 
-    this.showMobileInput = method !== 'Cash on Delivery';
-    this.showPinInput = false;
+    if (method === 'Cash on Delivery') {
+      this.showMobileInput = false;
+      this.showPinInput = false;
+      return;
+    }
+
+    this.showMobileInput = true;
+    this.showPinInput = true;
 
     this.mobileNumber = '';
     this.pinOrCard = '';
+
+    // 🔹 OTP only
+    this.pinPlaceholder = 'Enter OTP';
   }
 
   // ================= CONFIRM ORDER =================
@@ -91,37 +101,24 @@ export class OrderComponent implements OnInit {
       return;
     }
 
-    if (this.order.payment === 'Cash on Delivery') {
-      this.finalConfirm();
-      return;
-    }
+    if (this.order.payment !== 'Cash on Delivery') {
 
-    if (!this.mobileNumber || this.mobileNumber.length < 11) {
-      alert('Enter valid mobile number');
-      return;
-    }
+      if (!this.mobileNumber || this.mobileNumber.length < 11) {
+        alert('Enter valid mobile number');
+        return;
+      }
 
-    this.showPinInput = true;
-
-    if (this.order.payment === 'Bkash' && this.pinOrCard.length !== 5) {
-      alert('Bkash PIN must be 5 digits');
-      return;
-    }
-
-    if (this.order.payment === 'Nagad' && this.pinOrCard.length !== 4) {
-      alert('Nagad PIN must be 4 digits');
-      return;
-    }
-
-    if (this.order.payment === 'Card' && this.pinOrCard.length !== 16) {
-      alert('Card number must be 16 digits');
-      return;
+      // 🔹 OTP validation only
+      if (!this.pinOrCard || this.pinOrCard.length !== 6) {
+        alert('OTP must be 6 digits');
+        return;
+      }
     }
 
     this.finalConfirm();
   }
 
-  // ================= FINAL CONFIRM (API CALL) =================
+  // ================= FINAL CONFIRM =================
   finalConfirm(): void {
 
     const payload = {
@@ -143,8 +140,7 @@ export class OrderComponent implements OnInit {
         alert('🎉 Order Confirmed Successfully!');
         this.router.navigate(['/']);
       },
-      error: (err) => {
-        console.error(err);
+      error: () => {
         alert('Order failed!');
       }
     });

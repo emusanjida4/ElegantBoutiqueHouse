@@ -23,7 +23,6 @@
         <th>Total</th>
         <th>Status</th>
         <th>Created</th>
-        <th>Products</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -34,11 +33,8 @@
         <td>{{ order.Id }}</td>
         <td>{{ order.UserName }}</td>
         <td>{{ order.Phone }}</td>
-        <td>{{ order.Payment|| 'N/A' }}</td>
+        <td>{{ order.Payment || 'N/A' }}</td>
         <td>{{ order.TotalAmount }} ৳</td>
-        
-        
-        
 
         <td>
           <select
@@ -53,12 +49,6 @@
         </td>
 
         <td>{{ order.Created | date:'short' }}</td>
-
-        <td>
-          <span *ngFor="let item of order.orderItems; let last = last">
-            {{ item.ProductId }} - {{ item.ProductName }}{{ last ? '' : ', ' }}
-          </span>
-        </td>
 
         <td>
           <button class="delete-btn" (click)="deleteOrder(order.Id)">

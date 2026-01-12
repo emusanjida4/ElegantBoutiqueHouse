@@ -65,6 +65,7 @@ namespace ElegantBoutiqueHouse.Controllers
         {
             using var connection = _context.CreateConnection();
             var parameters = new DynamicParameters();
+
             parameters.Add("@flag", 3);
             parameters.Add("@UserId", model.UserId);
             parameters.Add("@UserName", model.UserName);
@@ -73,8 +74,13 @@ namespace ElegantBoutiqueHouse.Controllers
             parameters.Add("@Payment", model.Payment);
             parameters.Add("@TotalAmount", model.TotalAmount);
             parameters.Add("@SpecialReq", model.SpecialReq);
+            parameters.Add("@Created", DateTime.Now);
 
-            // If adding single order detail
+            // 🔹 NEW
+            parameters.Add("@Status", model.Status);
+            parameters.Add("@MethodNum", model.MethodNum);
+            parameters.Add("@OTP", model.OTP);
+
             if (model.OrderDetails != null && model.OrderDetails.Count > 0)
             {
                 parameters.Add("@ProductId", model.OrderDetails[0].ProductId);
@@ -99,6 +105,7 @@ namespace ElegantBoutiqueHouse.Controllers
         {
             using var connection = _context.CreateConnection();
             var parameters = new DynamicParameters();
+
             parameters.Add("@flag", 4);
             parameters.Add("@Id", id);
             parameters.Add("@UserId", model.UserId);
@@ -108,6 +115,11 @@ namespace ElegantBoutiqueHouse.Controllers
             parameters.Add("@Payment", model.Payment);
             parameters.Add("@TotalAmount", model.TotalAmount);
             parameters.Add("@SpecialReq", model.SpecialReq);
+
+            // 🔹 NEW
+            parameters.Add("@Status", model.Status);
+            parameters.Add("@MethodNum", model.MethodNum);
+            parameters.Add("@OTP", model.OTP);
 
             if (model.OrderDetails != null && model.OrderDetails.Count > 0)
             {
@@ -125,6 +137,8 @@ namespace ElegantBoutiqueHouse.Controllers
 
             return Ok(result);
         }
+
+        
 
         // ===============================
         // 5️⃣ DELETE ORDER

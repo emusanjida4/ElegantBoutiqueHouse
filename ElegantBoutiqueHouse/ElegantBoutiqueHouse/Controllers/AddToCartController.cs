@@ -24,6 +24,9 @@ namespace ElegantBoutiqueHouse.Controllers
         [HttpGet("User/{userId}")]
         public async Task<IActionResult> GetCartByUser(int userId)
         {
+            if (userId <= 0)
+                return Unauthorized(new { message = "Please login first" });
+
             var parameters = new DynamicParameters();
             parameters.Add("@flag", 1);
             parameters.Add("@UserId", userId);
@@ -37,6 +40,8 @@ namespace ElegantBoutiqueHouse.Controllers
 
             return Ok(cart);
         }
+
+        
 
         // ===============================
         // 2️⃣ GET CART ITEM BY ID (flag=2)
@@ -69,7 +74,7 @@ namespace ElegantBoutiqueHouse.Controllers
             parameters.Add("@ProductId", model.ProductId);
             parameters.Add("@UserId", model.UserId);
             parameters.Add("@Quantity", model.Quantity);
-            parameters.Add("@Create", DateTime.Now);
+          
 
             using var connection = _context.CreateConnection();
             var result = await connection.QueryFirstOrDefaultAsync(

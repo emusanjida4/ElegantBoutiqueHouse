@@ -3,17 +3,22 @@
     public class Order
 
     {
-        public int Id { get; set; }              // Order ID
-        public int? UserId { get; set; }          // User ID
-        public string? UserName { get; set; }     // User Name
-        public string? Address { get; set; }      // Delivery Address
-        public string? Phone { get; set; }        // Contact Number
-        public string? Payment { get; set; }      // Payment Method
-        public decimal? TotalAmount { get; set; } // Total Order Amount
-        public string? SpecialReq { get; set; }   // Special Request
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public string UserName { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public string Payment { get; set; }
+        public decimal TotalAmount { get; set; }
+
+        // ✅ NEW
+        public string Status { get; set; }
+        public string MethodNum { get; set; }
+        public string OTP { get; set; }
+
+        public string SpecialReq { get; set; }
         public DateTime Created { get; set; }
 
-        // Nested order details
-        public List<OrderDetails> OrderDetails { get; set; } = new List<OrderDetails>();
+        public List<OrderDetails> OrderDetails { get; set; }
     }
 }

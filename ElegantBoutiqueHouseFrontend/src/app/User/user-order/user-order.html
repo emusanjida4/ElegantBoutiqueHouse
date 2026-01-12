@@ -5,7 +5,7 @@
     <div class="brand">EORFashion</div>
 
     <div class="user-box">
-      <span>{{ user?.name }}</span>
+      <span>{{ user?.Name }}</span>
       <button (click)="logout()">Logout</button>
     </div>
   </div>
@@ -42,12 +42,31 @@
 
       <h3>Payment Method</h3>
 
-      <div class="payment-box"
-           *ngFor="let m of payments"
-           [class.active]="order.payment === m"
-           (click)="order.payment = m">
-
+      <div
+        class="payment-box"
+        *ngFor="let m of payments"
+        [class.active]="order.payment === m"
+        (click)="selectPayment(m)"
+      >
         {{ m }}
+      </div>
+
+      <!-- MOBILE NUMBER -->
+      <div *ngIf="showMobileInput" class="payment-input">
+        <input
+          type="text"
+          placeholder="Enter Mobile Number"
+          [(ngModel)]="mobileNumber"
+        />
+      </div>
+
+      <!-- OTP ONLY -->
+      <div *ngIf="showPinInput" class="payment-input">
+        <input
+          type="text"
+          [placeholder]="pinPlaceholder"
+          [(ngModel)]="pinOrCard"
+        />
       </div>
 
       <button class="confirm-btn" (click)="confirmOrder()">

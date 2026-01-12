@@ -20,11 +20,12 @@
           <p class="text-muted mb-1">{{ p.Brand }}</p>
           <p class="fw-bold text-danger">৳ {{ p.Price }}</p>
 
-          <!-- ✅ ADD TO CART BUTTON -->
+          <!-- 🔒 PROTECTED ADD TO CART BUTTON -->
           <button
             class="btn btn-dark btn-sm w-100 mt-2"
+           
             (click)="addToCart(p)">
-            Add to Cart
+            {{ isLoggedIn ? 'Add to Cart' : 'Login' }}
           </button>
         </div>
 

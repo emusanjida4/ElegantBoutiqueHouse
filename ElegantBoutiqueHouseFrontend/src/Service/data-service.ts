@@ -45,8 +45,7 @@ export class DataService {
   }
 
   logout() {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('username');
+   localStorage.clear();
 
     this.isLoggedInSubject.next(false);
     this.usernameSubject.next('');

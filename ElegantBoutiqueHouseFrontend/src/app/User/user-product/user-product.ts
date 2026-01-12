@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-product',
+  standalone: true,
   imports: [CommonModule, HttpClientModule],
   templateUrl: './user-product.html',
   styleUrl: './user-product.css',
@@ -13,6 +14,7 @@ export class UserProduct {
 
   category: string | null = '';
   products: any[] = [];
+  isLoggedIn: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,78 +24,83 @@ export class UserProduct {
   ) {}
 
   ngOnInit(): void {
+    this.checkLogin();
+
     this.route.queryParams.subscribe(params => {
       this.category = params['category'];
-      console.log('Category:', this.category);
-
       if (this.category) {
         this.loadProductsByCategory(this.category);
       }
     });
   }
 
+  // ================= LOGIN CHECK =================
+  checkLogin(): void {
+    const userStr = localStorage.getItem('user');
+
+    if (!userStr) {
+      this.isLoggedIn = false;
+      return;
+    }
+
+    try {
+      const user = JSON.parse(userStr);
+      this.isLoggedIn = !!(user && user.id);
+    } catch {
+      localStorage.removeItem('user');
+      this.isLoggedIn = false;
+    }
+  }
+
+  // ================= LOAD PRODUCTS =================
   loadProductsByCategory(category: string) {
     const apiUrl = `https://localhost:7254/api/Product/GetProductsByCat/${category}`;
 
-
-
     this.http.get<any[]>(apiUrl).subscribe({
       next: (res) => {
-        if (res.length === 0) {
-          alert('No products found in this category.');
-          this.products = [];
-          this.cdr.detectChanges();
-          return;
-        }
-        this.products = res;
-        console.log('Products:', this.products);
+        this.products = res || [];
         this.cdr.detectChanges();
       },
-      error: (err) => {
-        alert('No products found in this category.');
-          this.products = [];
-          this.cdr.detectChanges();
-        console.error('Product load error', err);
+      error: () => {
+        this.products = [];
+        this.cdr.detectChanges();
       }
     });
   }
 
-  // ==============================
-  // ✅ ADD TO CART (NEW)
-  // ==============================
-addToCart(product: any) {
-  debugger;
+  // ================= ADD TO CART =================
+  addToCart(product: any) {
 
-  const user = JSON.parse(localStorage.getItem('user') ?? 'null');
-
-  // ✅ proper login check
-  if (!user || !user.id) {
-    alert('Please login first');
-    this.router.navigate(['/login']);
-    return;
+    // 🔴 SECOND LEVEL SECURITY
+    if (!this.isLoggedIn) {
+      alert('Please login first to add product to cart');
+     this.router.navigate(['/login'], {
+  queryParams: {
+    returnUrl: this.router.url
   }
+});
 
-  const cartData = {
-    productId: product.Id,
-    userId: user.id,
-    quantity: 1,
-    
-  };
-
-  this.http.post(
-    'https://localhost:7254/api/AddToCart',
-    cartData
-  ).subscribe({
-    next: (res) => {
-      console.log('Added to cart:', res);
-      alert('Product added to cart 🛒');
-      this.cdr.detectChanges();
-    },
-    error: (err) => {
-      console.error(err);
-      alert('Failed to add product');
+      return;
     }
-  });
-}
- 
+
+    const user = JSON.parse(localStorage.getItem('user')!);
+
+    const cartData = {
+      productId: product.Id,
+      userId: user.id,
+      quantity: 1
+    };
+
+    this.http.post(
+      'https://localhost:7254/api/AddToCart',
+      cartData
+    ).subscribe({
+      next: () => {
+        alert('Product added to cart 🛒');
+      },
+      error: () => {
+        alert('Failed to add product');
+      }
+    });
+  }
 }

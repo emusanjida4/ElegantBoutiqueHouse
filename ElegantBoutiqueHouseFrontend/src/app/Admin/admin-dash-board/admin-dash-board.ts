@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { CommonModule, Location } from '@angular/common';
+import { DataService } from '../../../Service/data-service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -18,7 +19,8 @@ export class AdminDashboardComponent {
 
   constructor(
     public router: Router,
-    private location: Location
+    private location: Location,
+    private dataservice: DataService
   ) {}
 
   navigate(path: string) {
@@ -29,9 +31,7 @@ export class AdminDashboardComponent {
     this.location.back();
   }
  logout() {
-  localStorage.clear();
-  sessionStorage.clear()
-
+    this.dataservice.logout();
   this.router.navigateByUrl('/');
 }
 

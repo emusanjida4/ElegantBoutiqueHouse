@@ -33,25 +33,22 @@ export class AdminOrderComponent implements OnInit {
   // ================= LOAD ORDERS =================
   loadOrders(): void {
     this.loading = true;
-    this.http.get<any[]>(`${this.API_URL}`).subscribe({
+
+    this.http.get<any[]>(this.API_URL).subscribe({
       next: (res) => {
-        this.orders = res.map(o => ({
-          ...o,
-          orderItems: o.orderItems || []
-        }));
+        this.orders = res;
         this.filteredOrders = [...this.orders];
         this.loading = false;
         this.cdr.detectChanges();
       },
-      error: (err) => {
-        console.error(err);
+      error: () => {
         alert('Failed to load orders');
         this.loading = false;
       }
     });
   }
 
-  // ================= SEARCH ORDERS =================
+  // ================= SEARCH =================
   searchOrders(): void {
     const q = this.searchQuery.trim().toLowerCase();
 
@@ -60,33 +57,46 @@ export class AdminOrderComponent implements OnInit {
       return;
     }
 
-    this.filteredOrders = this.orders.filter(order =>
-      order.Id.toString().includes(q) ||
-      order.orderItems.some((item: any) =>
-        item.ProductId?.toString().includes(q) ||
-        item.ProductName?.toLowerCase().includes(q)
-      )
+    this.filteredOrders = this.orders.filter(o =>
+      o.Id.toString().includes(q) ||
+      o.UserName?.toLowerCase().includes(q) ||
+      o.Phone?.includes(q)
     );
   }
 
-  // ================= UPDATE ORDER STATUS =================
+  // ================= UPDATE STATUS =================
   updateStatus(orderId: number, status: string): void {
-    this.http.put(
-      `${this.API_URL}/${orderId}/status`,
-      { Status: status }
-    ).subscribe({
+
+    const order = this.orders.find(o => o.Id === orderId);
+    if (!order) return;
+
+    // 🔥 backend-compatible full payload
+    const payload = {
+      UserId: order.UserId,
+      UserName: order.UserName,
+      Address: order.Address,
+      Phone: order.Phone,
+      Payment: order.Payment,
+      TotalAmount: order.TotalAmount,
+      SpecialReq: order.SpecialReq,
+
+      Status: status,
+      MethodNum: order.MethodNum || '',
+      OTP: order.OTP || ''
+    };
+
+    this.http.put(`${this.API_URL}/${orderId}`, payload).subscribe({
       next: () => {
+        order.Status = status;
         alert('Order status updated');
-        this.loadOrders();
       },
-      error: (err) => {
-        console.error(err);
+      error: () => {
         alert('Failed to update order status');
       }
     });
   }
 
-  // ================= DELETE ORDER =================
+  // ================= DELETE =================
   deleteOrder(orderId: number): void {
     if (!confirm('Are you sure you want to delete this order?')) return;
 
@@ -95,8 +105,7 @@ export class AdminOrderComponent implements OnInit {
         alert('Order deleted');
         this.loadOrders();
       },
-      error: (err) => {
-        console.error(err);
+      error: () => {
         alert('Failed to delete order');
       }
     });

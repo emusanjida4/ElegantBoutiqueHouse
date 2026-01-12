@@ -1334,8 +1334,7 @@
           },
           "userId": {
             "type": "integer",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
           },
           "userName": {
             "type": "string",
@@ -1355,7 +1354,18 @@
           },
           "totalAmount": {
             "type": "number",
-            "format": "double",
+            "format": "double"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "methodNum": {
+            "type": "string",
+            "nullable": true
+          },
+          "otp": {
+            "type": "string",
             "nullable": true
           },
           "specialReq": {
