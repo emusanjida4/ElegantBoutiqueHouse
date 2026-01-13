@@ -1443,6 +1443,10 @@
           "price": {
             "type": "number",
             "format": "double"
+          },
+          "size": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

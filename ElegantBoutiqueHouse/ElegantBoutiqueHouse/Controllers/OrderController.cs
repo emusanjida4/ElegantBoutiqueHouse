@@ -83,48 +83,80 @@ namespace ElegantBoutiqueHouse.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Order model)
         {
-            using var connection = _context.CreateConnection();
-            var parameters = new DynamicParameters();
-
-            parameters.Add("@flag", 3);
-            parameters.Add("@UserId", model.UserId);
-            parameters.Add("@UserName", model.UserName);
-            parameters.Add("@Address", model.Address);
-            parameters.Add("@Phone", model.Phone);
-            parameters.Add("@Payment", model.Payment);
-            parameters.Add("@TotalAmount", model.TotalAmount);
-            parameters.Add("@SpecialReq", model.SpecialReq);
-            parameters.Add("@Created", DateTime.Now);
-            parameters.Add("@Size", model.Size);
-
-            // 🔹 NEW
-            parameters.Add("@Status", model.Status);
-            parameters.Add("@MethodNum", model.MethodNum);
-            parameters.Add("@OTP", model.OTP);
-
-            if (model.OrderDetails != null && model.OrderDetails.Count > 0)
+            try
             {
-                parameters.Add("@ProductId", model.OrderDetails[0].ProductId);
-                parameters.Add("@Quantity", model.OrderDetails[0].Quantity);
-                parameters.Add("@Price", model.OrderDetails[0].Price);
+                using var connection = _context.CreateConnection();
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@flag", 3);
+                parameters.Add("@UserId", model.UserId);
+                parameters.Add("@UserName", model.UserName);
+                parameters.Add("@Address", model.Address);
+                parameters.Add("@Phone", model.Phone);
+                parameters.Add("@Payment", model.Payment);
+                parameters.Add("@TotalAmount", model.TotalAmount);
+                parameters.Add("@SpecialReq", model.SpecialReq);
+                parameters.Add("@Created", DateTime.Now);
+
+                // 🔹 NEW
+                parameters.Add("@Status", model.Status);
+                parameters.Add("@MethodNum", model.MethodNum);
+                parameters.Add("@OTP", model.OTP);
+
+
+                var result = await connection.QueryFirstOrDefaultAsync(
+                    "SP_Order",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+
+                if (model.OrderDetails != null && model.OrderDetails.Count > 0)
+                {
+                    parameters.Add("@flag", 7);
+                    foreach (var item in model.OrderDetails)
+                    {
+                        parameters.Add("@ProductId", item.ProductId);
+                        parameters.Add("@Quantity", item.Quantity);
+                        parameters.Add("@Price", item.Price);
+                        parameters.Add("@Id", result.OrderId);
+                        parameters.Add("@Size", item.Size);
+
+                        var ght = await connection.QueryFirstOrDefaultAsync(
+                           "SP_Order",
+                           parameters,
+                           commandType: CommandType.StoredProcedure);
+
+
+                    }
+                    //parameters.Add("@ProductId", model.OrderDetails[0].ProductId);
+                    //parameters.Add("@Quantity", model.OrderDetails[0].Quantity);
+                    //parameters.Add("@Price", model.OrderDetails[0].Price);
+
+
+
+
+                }
+
+
+
+                var Cartparameters = new DynamicParameters();
+                Cartparameters.Add("@flag", 8);
+                Cartparameters.Add("@UserId", model.UserId);
+                await connection.QueryFirstOrDefaultAsync(
+                    "SP_AddToCart",
+                    Cartparameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return Ok(result);
             }
+            catch (Exception ex)
+            {
 
-            var result = await connection.QueryFirstOrDefaultAsync(
-                "SP_Order",
-                parameters,
-                commandType: CommandType.StoredProcedure
-            );
-
-            var Cartparameters = new DynamicParameters();
-            Cartparameters.Add("@flag", 8);
-            Cartparameters.Add("@UserId", model.UserId);
-            await connection.QueryFirstOrDefaultAsync(
-                "SP_AddToCart",
-                Cartparameters,
-                commandType: CommandType.StoredProcedure
-            );
-
-            return Ok(result);
+                throw;
+            }
+            
         }
 
         // ===============================

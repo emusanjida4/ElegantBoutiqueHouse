@@ -136,7 +136,8 @@ export class OrderComponent implements OnInit {
       OrderDetails: this.cartItems.map(item => ({
         ProductId: item.ProductId,
         Quantity: item.Quantity,
-        Price: item.Price
+        Price: item.Price,
+        Size: item.Size
       }))
     };
 
@@ -145,7 +146,7 @@ export class OrderComponent implements OnInit {
         alert('🎉 Order Confirmed Successfully!');
         this.router.navigate(['/']);
         //Clear the cart localstorage
-        
+
       },
       error: (err) => {
         console.error(err);

@@ -30,6 +30,7 @@ export class OrderDetailsComponent implements OnInit {
     // Order info
     this.http.get<any>(`https://localhost:7254/api/Order/${this.orderId}`)
       .subscribe(res => {
+    
         this.order = res;
         this.cdr.detectChanges();
       });
@@ -37,6 +38,7 @@ export class OrderDetailsComponent implements OnInit {
     // Order items
     this.http.get<any[]>(`https://localhost:7254/api/Order/items/${this.orderId}`)
       .subscribe(res => {
+        debugger;
         this.orderItems = res;
         this.cdr.detectChanges();
       });
