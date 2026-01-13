@@ -60,21 +60,24 @@ namespace ElegantBoutiqueHouse.Controllers
         public async Task<IActionResult> GetOrderItems(int orderId)
         {
             var query = @"
-                SELECT 
-                    oi.ProductId,
-                    p.Name,
-                    oi.Price,
-                    oi.Quantity
-                FROM OrderDetails oi
-                INNER JOIN [Product] p ON oi.ProductId = p.Id
-                WHERE oi.OderId = @OrderId
-            ";
+        SELECT 
+            oi.ProductId,
+            p.Name,
+            oi.Price,
+            oi.Quantity,
+            oi.Size
+        FROM OrderDetails oi
+        INNER JOIN [Product] p ON oi.ProductId = p.Id
+        WHERE oi.OderId = @OderId
+    ";
 
             using var connection = _context.CreateConnection();
-            var items = await connection.QueryAsync(query, new { OrderId = orderId });
+
+            var items = await connection.QueryAsync(query, new { OderId = orderId });
 
             return Ok(items);
         }
+
 
 
         // ===============================
@@ -97,6 +100,7 @@ namespace ElegantBoutiqueHouse.Controllers
                 parameters.Add("@TotalAmount", model.TotalAmount);
                 parameters.Add("@SpecialReq", model.SpecialReq);
                 parameters.Add("@Created", DateTime.Now);
+                parameters.Add("@Size", model.Size);
 
                 // 🔹 NEW
                 parameters.Add("@Status", model.Status);
