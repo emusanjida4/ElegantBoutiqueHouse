@@ -55,30 +55,35 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     }, 3000);
   }
 
-  onRegister() {
-    debugger;
-    console.log(this.registerFormData);
+ onRegister() {
+  debugger;
+  console.log(this.registerFormData);
 
-    if (this.registerFormData.password !== this.registerFormData.password) {
-      alert('Passwords do not match');
-      return;
-    }
-this.dataService.postData('UserInfo/Register',this.registerFormData).subscribe((data:any)=>{
-      alert('Registration Successful');
-      this.router.navigate(['/']);
-},(error:any)=>{
-      alert('Registration Failed');
-})
-    // Example API call (same pattern as login)
-    /*
-    this.http.post('https://localhost:7113/api/Register', this.registerFormData)
-      .subscribe({
-        next: () => {
-          alert('Registration Successful');
-          this.router.navigate(['/login']);
-        },
-        error: () => alert('Registration Failed')
-      });
-    */
+  const password = this.registerFormData.password;
+
+  // Password validation regex
+  // At least 6 chars, 1 letter, 1 special character
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
+
+  if (!passwordRegex.test(password)) {
+    alert(
+      'Password must be at least 6 characters long and contain at least one letter and one special character.'
+    );
+    return;
   }
+
+  this.dataService
+    .postData('UserInfo/Register', this.registerFormData)
+    .subscribe(
+      (data: any) => {
+        alert('Registration Successful');
+        this.router.navigate(['/']);
+      },
+      (error: any) => {
+        alert('Registration Failed');
+      }
+    );
 }
+
+  }
+

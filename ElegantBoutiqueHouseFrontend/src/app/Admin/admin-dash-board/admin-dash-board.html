@@ -8,32 +8,15 @@
     </h2>
 
     <ul class="menu">
-      <li routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <li routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         Dashboard
       </li>
-
-      <li routerLink="/admin/users" routerLinkActive="active">
-        Admin User
-      </li>
-
-      <li routerLink="/admin/products" routerLinkActive="active">
-        Admin Product
-      </li>
-
-      <li routerLink="/admin/category" routerLinkActive="active">
-        Admin Category
-      </li>
-
-      <li routerLink="/admin/subcategory" routerLinkActive="active">
-        Admin SubCategory
-      </li>
-      <li routerLink="/admin/stock" routerLinkActive="active">
-        Stock Management
-      </li>
-
-      <li routerLink="/admin/orders" routerLinkActive="active">
-        Orders
-      </li>
+      <li routerLink="/admin/users" routerLinkActive="active">Admin User</li>
+      <li routerLink="/admin/products" routerLinkActive="active">Admin Product</li>
+      <li routerLink="/admin/category" routerLinkActive="active">Admin Category</li>
+      <li routerLink="/admin/subcategory" routerLinkActive="active">Admin SubCategory</li>
+      <li routerLink="/admin/stock" routerLinkActive="active">Stock Management</li>
+      <li routerLink="/admin/orders" routerLinkActive="active">Orders</li>
     </ul>
   </aside>
 
@@ -46,49 +29,74 @@
       <button type="button" class="logout-btn" (click)="logout()">Logout</button>
     </div>
 
-    <!-- Dashboard cards only for main dashboard -->
-    <div class="card-grid" *ngIf="router.url === '/admin'">
+    <!-- Dashboard Overview (Only for /admin) -->
+<div class="dashboard-overview" *ngIf="router.url === '/admin'">
 
-      <div class="dashboard-card" (click)="navigate('/admin/users')">
-        <div class="icon">👤</div>
-        <h3>User</h3>
-        <p>Manage users</p>
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <div class="stat-icon">🧾</div>
+      <div>
+        <h3>Total Orders</h3>
+        <p class="stat-number">{{ totalOrders }}</p>
       </div>
-
-      <div class="dashboard-card" (click)="navigate('/admin/products')">
-        <div class="icon">🛍️</div>
-        <h3>Product</h3>
-        <p>Manage products</p>
-      </div>
-
-      <div class="dashboard-card" (click)="navigate('/admin/category')">
-        <div class="icon">📂</div>
-        <h3>Category</h3>
-        <p>Manage categories</p>
-      </div>
-
-      <div class="dashboard-card" (click)="navigate('/admin/subcategory')">
-        <div class="icon">📁</div>
-        <h3>SubCategory</h3>
-        <p>Manage subcategories</p>
-      </div>
-
-      <div class="dashboard-card" (click)="navigate('/admin/stock')">
-        <div class="icon">📦</div>
-        <h3>Stock</h3>
-        <p>Manage stock</p>
-      </div>
-
-      <div class="dashboard-card" (click)="navigate('/admin/orders')">
-        <div class="icon">📦</div>
-        <h3>Orders</h3>
-        <p>Manage orders</p>
-      </div>
-
     </div>
 
-    <!-- Dynamic admin pages load here -->
-    <router-outlet> </router-outlet>
+    <div class="stat-card">
+      <div class="stat-icon">👤</div>
+      <div>
+        <h3>Total Users</h3>
+        <p class="stat-number">{{ totalUsers }}</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">🛍️</div>
+      <div>
+        <h3>Total Products</h3>
+        <p class="stat-number">{{ totalProducts }}</p>
+      </div>
+    </div>
+<div class="stat-card">
+      <div class="stat-icon">💰</div>
+      <div>
+        <h3>Total Profit</h3>
+        <p class="stat-number">{{ totalProfit }}</p>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- Recent Orders Section -->
+  <div class="dashboard-section">
+    <h3>Recent Orders</h3>
+
+    <table class="dashboard-table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Phone Number</th>
+          <th>Status</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of recentOrders">
+          <td>{{ order.UserName }}</td>
+          <td>{{ order.Phone }}</td>
+          <td class="status pending">{{order.Status}}</td>
+          <td>৳ {{order.TotalAmount}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+    <!-- ONLY router outlet, no dashboard cards -->
+    <router-outlet></router-outlet>
 
   </main>
 
