@@ -33,3 +33,18 @@
   margin-right: 8px;
   color: #c59d5f;
 }
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-bottom {
+  width: 100%;          /* 👈 full width নেবে */
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  font-size: 14px;
+  color: #bbb;
+}
+
