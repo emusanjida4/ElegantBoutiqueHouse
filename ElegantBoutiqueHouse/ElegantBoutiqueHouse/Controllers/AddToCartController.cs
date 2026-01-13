@@ -74,7 +74,8 @@ namespace ElegantBoutiqueHouse.Controllers
             parameters.Add("@ProductId", model.ProductId);
             parameters.Add("@UserId", model.UserId);
             parameters.Add("@Quantity", model.Quantity);
-          
+            parameters.Add("@Size", model.Size);
+
 
             using var connection = _context.CreateConnection();
             var result = await connection.QueryFirstOrDefaultAsync(
