@@ -142,9 +142,13 @@ export class OrderComponent implements OnInit {
     };
 
     this.http.post(this.ORDER_API, payload).subscribe({
-      next: () => {
-        alert('🎉 Order Confirmed Successfully!');
-        this.router.navigate(['/']);
+      next: (res:any) => {
+        console.log(res);
+        window.location.href = res.paymentUrl;
+        // alert('🎉 Order Confirmed Successfully!');
+
+        
+        // this.router.navigate(['/']);
         //Clear the cart localstorage
 
       },

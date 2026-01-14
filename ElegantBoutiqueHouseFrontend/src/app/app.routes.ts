@@ -21,6 +21,7 @@ import { AdminOrderComponent } from './Admin/admin-order/admin-order';
 import { AboutUsComponent } from './Component/about-us/about-us';
 import { OrderDetailsComponent } from './Admin/order-details-component/order-details-component';
 import { UserInvoice } from './User/user-invoice/user-invoice';
+import { PaymentConfirmation } from './payment-confirmation/payment-confirmation';
 
 export const routes: Routes = [
 
@@ -47,6 +48,7 @@ path: '', redirectTo: '/navbar', pathMatch: 'full'
   /* ✅ Auth pages */
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
+  { path: 'payment-confirmation', component: PaymentConfirmation },
 
   /* ✅ Admin (unchanged) */
   {

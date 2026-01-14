@@ -443,6 +443,27 @@
         }
       }
     },
+    "/api/Order/Success_URL": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "paymentId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Order/user/{userId}": {
       "get": {
         "tags": [

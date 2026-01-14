@@ -292,6 +292,22 @@
   },
   {
     "ContainingType": "ElegantBoutiqueHouse.Controllers.OrderController",
+    "Method": "Success_URL",
+    "RelativePath": "api/Order/Success_URL",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "paymentId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ElegantBoutiqueHouse.Controllers.OrderController",
     "Method": "GetByUserId",
     "RelativePath": "api/Order/user/{userId}",
     "HttpMethod": "GET",

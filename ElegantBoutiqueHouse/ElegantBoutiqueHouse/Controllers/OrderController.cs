@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using ElegantBoutiqueHouse.Context;
 using ElegantBoutiqueHouse.Model;
+using ElegantBoutiqueHouse.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
@@ -12,10 +13,12 @@ namespace ElegantBoutiqueHouse.Controllers
     public class OrderController : ControllerBase
     {
         private readonly DapperContext _context;
+        private readonly IBKashService _bKashService;
 
-        public OrderController(DapperContext context)
+        public OrderController(DapperContext context, IBKashService bKashService)
         {
             _context = context;
+            _bKashService = bKashService;
         }
 
         // ===============================
@@ -103,9 +106,10 @@ namespace ElegantBoutiqueHouse.Controllers
                 parameters.Add("@Size", model.Size);
 
                 // 🔹 NEW
-                parameters.Add("@Status", model.Status);
-                parameters.Add("@MethodNum", model.MethodNum);
-                parameters.Add("@OTP", model.OTP);
+                parameters.Add("@Status", "Pending");
+                //parameters.Add("@Status", model.Status);
+                //parameters.Add("@MethodNum", model.MethodNum);
+                //parameters.Add("@OTP", model.OTP);
 
 
                 var result = await connection.QueryFirstOrDefaultAsync(
@@ -153,7 +157,27 @@ namespace ElegantBoutiqueHouse.Controllers
                     commandType: CommandType.StoredProcedure
                 );
 
-                return Ok(result);
+                var bkash = await _bKashService.InitiatePaymentAsync(new Model.PaymentRequest
+                {
+                    Amount = model.TotalAmount ?? 10,
+                    CustomerName = model.UserName ?? "Jhon Doe",
+                    CustomerPhone = model.Phone ?? "0186554485",
+                    ProductName = "Order#" + result.OrderId,
+                    OrderId = result.OrderId.ToString(),
+                    MerchantInvoiceNumber = "INV-" + result.OrderId + "-" + DateTime.Now.Ticks,
+                    SuccessUrl = "http://localhost:4200/payment-confirmation"
+                });
+
+                parameters.Add("@flag", 9);
+                parameters.Add("@bkashTrns", bkash.PaymentId);
+
+                var ghts = await connection.QueryFirstOrDefaultAsync(
+                           "SP_Order",
+                           parameters,
+                           commandType: CommandType.StoredProcedure);
+
+
+                return Ok(bkash);
             }
             catch (Exception ex)
             {
@@ -162,6 +186,24 @@ namespace ElegantBoutiqueHouse.Controllers
             }
             
         }
+
+        [HttpGet("Success_URL")]
+        public async Task<IActionResult> Success_URL(string paymentId)
+        {
+            var bkash = await _bKashService.ConfirmPaymentAsync(paymentId);
+            var parameters = new DynamicParameters();
+            parameters.Add("@flag", 10);
+            parameters.Add("@bkashTrns", paymentId);
+
+            using var connection = _context.CreateConnection();
+            var ght = await connection.QueryFirstOrDefaultAsync(
+                       "SP_Order",
+                       parameters,
+                       commandType: CommandType.StoredProcedure);
+
+            return Ok(bkash);
+        }
+
 
         // ===============================
         // 4️⃣ UPDATE ORDER

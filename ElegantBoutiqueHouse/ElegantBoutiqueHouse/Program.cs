@@ -4,6 +4,16 @@ using Microsoft.Extensions.FileProviders;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// Add services to the Bkashhhh.
+builder.Services.AddHttpClient<ElegantBoutiqueHouse.Services.BKashService>(client =>
+{
+    client.Timeout = TimeSpan.FromSeconds(30);
+});
+
+//Bkashshsss
+builder.Services.AddScoped<ElegantBoutiqueHouse.Services.IBKashService,
+    ElegantBoutiqueHouse.Services.BKashService>();
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
