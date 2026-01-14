@@ -20,7 +20,7 @@ import { StockAdminComponent } from './Admin/admin-stock/admin-stock';
 import { AdminOrderComponent } from './Admin/admin-order/admin-order';
 import { AboutUsComponent } from './Component/about-us/about-us';
 import { OrderDetailsComponent } from './Admin/order-details-component/order-details-component';
-
+import { UserInvoice } from './User/user-invoice/user-invoice';
 
 export const routes: Routes = [
 
@@ -39,6 +39,7 @@ path: '', redirectTo: '/navbar', pathMatch: 'full'
        { path: 'checkout', component: OrderComponent },
        { path: 'profile', component: CustomerProfileComponent },
        { path: 'about', component: AboutUsComponent },
+       {path: 'invoice', component: UserInvoice}
     
     ]
   },

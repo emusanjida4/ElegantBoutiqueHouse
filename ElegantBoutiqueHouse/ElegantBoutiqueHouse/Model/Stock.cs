@@ -11,6 +11,6 @@
         public string Size { get; set; }
         public decimal PurchasePrice { get; set; }
         public decimal SellPrice { get; set; }
-        public string BatchNumber { get; set; }
+        public string? BatchNumber { get; set; }
     }
 }

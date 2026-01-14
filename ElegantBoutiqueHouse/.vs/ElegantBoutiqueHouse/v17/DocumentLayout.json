@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\model\\stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\model\\stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,10 +23,6 @@
       "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\controllers\\addtocartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\controllers\\addtocartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -29,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\model\\addtocart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\model\\addtocart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\model\\stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|solutionrelative:elegantboutiquehouse\\model\\stock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BBAD59E8-A669-4EB3-8758-8A08EDC87D1F}|ElegantBoutiqueHouse\\ElegantBoutiqueHouse.csproj|d:\\project\\elegantboutiquehouse\\elegantboutiquehouse\\elegantboutiquehouse\\model\\userinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -89,11 +89,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "AddToCartController.cs",
               "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\AddToCartController.cs",
               "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Controllers\\AddToCartController.cs",
@@ -105,20 +105,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "OrderController.cs",
               "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\OrderController.cs",
               "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Controllers\\OrderController.cs",
               "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\OrderController.cs",
               "RelativeToolTip": "ElegantBoutiqueHouse\\Controllers\\OrderController.cs",
-              "ViewState": "AgIAAOYAAAAAAAAAAAAIwBQBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAD4v+QAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-07T08:34:40.202Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "CategoryController.cs",
               "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\CategoryController.cs",
               "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Controllers\\CategoryController.cs",
@@ -130,19 +130,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "StockController.cs",
               "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\StockController.cs",
               "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Controllers\\StockController.cs",
               "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\StockController.cs",
               "RelativeToolTip": "ElegantBoutiqueHouse\\Controllers\\StockController.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwB0AAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAkwFkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-11T06:19:07.788Z"
+              "WhenOpened": "2026-01-11T06:19:07.788Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Order.cs",
               "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\Order.cs",
               "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Model\\Order.cs",
@@ -155,7 +156,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "Stock.cs",
+              "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\Stock.cs",
+              "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Model\\Stock.cs",
+              "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\Stock.cs",
+              "RelativeToolTip": "ElegantBoutiqueHouse\\Model\\Stock.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwA0AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-11T06:19:32.209Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "ProductController.cs",
               "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Controllers\\ProductController.cs",
@@ -167,7 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "AddToCart.cs",
               "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\AddToCart.cs",
               "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Model\\AddToCart.cs",
@@ -176,18 +190,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-06T07:43:39.305Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Stock.cs",
-              "DocumentMoniker": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\Stock.cs",
-              "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Model\\Stock.cs",
-              "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\Stock.cs",
-              "RelativeToolTip": "ElegantBoutiqueHouse\\Model\\Stock.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-11T06:19:32.209Z"
             },
             {
               "$type": "Document",

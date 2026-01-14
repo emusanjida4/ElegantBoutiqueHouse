@@ -41,7 +41,6 @@ export class StockAdminComponent implements OnInit {
     this.getAllProducts();
   }
 
-  // 🔹 GET ALL STOCK
   getAllStock() {
     this.http.get<any[]>(this.apiUrl).subscribe(res => {
       this.stocks = res;
@@ -49,7 +48,6 @@ export class StockAdminComponent implements OnInit {
     });
   }
 
-  // 🔹 GET ALL PRODUCTS
   getAllProducts() {
     this.http.get<any[]>(this.productApi).subscribe(res => {
       this.products = res;
@@ -57,7 +55,6 @@ export class StockAdminComponent implements OnInit {
     });
   }
 
-  // 🔹 ADD
   addStock() {
     this.http.post(this.apiUrl, this.stockModel).subscribe(() => {
       this.resetForm();
@@ -65,11 +62,12 @@ export class StockAdminComponent implements OnInit {
     });
   }
 
-  // 🔹 EDIT (FIXED)
+  // 🔹 EDIT FIXED
   editStock(stock: any) {
     this.isEdit = true;
 
-    this.stockModel = {
+    // Use Object.assign to preserve reference for ngModel
+    Object.assign(this.stockModel, {
       id: stock.Id,
       productId: stock.ProductId,
       productName: stock.ProductName,
@@ -78,18 +76,21 @@ export class StockAdminComponent implements OnInit {
       batchNumber: stock.BatchNumber,
       purchasePrice: stock.PurchasePrice,
       sellPrice: stock.SellPrice
-    };
+    });
+
+    // update sellPrice if product selected
+    this.onProductChange();
   }
 
-  // 🔹 UPDATE
   updateStock() {
+    this.stockModel.batchNumber = String(this.stockModel.batchNumber);
     this.http.put(this.apiUrl, this.stockModel).subscribe(() => {
       this.resetForm();
       this.getAllStock();
+      this.cdr.detectChanges();
     });
   }
 
-  // 🔹 DELETE (FIXED)
   deleteStock(id: number) {
     if (confirm('Are you sure you want to delete this stock?')) {
       this.http.delete(`${this.apiUrl}/${id}`).subscribe(() => {
@@ -98,7 +99,6 @@ export class StockAdminComponent implements OnInit {
     }
   }
 
-  // 🔹 PRODUCT CHANGE
   onProductChange() {
     const selectedProduct = this.products.find(
       p => p.Id === Number(this.stockModel.productId)
@@ -110,7 +110,6 @@ export class StockAdminComponent implements OnInit {
     }
   }
 
-  // 🔹 RESET
   resetForm() {
     this.isEdit = false;
     this.stockModel = {

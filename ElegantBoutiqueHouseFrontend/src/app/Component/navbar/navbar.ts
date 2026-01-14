@@ -85,6 +85,11 @@ activeDropdown: string = '';  // Keeps track of which category dropdown is activ
   this.router.navigate(['/navbar/profile']);
   this.cdr.detectChanges();
 }
+goToInvoice() {
+  this.showDropdown = false;
+  this.router.navigate(['/navbar/invoice']);
+  this.cdr.detectChanges();
+}
 
  @HostListener('document:click')
   closeDropdown() {
