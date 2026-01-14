@@ -260,6 +260,22 @@
   },
   {
     "ContainingType": "ElegantBoutiqueHouse.Controllers.OrderController",
+    "Method": "GetInvoiceByOrderId",
+    "RelativePath": "api/Order/invoice/{orderId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ElegantBoutiqueHouse.Controllers.OrderController",
     "Method": "GetOrderItems",
     "RelativePath": "api/Order/items/{orderId}",
     "HttpMethod": "GET",

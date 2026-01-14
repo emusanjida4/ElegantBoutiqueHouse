@@ -111,7 +111,7 @@
               "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Controllers\\OrderController.cs",
               "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Controllers\\OrderController.cs",
               "RelativeToolTip": "ElegantBoutiqueHouse\\Controllers\\OrderController.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAowCwAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAOYAAAAAAAAAAAAIwBQBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-07T08:34:40.202Z",
               "EditorCaption": ""
@@ -148,9 +148,10 @@
               "RelativeDocumentMoniker": "ElegantBoutiqueHouse\\Model\\Order.cs",
               "ToolTip": "D:\\Project\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\ElegantBoutiqueHouse\\Model\\Order.cs",
               "RelativeToolTip": "ElegantBoutiqueHouse\\Model\\Order.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAxwBEAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA4wBEAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-07T09:15:49.203Z"
+              "WhenOpened": "2026-01-07T09:15:49.203Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -257,7 +258,8 @@
               "RelativeToolTip": "ElegantBoutiqueHouse\\Controllers\\SubCategoryController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAE0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-23T07:55:06.62Z"
+              "WhenOpened": "2025-12-23T07:55:06.62Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

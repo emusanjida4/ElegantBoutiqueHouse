@@ -246,6 +246,36 @@ namespace ElegantBoutiqueHouse.Controllers
 
             return Ok(orders);
         }
+        [HttpGet("invoice/{orderId}")]
+        public async Task<IActionResult> GetInvoiceByOrderId(int orderId)
+        {
+            using var connection = _context.CreateConnection();
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@flag", 8);
+            parameters.Add("@Id", orderId);
+
+            using var multi = await connection.QueryMultipleAsync(
+                "SP_Order",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
+
+            var header = await multi.ReadFirstOrDefaultAsync<dynamic>();
+            var products = (await multi.ReadAsync<dynamic>()).ToList();
+            var subTotal = await multi.ReadFirstOrDefaultAsync<decimal>();
+
+            var result = new
+            {
+                Header = header,
+                Products = products,
+                SubTotal = subTotal
+            };
+
+            return Ok(result);
+        }
+
+
 
     }
 }
