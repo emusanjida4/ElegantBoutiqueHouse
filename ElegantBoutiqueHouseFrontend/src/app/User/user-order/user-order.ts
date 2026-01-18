@@ -143,12 +143,15 @@ export class OrderComponent implements OnInit {
 
     this.http.post(this.ORDER_API, payload).subscribe({
       next: (res:any) => {
-        console.log(res);
-        window.location.href = res.paymentUrl;
-        // alert('🎉 Order Confirmed Successfully!');
+        if(this.order.payment !== 'Cash on Delivery'){
+   window.location.href = res.paymentUrl;
+   return;
+        }
+     
+         alert('🎉 Order Confirmed Successfully!');
 
         
-        // this.router.navigate(['/']);
+         this.router.navigate(['/']);
         //Clear the cart localstorage
 
       },

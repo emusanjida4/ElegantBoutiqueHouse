@@ -34,7 +34,7 @@ export class AdminDashboardComponent {
     private dataservice: DataService,
     private http: HttpClient,
     private cdr: ChangeDetectorRef,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loadDashboardData();
@@ -45,47 +45,32 @@ export class AdminDashboardComponent {
   }
 
   loadDashboardData() {
-    // 1. Total Users
-    this.http.get<any[]>('https://localhost:7254/api/UserInfo/GetAll').subscribe(res => {
-      this.totalUsers = res.length;
-      this.cdr.detectChanges();
+    // 1. Get Aggregated Stats (Profit, Counts)
+    this.http.get<any>('https://localhost:7254/api/Report/summary').subscribe({
+      next: (res) => {
+        this.totalUsers = res.totalUsers;
+        this.totalProducts = res.totalProducts;
+        this.totalOrders = res.totalOrders;
+        this.totalProfit = res.totalProfit;
+        this.cdr.detectChanges();
+      },
+      error: (err) => console.error('Failed to load stats', err)
     });
 
-    // 2. Total Products
-    this.http.get<any[]>('https://localhost:7254/api/Product').subscribe(res => {
-      this.totalProducts = res.length;
-      this.cdr.detectChanges();
-    });
-
-    // 3. Total Orders
+    // 2. Recent Orders (Only needed for the table)
     this.http.get<any[]>('https://localhost:7254/api/Order').subscribe(res => {
-      this.totalOrders = res.length;
-      this.recentOrders = res.slice(-5).reverse(); // Last 5 orders
-      this.orders = res;
-      this.totalProfit = this.orders.reduce((acc, order) => acc + parseInt(order.TotalAmount), 0);
-      console.log(this.recentOrders);
+      // Just take the last 5 for the table
+      this.recentOrders = res.slice(-5).reverse();
       this.cdr.detectChanges();
     });
-
-    // 4. Stocks
-    this.http.get<any[]>('https://localhost:7254/api/Stock').subscribe(res => {
-      //Profit Calculation like res.SellingPric
-      // this.totalProfit = res.reduce((acc, item) => acc + (item.SoldQuantity * item.SellingPrice), 0);
-      this.lowStockItems = res.filter(item => item.Quantity <= 5).length;
-      this.cdr.detectChanges();
-    });
-
-
-
-
   }
 
   goBack() {
     this.location.back();
   }
- logout() {
+  logout() {
     this.dataservice.logout();
-  this.router.navigateByUrl('/');
-}
+    this.router.navigateByUrl('/');
+  }
 
 }

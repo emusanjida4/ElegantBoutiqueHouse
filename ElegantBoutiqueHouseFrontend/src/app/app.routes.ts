@@ -22,11 +22,12 @@ import { AboutUsComponent } from './Component/about-us/about-us';
 import { OrderDetailsComponent } from './Admin/order-details-component/order-details-component';
 import { UserInvoice } from './User/user-invoice/user-invoice';
 import { PaymentConfirmation } from './payment-confirmation/payment-confirmation';
+import { AdminReportComponent } from './Admin/admin-report/admin-report';
 
 export const routes: Routes = [
 
   {
-path: '', redirectTo: '/navbar', pathMatch: 'full'
+    path: '', redirectTo: '/navbar', pathMatch: 'full'
   },
   /* ✅ App start → Home page */
   {
@@ -36,12 +37,12 @@ path: '', redirectTo: '/navbar', pathMatch: 'full'
       { path: '', component: HomeComponent },   // default home
       { path: 'home', component: HomeComponent },
       { path: 'userproduct', component: UserProduct },
-       { path: 'cart', component: AddToCartComponent },
-       { path: 'checkout', component: OrderComponent },
-       { path: 'profile', component: CustomerProfileComponent },
-       { path: 'about', component: AboutUsComponent },
-       {path: 'invoice', component: UserInvoice}
-    
+      { path: 'cart', component: AddToCartComponent },
+      { path: 'checkout', component: OrderComponent },
+      { path: 'profile', component: CustomerProfileComponent },
+      { path: 'about', component: AboutUsComponent },
+      { path: 'invoice', component: UserInvoice }
+
     ]
   },
 
@@ -61,12 +62,13 @@ path: '', redirectTo: '/navbar', pathMatch: 'full'
       { path: 'category', component: CategoryAdminComponent },
       { path: 'subcategory', component: SubCategoryComponent },
       { path: 'stock', component: StockAdminComponent },
-      {path: 'orders', component: AdminOrderComponent},
-  { path: 'order-details/:id', component: OrderDetailsComponent },
+      { path: 'orders', component: AdminOrderComponent },
+      { path: 'order-details/:id', component: OrderDetailsComponent },
+      { path: 'report', component: AdminReportComponent },
 
     ]
   },
   { path: 'order', component: OrderComponent }
-  
+
 
 ];

@@ -599,6 +599,26 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ElegantBoutiqueHouse.Controllers.ReportController",
+    "Method": "GetDailyReport",
+    "RelativePath": "api/Report/daily",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ElegantBoutiqueHouse.Controllers.ReportController",
+    "Method": "GetSummary",
+    "RelativePath": "api/Report/summary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ElegantBoutiqueHouse.Controllers.StockController",
     "Method": "GetAll",
     "RelativePath": "api/Stock",

@@ -156,28 +156,32 @@ namespace ElegantBoutiqueHouse.Controllers
                     Cartparameters,
                     commandType: CommandType.StoredProcedure
                 );
-
-                var bkash = await _bKashService.InitiatePaymentAsync(new Model.PaymentRequest
+                if(model.Payment !="Cash On Delivary")
                 {
-                    Amount = model.TotalAmount ?? 10,
-                    CustomerName = model.UserName ?? "Jhon Doe",
-                    CustomerPhone = model.Phone ?? "0186554485",
-                    ProductName = "Order#" + result.OrderId,
-                    OrderId = result.OrderId.ToString(),
-                    MerchantInvoiceNumber = "INV-" + result.OrderId + "-" + DateTime.Now.Ticks,
-                    SuccessUrl = "http://localhost:4200/payment-confirmation"
-                });
+                    var bkash = await _bKashService.InitiatePaymentAsync(new Model.PaymentRequest
+                    {
+                        Amount = model.TotalAmount ?? 10,
+                        CustomerName = model.UserName ?? "Sanjida Emu",
+                        CustomerPhone = model.Phone ?? "0186554485",
+                        ProductName = "Order#" + result.OrderId,
+                        OrderId = result.OrderId.ToString(),
+                        MerchantInvoiceNumber = "INV-" + result.OrderId + "-" + DateTime.Now.Ticks,
+                        SuccessUrl = "http://localhost:4200/payment-confirmation"
+                    });
 
-                parameters.Add("@flag", 9);
-                parameters.Add("@bkashTrns", bkash.PaymentId);
+                    parameters.Add("@flag", 9);
+                    parameters.Add("@bkashTrns", bkash.PaymentId);
 
-                var ghts = await connection.QueryFirstOrDefaultAsync(
-                           "SP_Order",
-                           parameters,
-                           commandType: CommandType.StoredProcedure);
+                    var ghts = await connection.QueryFirstOrDefaultAsync(
+                               "SP_Order",
+                               parameters,
+                               commandType: CommandType.StoredProcedure);
 
 
-                return Ok(bkash);
+                    return Ok(bkash);
+                }
+                return Ok(result);
+               
             }
             catch (Exception ex)
             {
