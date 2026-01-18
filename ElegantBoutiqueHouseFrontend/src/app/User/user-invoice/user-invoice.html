@@ -17,7 +17,7 @@
       <p><strong>Total:</strong> ৳ {{ o.TotalAmount }}</p>
     </div>
 
-    <div class="order-footer">
+    <div class="order-footer" *ngIf="o.Status != 'Pending'">
       <button class="btn-invoice" (click)="viewInvoice(o.Id)">
         View Invoice
       </button>
@@ -41,14 +41,14 @@
         <!-- TOP SECTION -->
         <div class="row mb-4">
           <div class="col-md-6 mb-3 mb-md-0">
-            <p class="mb-1"><strong>Payment Method:</strong> {{ invoiceHeader.paymentMethod }}</p>
-            <p class="mb-1"><strong>Payment No:</strong> {{ invoiceHeader.paymentNumber }}</p>
-            <p class="mb-1"><strong>OTP:</strong> {{ invoiceHeader.otp }}</p>
+            <p class="mb-1"><strong>Payment Method:</strong> {{ invoiceHeader.PaymentMethod }}</p>
+            <p class="mb-1"><strong>Payment No:</strong> {{ invoiceHeader.MethodNum }}</p>
+              
           </div>
 
           <div class="col-md-6 text-md-end">
-            <p class="mb-1"><strong>Invoice #:</strong> {{ invoiceHeader.invoiceNumber }}</p>
-            <p class="mb-1"><strong>Date:</strong> {{ invoiceHeader.invoiceDate | date:'mediumDate' }}</p>
+            <p class="mb-1"><strong>Invoice #:</strong> {{ invoiceHeader.InvoiceNumber }}</p>
+            <p class="mb-1"><strong>Date:</strong> {{ invoiceHeader.InvoiceDate | date:'mediumDate' }}</p>
           </div>
         </div>
 

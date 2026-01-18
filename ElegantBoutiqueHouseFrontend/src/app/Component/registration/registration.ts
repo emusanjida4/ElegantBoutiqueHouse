@@ -26,7 +26,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     'assets/RegImages/re2.jpg',
     'assets/RegImages/re3.jpg',
     'assets/RegImages/re1.jpg',
-    'assets/RegImages/re5.jpg',                                                                                                  
+    'assets/RegImages/re5.jpg',
   ];
 
   currentImage: string = this.RegImages[0];
@@ -34,10 +34,10 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   private intervalId: any;
 
   constructor(
-  
+
     private router: Router,
-    private dataService:DataService
-  ) {}
+    private dataService: DataService
+  ) { }
 
   ngOnInit(): void {
     this.startImageSlider();
@@ -51,39 +51,43 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.intervalId = setInterval(() => {
       this.index = (this.index + 1) % this.RegImages.length;
       this.currentImage = this.RegImages[this.index];
-      
+
     }, 3000);
   }
 
- onRegister() {
-  debugger;
-  console.log(this.registerFormData);
+  onRegister() {
+    debugger;
+    console.log(this.registerFormData);
 
-  const password = this.registerFormData.password;
+    const password = this.registerFormData.password;
 
-  // Password validation regex
-  // At least 6 chars, 1 letter, 1 special character
-  const passwordRegex = /^(?=.*[A-Za-z])(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
+    // Password validation regex
+    // At least 6 chars, 1 letter, 1 special character
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
 
-  if (!passwordRegex.test(password)) {
-    alert(
-      'Password must be at least 6 characters long and contain at least one letter and one special character.'
-    );
-    return;
+    if (!passwordRegex.test(password)) {
+      alert(
+        'Password must be at least 6 characters long and contain at least one letter and one special character.'
+      );
+      return;
+    }
+
+    this.dataService
+      .postData('UserInfo/Register', this.registerFormData)
+      .subscribe(
+        (data: any) => {
+          alert('Registration Successful');
+          this.router.navigate(['/']);
+        },
+        (error: any) => {
+          if (error.error === 'Email already exists') {
+            alert('Duplicate email address! Please change your email.');
+          } else {
+            alert('Registration Failed');
+          }
+        }
+      );
   }
 
-  this.dataService
-    .postData('UserInfo/Register', this.registerFormData)
-    .subscribe(
-      (data: any) => {
-        alert('Registration Successful');
-        this.router.navigate(['/']);
-      },
-      (error: any) => {
-        alert('Registration Failed');
-      }
-    );
 }
-
-  }
 

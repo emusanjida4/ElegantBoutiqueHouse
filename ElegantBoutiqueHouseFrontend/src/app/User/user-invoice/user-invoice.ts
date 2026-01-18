@@ -37,6 +37,7 @@ export class UserInvoice implements OnInit {
     this.http
       .get<any[]>(`https://localhost:7254/api/Order/user/${this.userId}`)
       .subscribe(res => {
+        // console.log('User Orders:', res);
         this.orders = res;
         this.cdr.detectChanges();
       });
@@ -53,6 +54,8 @@ export class UserInvoice implements OnInit {
         this.invoiceHeader = res.header;
         this.invoiceProducts = res.products;
         this.subTotal = res.subTotal;
+        console.log('Invoice Data:', res.header);
+
         this.cdr.detectChanges();
       });
   }
