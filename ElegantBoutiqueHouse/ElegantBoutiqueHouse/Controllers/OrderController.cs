@@ -108,7 +108,7 @@ namespace ElegantBoutiqueHouse.Controllers
                 // 🔹 NEW
                 parameters.Add("@Status", "Pending");
                 //parameters.Add("@Status", model.Status);
-                //parameters.Add("@MethodNum", model.MethodNum);
+                parameters.Add("@MethodNum", model.MethodNum);
                 //parameters.Add("@OTP", model.OTP);
 
 
