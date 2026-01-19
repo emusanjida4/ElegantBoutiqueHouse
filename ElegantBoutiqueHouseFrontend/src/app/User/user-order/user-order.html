@@ -61,13 +61,13 @@
       </div>
 
       <!-- OTP ONLY -->
-      <div *ngIf="showPinInput" class="payment-input">
+      <!-- <div *ngIf="showPinInput" class="payment-input">
         <input
           type="text"
           [placeholder]="pinPlaceholder"
           [(ngModel)]="pinOrCard"
         />
-      </div>
+      </div> -->
 
       <button class="confirm-btn" (click)="confirmOrder()">
         Confirm Order

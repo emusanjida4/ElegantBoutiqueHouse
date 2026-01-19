@@ -87,10 +87,10 @@ export class OrderComponent implements OnInit {
     this.showPinInput = true;
 
     this.mobileNumber = '';
-    this.pinOrCard = '';
+    // this.pinOrCard = '';
 
     // 🔹 OTP only
-    this.pinPlaceholder = 'Enter OTP';
+    // this.pinPlaceholder = 'Enter OTP';
   }
 
   // ================= CONFIRM ORDER =================
@@ -109,10 +109,10 @@ export class OrderComponent implements OnInit {
       }
 
       // 🔹 OTP validation only
-      if (!this.pinOrCard || this.pinOrCard.length !== 6) {
-        alert('OTP must be 6 digits');
-        return;
-      }
+      // if (!this.pinOrCard || this.pinOrCard.length !== 6) {
+      //   alert('OTP must be 6 digits');
+      //   return;
+      // }
     }
 
     this.finalConfirm();
@@ -120,7 +120,7 @@ export class OrderComponent implements OnInit {
 
   // ================= FINAL CONFIRM =================
   finalConfirm(): void {
-
+debugger
     // 🔹 Correct payload names to match backend SP / Controller
     const payload = {
       UserId: this.user.id,
@@ -132,7 +132,7 @@ export class OrderComponent implements OnInit {
       SpecialReq: '',                     // optional, can leave empty
       Created: new Date(),                // backend expects Created
       MethodNum: this.mobileNumber,       // mobile number
-      OTP: this.pinOrCard,                // OTP for Bkash/Nagad/Card
+      // OTP: this.pinOrCard,                // OTP for Bkash/Nagad/Card
       OrderDetails: this.cartItems.map(item => ({
         ProductId: item.ProductId,
         Quantity: item.Quantity,
