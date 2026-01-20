@@ -17,12 +17,26 @@ export class UserProduct {
   products: any[] = [];
   isLoggedIn: boolean = false;
 
+  // Modal State
+  selectedProduct: any = null;
+  isModalOpen: boolean = false;
+
+  openModal(product: any) {
+    this.selectedProduct = product;
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+    this.selectedProduct = null;
+  }
+
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
     private cdr: ChangeDetectorRef,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.checkLogin();

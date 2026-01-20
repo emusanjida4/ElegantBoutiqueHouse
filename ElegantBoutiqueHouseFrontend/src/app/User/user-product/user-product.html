@@ -8,12 +8,8 @@
     <div class="col-md-3 mb-4" *ngFor="let p of products">
       <div class="card h-100 shadow-sm">
 
-        <img
-          [src]="'https://localhost:7254/' + p.DressImageUrl"
-          class="card-img-top"
-          alt="product image"
-          style="height: 250px; object-fit: cover;"
-        />
+        <img [src]="'https://localhost:7254/' + p.DressImageUrl" class="card-img-top" alt="product image"
+          style="height: 250px; object-fit: cover;" />
 
         <div class="card-body text-center">
           <h6>{{ p.Name }}</h6>
@@ -23,22 +19,21 @@
           <!-- 🔹 SIZE SELECT -->
           <div class="mb-2">
             <label for="sizeSelect">Size:</label>
-            <select
-              id="sizeSelect"
-              [(ngModel)]="p.selectedSize"
-              class="form-select form-select-sm"
-            >
+            <select id="sizeSelect" [(ngModel)]="p.selectedSize" class="form-select form-select-sm">
               <option *ngFor="let s of p.Sizes" [value]="s">{{ s }}</option>
             </select>
           </div>
 
-          <!-- 🔒 PROTECTED ADD TO CART BUTTON -->
-          <button
-            class="btn btn-dark btn-sm w-100 mt-2"
-            (click)="addToCart(p)"
-          >
-            {{ isLoggedIn ? 'Add to Cart' : 'Login' }}
-          </button>
+          <!-- 🔹 BUTTON GROUP -->
+          <div class="d-flex justify-content-between align-items-center mt-2">
+            <button class="btn btn-outline-primary btn-sm flex-grow-1 me-1" (click)="openModal(p)">
+              Details
+            </button>
+            <button class="btn btn-dark btn-sm flex-grow-1 ms-1" (click)="addToCart(p)">
+              {{ isLoggedIn ? 'Add to Cart' : 'Login' }}
+            </button>
+          </div>
+
         </div>
 
       </div>
@@ -49,4 +44,38 @@
   <ng-template #noData>
     <p class="text-center text-muted">No products found.</p>
   </ng-template>
+
+  <!-- 🔹 PRODUCT DETAILS MODAL -->
+  <div class="modal-overlay" *ngIf="isModalOpen" (click)="closeModal()">
+    <div class="product-modal" (click)="$event.stopPropagation()">
+
+      <button class="close-btn" (click)="closeModal()">&times;</button>
+
+      <div class="modal-content-wrapper" *ngIf="selectedProduct">
+        <div class="modal-image">
+          <img [src]="'https://localhost:7254/' + selectedProduct.DressImageUrl" alt="Product Image">
+        </div>
+
+        <div class="modal-details">
+          <h2 class="modal-title">{{ selectedProduct.Name }}</h2>
+          <p class="modal-brand">{{ selectedProduct.Brand }}</p>
+          <p class="modal-price">৳ {{ selectedProduct.Price }}</p>
+
+          <div class="modal-description">
+            <h5>Description</h5>
+            <p>{{ selectedProduct.Description || 'No description available.' }}</p>
+          </div>
+
+          <!-- Reuse Size Logic in Modal if needed, or just display info -->
+          <div class="modal-actions">
+            <button class="btn btn-dark w-100" (click)="addToCart(selectedProduct); closeModal()">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
