@@ -34,7 +34,7 @@ export class StockAdminComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getAllStock();
@@ -63,6 +63,7 @@ export class StockAdminComponent implements OnInit {
   }
 
   // 🔹 EDIT FIXED
+  // 🔹 EDIT FIXED
   editStock(stock: any) {
     this.isEdit = true;
 
@@ -80,6 +81,9 @@ export class StockAdminComponent implements OnInit {
 
     // update sellPrice if product selected
     this.onProductChange();
+
+    // Scroll to top
+    window.scrollTo(0, 0);
   }
 
   updateStock() {

@@ -13,7 +13,14 @@
     </select>
 
     <input type="number" placeholder="Quantity" [(ngModel)]="stockModel.quantity" />
-    <input type="text" placeholder="Size" [(ngModel)]="stockModel.size" />
+    <select [(ngModel)]="stockModel.size">
+      <option value="" disabled selected>-- Select Size --</option>
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+      <option value="XXL">XXL</option>
+    </select>
     <input type="text" placeholder="Batch Number" [(ngModel)]="stockModel.batchNumber" />
     <input type="number" placeholder="Purchase Price" [(ngModel)]="stockModel.purchasePrice" />
     <input type="number" placeholder="Sell Price" [(ngModel)]="stockModel.sellPrice" />

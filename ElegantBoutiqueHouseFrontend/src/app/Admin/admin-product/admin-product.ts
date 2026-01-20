@@ -15,7 +15,7 @@ export class AdminProductComponent implements OnInit {
   productApi = 'https://localhost:7254/api/Product';
   categoryApi = 'https://localhost:7254/api/Category';
   subCategoryApi = 'https://localhost:7254/api/SubCategory';
-  
+
 
   products: any[] = [];
   categories: any[] = [];
@@ -36,7 +36,7 @@ export class AdminProductComponent implements OnInit {
   imageLocation: string = '';
   selectedFile!: File;
 
-  constructor(private http: HttpClient,private cdr: ChangeDetectorRef) {}
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.loadProducts();
@@ -85,7 +85,7 @@ export class AdminProductComponent implements OnInit {
       return;
     }
 
-debugger;
+    debugger;
     const formData = new FormData();
     formData.append('Name', this.name);
     formData.append('Description', this.description);
@@ -93,7 +93,7 @@ debugger;
     formData.append('Gender', this.gender); // ✅ added
     formData.append('Price', this.price.toString());
     formData.append('Stockquantity', this.stockQuantity?.toString() || '0');
-    formData.append('Status', this.status); 
+    formData.append('Status', this.status);
     formData.append('CategoryId', this.categoryid.toString());
     formData.append('SubCategoryId', this.subcategoryid.toString());
     formData.append('DressImage', this.selectedFile);
@@ -116,19 +116,21 @@ debugger;
   }
 
   editProduct(item: any) {
-  this.id = item.Id;
-  this.name = item.Name;
-  this.brand = item.Brand;
-  this.description = item.Description;
-  this.gender = item.Gender;
-  this.price = item.Price;
-  this.stockQuantity = item.StockQuantity;
-  this.status = item.Status;
-  this.categoryid = item.CategoryId;
+    this.id = item.Id;
+    this.name = item.Name;
+    this.brand = item.Brand;
+    this.description = item.Description;
+    this.gender = item.Gender;
+    this.price = item.Price;
+    this.stockQuantity = item.StockQuantity;
+    this.status = item.Status;
+    this.categoryid = item.CategoryId;
 
-  this.loadSubCategories(item.CategoryId);
-  this.subcategoryid = item.SubCategoryId;
-}
+    this.loadSubCategories(item.CategoryId);
+    this.subcategoryid = item.SubCategoryId;
+
+    window.scrollTo(0, 0);
+  }
 
 
   deleteProduct(id: number) {

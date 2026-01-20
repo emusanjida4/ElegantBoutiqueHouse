@@ -1,15 +1,23 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { AdminReportService, ReportModel } from './admin-report.service';
 
 @Component({
-    selector: 'app-admin-report',
-    standalone: true,
-    imports: [CommonModule],
-    template: `
+  selector: 'app-admin-report',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  template: `
     <div class="container mt-4">
       <h2>Daily Sales & Profit Report</h2>
       
+      <div class="row mb-3">
+        <div class="col-md-4 d-flex">
+          <input type="text" class="form-control me-2" placeholder="Search by Month (e.g. January)" [(ngModel)]="searchText">
+          <button class="btn btn-primary" (click)="searchReport()">Search</button>
+        </div>
+      </div>
+
       <div *ngIf="isLoading" class="text-center mt-5">
         <div class="spinner-border text-primary" role="status">
           <span class="visually-hidden">Loading...</span>
@@ -20,7 +28,7 @@ import { AdminReportService, ReportModel } from './admin-report.service';
         {{ errorMessage }}
       </div>
 
-      <div class="table-responsive" *ngIf="!isLoading && reports.length > 0">
+      <div class="table-responsive" *ngIf="!isLoading && filteredReports.length > 0">
         <table class="table table-striped table-hover table-bordered shadow-sm">
           <thead class="table-dark">
             <tr>
@@ -32,7 +40,7 @@ import { AdminReportService, ReportModel } from './admin-report.service';
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let report of reports">
+            <tr *ngFor="let report of filteredReports">
               <td>{{ report.reportDate | date:'mediumDate' }}</td>
               <td class="text-center">{{ report.totalOrders }}</td>
               <td class="text-center">{{ report.totalSoldItems }}</td>
@@ -45,38 +53,54 @@ import { AdminReportService, ReportModel } from './admin-report.service';
         </table>
       </div>
 
-      <div *ngIf="!isLoading && reports.length === 0" class="alert alert-info">
+      <div *ngIf="!isLoading && filteredReports.length === 0" class="alert alert-info">
         No sales data found.
       </div>
     </div>
   `,
-    styles: [`
+  styles: [`
     .table th, .table td { vertical-align: middle; }
   `]
 })
 export class AdminReportComponent implements OnInit {
-    reports: ReportModel[] = [];
-    isLoading = true;
-    errorMessage = '';
+  reports: ReportModel[] = [];
+  filteredReports: ReportModel[] = [];
+  isLoading = true;
+  errorMessage = '';
+  searchText = '';
 
-    constructor(private reportService: AdminReportService,private cdr:ChangeDetectorRef) { }
+  constructor(private reportService: AdminReportService, private cdr: ChangeDetectorRef) { }
 
-    ngOnInit() {
-        this.loadReport();
+  ngOnInit() {
+    this.loadReport();
+  }
+
+  loadReport() {
+    this.reportService.getDailyReport().subscribe({
+      next: (data) => {
+        this.reports = data;
+        this.filteredReports = data;
+        this.isLoading = false;
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error(err);
+        this.errorMessage = 'Failed to load report data. Please try again.';
+        this.isLoading = false;
+      }
+    });
+  }
+
+  searchReport() {
+    if (!this.searchText) {
+      this.filteredReports = this.reports;
+    } else {
+      const searchLower = this.searchText.toLowerCase();
+      this.filteredReports = this.reports.filter(report => {
+        const date = new Date(report.reportDate);
+        const monthName = date.toLocaleString('default', { month: 'long' }).toLowerCase();
+        return monthName.includes(searchLower);
+      });
     }
-
-    loadReport() {
-        this.reportService.getDailyReport().subscribe({
-            next: (data) => {
-                this.reports = data;
-                this.isLoading = false;
-                this.cdr.detectChanges();
-            },
-            error: (err) => {
-                console.error(err);
-                this.errorMessage = 'Failed to load report data. Please try again.';
-                this.isLoading = false;
-            }
-        });
-    }
+  }
 }
