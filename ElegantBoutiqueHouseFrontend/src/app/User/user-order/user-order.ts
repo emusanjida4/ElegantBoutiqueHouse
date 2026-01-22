@@ -151,7 +151,7 @@ debugger
          alert('🎉 Order Confirmed Successfully!');
 
         
-         this.router.navigate(['/']);
+         this.router.navigate(['/navbar/invoice']);
         //Clear the cart localstorage
 
       },

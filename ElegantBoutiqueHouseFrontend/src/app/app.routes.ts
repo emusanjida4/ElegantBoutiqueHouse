@@ -13,7 +13,6 @@ import { AdminProductComponent } from './Admin/admin-product/admin-product';
 import { NavbarCategoryComponent } from './Component/navbar/navbar';
 import { HomeComponent } from './Component/homecarousel/homecarousel';
 import { UserProduct } from './User/user-product/user-product';
-import { AddToCartComponent } from './User/user-product/add-to-cart/add-to-cart';
 import { OrderComponent } from './User/user-order/user-order';
 import { CustomerProfileComponent } from './User/user-profile/user-profile';
 import { StockAdminComponent } from './Admin/admin-stock/admin-stock';
@@ -23,6 +22,7 @@ import { OrderDetailsComponent } from './Admin/order-details-component/order-det
 import { UserInvoice } from './User/user-invoice/user-invoice';
 import { PaymentConfirmation } from './payment-confirmation/payment-confirmation';
 import { AdminReportComponent } from './Admin/admin-report/admin-report';
+import { AddToCartComponent } from './User/add-to-cart/add-to-cart';
 
 export const routes: Routes = [
 

@@ -17,97 +17,98 @@
       <p><strong>Total:</strong> ৳ {{ o.TotalAmount }}</p>
     </div>
 
-    <div class="order-footer" *ngIf="o.Status != 'Pending'">
+    <div class="order-footer" *ngIf="o.Status != 'Pending' && o.Status != 'Cancelled'">
       <button class="btn-invoice" (click)="viewInvoice(o.Id)">
         View Invoice
       </button>
     </div>
   </div>
 
- <!-- ===== INVOICE MODAL ===== -->
-<div class="modal fade show d-block" tabindex="-1" *ngIf="showInvoice && invoiceHeader">
-  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content rounded-4 shadow-lg">
+  <!-- ===== INVOICE MODAL ===== -->
+  <div class="modal fade show d-block" tabindex="-1" *ngIf="showInvoice && invoiceHeader">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content rounded-4 shadow-lg" id="invoice-content">
 
-      <!-- MODAL HEADER -->
-      <div class="modal-header bg-dark text-primary">
-        <h5 class="modal-title">Invoice</h5>
-        <button type="button" class="btn-close btn-close-white" (click)="backToOrders()"></button>
+        <!-- MODAL HEADER -->
+        <div class="modal-header bg-dark text-primary">
+          <h5 class="modal-title">Invoice</h5>
+          <button type="button" class="btn-close btn-close-white" (click)="backToOrders()"
+            data-html2canvas-ignore="true"></button>
+        </div>
+
+        <!-- MODAL BODY -->
+        <div class="modal-body p-4">
+
+          <!-- TOP SECTION -->
+          <div class="row mb-4">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <p class="mb-1"><strong>Payment Method:</strong> {{ invoiceHeader.PaymentMethod }}</p>
+              <p class="mb-1"><strong>Payment No:</strong> {{ invoiceHeader.PaymentNumber }}</p>
+
+            </div>
+
+            <div class="col-md-6 text-md-end">
+              <p class="mb-1"><strong>Invoice #:</strong> {{ invoiceHeader.InvoiceNumber }}</p>
+              <p class="mb-1"><strong>Date:</strong> {{ invoiceHeader.InvoiceDate | date:'mediumDate' }}</p>
+            </div>
+          </div>
+
+          <!-- PRODUCT TABLE -->
+          <div class="table-responsive mb-4">
+            <table class="table table-bordered align-middle">
+              <thead class="table-dark">
+                <tr>
+                  <th>Product</th>
+                  <th class="text-end">Price</th>
+                  <th class="text-center">Qty</th>
+                  <th class="text-end">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of invoiceProducts">
+                  <td>{{ p.ProductName }}</td>
+                  <td class="text-end">৳ {{ p.Price }}</td>
+                  <td class="text-center">{{ p.Quantity }}</td>
+                  <td class="text-end fw-semibold">৳ {{ p.Total }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- SUBTOTAL -->
+          <div class="row mb-4">
+            <div class="col-md-6"></div>
+            <div class="col-md-6 text-end">
+              <h5 class="fw-bold">InTotal: ৳ {{ subTotal }}</h5>
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- BOTTOM SECTION -->
+          <div class="row align-items-end">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <p class="fw-bold mb-1">Invoice To</p>
+              <p class="mb-1">{{ invoiceHeader.UserName }}</p>
+              <p class="mb-1">{{ invoiceHeader.Address }}</p>
+              <p class="mb-1">{{ invoiceHeader.Phone }}</p>
+            </div>
+
+            <div class="col-md-6  text-md-end">
+              <h4 class="text-success fw-bold">Thank You 💙</h4>
+              <small class="text-muted">Your Choice is our priority</small>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- MODAL FOOTER -->
+        <div class="modal-footer" data-html2canvas-ignore="true">
+          <button class="btn btn-outline-secondary" (click)="backToOrders()">Close</button>
+          <button class="btn btn-primary" (click)="downloadPDF()">Download PDF</button>
+        </div>
+
       </div>
-
-      <!-- MODAL BODY -->
-      <div class="modal-body p-4">
-
-        <!-- TOP SECTION -->
-        <div class="row mb-4">
-          <div class="col-md-6 mb-3 mb-md-0">
-            <p class="mb-1"><strong>Payment Method:</strong> {{ invoiceHeader.PaymentMethod }}</p>
-            <p class="mb-1"><strong>Payment No:</strong> {{ invoiceHeader.PaymentNumber }}</p>
-              
-          </div>
-
-          <div class="col-md-6 text-md-end">
-            <p class="mb-1"><strong>Invoice #:</strong> {{ invoiceHeader.InvoiceNumber }}</p>
-            <p class="mb-1"><strong>Date:</strong> {{ invoiceHeader.InvoiceDate | date:'mediumDate' }}</p>
-          </div>
-        </div>
-
-        <!-- PRODUCT TABLE -->
-        <div class="table-responsive mb-4">
-          <table class="table table-bordered align-middle">
-            <thead class="table-dark">
-              <tr>
-                <th>Product</th>
-                <th class="text-end">Price</th>
-                <th class="text-center">Qty</th>
-                <th class="text-end">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let p of invoiceProducts">
-                <td>{{ p.ProductName }}</td>
-                <td class="text-end">৳ {{ p.Price }}</td>
-                <td class="text-center">{{ p.Quantity }}</td>
-                <td class="text-end fw-semibold">৳ {{ p.Total }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- SUBTOTAL -->
-        <div class="row mb-4">
-          <div class="col-md-6"></div>
-          <div class="col-md-6 text-end">
-            <h5 class="fw-bold">InTotal: ৳ {{ subTotal }}</h5>
-          </div>
-        </div>
-
-        <hr>
-
-        <!-- BOTTOM SECTION -->
-        <div class="row align-items-end">
-          <div class="col-md-6 mb-3 mb-md-0">
-            <p class="fw-bold mb-1">Invoice To</p>
-            <p class="mb-1">{{ invoiceHeader.UserName }}</p>
-            <p class="mb-1">{{ invoiceHeader.Address }}</p>
-            <p class="mb-1">{{ invoiceHeader.Phone }}</p>
-          </div>
-
-          <div class="col-md-6  text-md-end">
-            <h4 class="text-success fw-bold">Thank You 💙</h4>
-            <small class="text-muted">Your Choice is our priority</small>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- MODAL FOOTER -->
-      <div class="modal-footer">
-        <button class="btn btn-outline-secondary" (click)="backToOrders()">Close</button>
-        <button class="btn btn-primary" onclick="window.print()">Print</button>
-      </div>
-
     </div>
   </div>
-</div>
 </div>

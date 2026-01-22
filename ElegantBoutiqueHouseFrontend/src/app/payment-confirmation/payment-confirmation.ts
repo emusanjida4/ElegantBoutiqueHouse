@@ -44,7 +44,7 @@ export class PaymentConfirmation implements OnInit {
 
           if (res.success) {
             // ✅ Redirect to home Page
-            this.router.navigate(['/navbar']);
+            this.router.navigate(['/navbar/invoice']);
           } else {
             this.errorMessage = 'Payment verification failed';
           }
