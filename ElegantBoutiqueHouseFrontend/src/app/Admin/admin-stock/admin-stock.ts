@@ -127,4 +127,10 @@ export class StockAdminComponent implements OnInit {
       sellPrice: 0
     };
   }
+
+  blockNegative(event: KeyboardEvent) {
+  if (event.key === '-' || event.key === 'e') {
+    event.preventDefault();
+  }
+}
 }

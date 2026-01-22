@@ -14,8 +14,8 @@ namespace ElegantBoutiqueHouse.Model
         public decimal? Price { get; set; }
 
         public int? StockQuantity { get; set; }
-
-        public string Status { get; set; }
+        
+        public string? Status { get; set; }
 
         public IFormFile? DressImage { get; set; }
 

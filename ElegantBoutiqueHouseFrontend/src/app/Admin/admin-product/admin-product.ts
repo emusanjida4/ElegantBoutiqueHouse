@@ -85,6 +85,8 @@ export class AdminProductComponent implements OnInit {
       return;
     }
 
+    
+
     debugger;
     const formData = new FormData();
     formData.append('Name', this.name);
@@ -115,6 +117,13 @@ export class AdminProductComponent implements OnInit {
     }
   }
 
+  blockNegative(event: KeyboardEvent) {
+  if (event.key === '-' || event.key === 'e') {
+    event.preventDefault();
+  }
+}
+
+
   editProduct(item: any) {
     this.id = item.Id;
     this.name = item.Name;
@@ -123,7 +132,7 @@ export class AdminProductComponent implements OnInit {
     this.gender = item.Gender;
     this.price = item.Price;
     this.stockQuantity = item.StockQuantity;
-    this.status = item.Status;
+    // this.status = item.Status;
     this.categoryid = item.CategoryId;
 
     this.loadSubCategories(item.CategoryId);

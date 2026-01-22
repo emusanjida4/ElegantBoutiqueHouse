@@ -12,7 +12,7 @@
       </option>
     </select>
 
-    <input type="number" placeholder="Quantity" [(ngModel)]="stockModel.quantity" />
+    <input type="number" placeholder="Quantity" [(ngModel)]="stockModel.quantity" min="0" (keydown)="blockNegative($event)" />
     <select [(ngModel)]="stockModel.size">
       <option value="" disabled selected>-- Select Size --</option>
       <option value="S">S</option>
@@ -22,8 +22,8 @@
       <option value="XXL">XXL</option>
     </select>
     <input type="text" placeholder="Batch Number" [(ngModel)]="stockModel.batchNumber" />
-    <input type="number" placeholder="Purchase Price" [(ngModel)]="stockModel.purchasePrice" />
-    <input type="number" placeholder="Sell Price" [(ngModel)]="stockModel.sellPrice" />
+    <input type="number" placeholder="Purchase Price" [(ngModel)]="stockModel.purchasePrice" min="0" (keydown)="blockNegative($event)"/>
+    <input type="number" placeholder="Sell Price" [(ngModel)]="stockModel.sellPrice" (keydown)="blockNegative($event)"/>
 
     <button *ngIf="!isEdit" (click)="addStock()">Add Stock</button>
     <button *ngIf="isEdit" (click)="updateStock()">Update Stock</button>

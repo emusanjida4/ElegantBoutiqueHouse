@@ -103,9 +103,8 @@ export class AddToCartComponent implements OnInit {
     }
   }
 
-  // ===============================
   // ✅ Proceed to Order
-  // ===============================
+
   proceedToOrder() {
     debugger;
     if (this.cartItems.length === 0) {

@@ -17,9 +17,16 @@
       <option value="Women">Women</option>
     </select>
 
-    <input type="number" placeholder="Price" [(ngModel)]="price" />
-    
-    <input placeholder="Status" [(ngModel)]="status" />
+<input
+  type="number"
+  placeholder="Price"
+  [(ngModel)]="price"
+  min="0"
+  (keydown)="blockNegative($event)"
+/>
+
+
+    <!-- <input placeholder="Status" [(ngModel)]="status" /> -->
     <input placeholder="Id" [(ngModel)]="id" type="hidden" />
 
     <select [(ngModel)]="categoryid" (change)="loadSubCategories(categoryid!)">
@@ -31,7 +38,7 @@
 
     <select [(ngModel)]="subcategoryid">
       <option value="">Select Sub Category</option>
-      
+
       <option *ngFor="let sc of subCategories" [value]="sc.Id">
         {{ sc.Name }}
       </option>
@@ -58,9 +65,9 @@
           <th>Category</th>
           <th>SubCategory</th>
           <th>Price</th>
-          
+<!-- 
           <th>Status</th>
-          <th>Created By</th>
+          <th>Created By</th> -->
           <th>Action</th>
         </tr>
       </thead>
@@ -70,11 +77,7 @@
           <td>{{ i + 1 }}</td>
 
           <td>
-            <img
-              [src]="getImageUrl(p.DressImageUrl)"
-              alt="product"
-              class="product-img"
-            />
+            <img [src]="getImageUrl(p.DressImageUrl)" alt="product" class="product-img" />
           </td>
 
           <td>{{ p.Name }}</td>
@@ -83,12 +86,12 @@
           <td>{{ p.SubCategoryName }}</td>
           <td>{{ p.Price }}</td>
           <td>{{ p.Stockquantity }}</td>
-          <td>{{ p.Status }}</td>
+          <!-- <td>{{ p.Status }}</td> -->
           <td>{{ p.Createdby }}</td>
 
           <td>
             <button class="btn-edit" (click)="editProduct(p)">Edit</button>
-           <button class="btn-delete" (click)="deleteProduct(p.Id)">Delete</button>
+            <button class="btn-delete" (click)="deleteProduct(p.Id)">Delete</button>
 
           </td>
         </tr>
