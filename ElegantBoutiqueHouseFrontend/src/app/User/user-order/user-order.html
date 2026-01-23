@@ -27,7 +27,7 @@
 
         <div class="product-line" *ngFor="let p of cartItems">
           <span>{{ p.ProductName }} × {{ p.Quantity }}</span>
-          <span>৳ {{ p.TotalPrice }}</span>
+          <span>৳ {{ p.TotalPrice }}</span>              <!--subtotal qty*price-- order--f8-->
         </div>
 
         <div class="grand-total">

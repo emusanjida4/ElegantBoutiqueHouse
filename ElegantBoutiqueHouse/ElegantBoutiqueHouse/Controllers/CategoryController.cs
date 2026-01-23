@@ -33,9 +33,9 @@ namespace ElegantBoutiqueHouse.Controllers
             return Ok(categories);
         }
 
-        // ===============================
+        
         // 3️⃣ INSERT CATEGORY (flag = 3)
-        // ===============================
+        
         [HttpPost("category")]
         public async Task<IActionResult> Create( Category model)
         {
@@ -54,9 +54,9 @@ namespace ElegantBoutiqueHouse.Controllers
             return Ok(result);
         }
 
-        // ===============================
+        
         // 4️⃣ UPDATE CATEGORY (flag = 4)
-        // ===============================
+      
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Category model)
         {
@@ -77,9 +77,9 @@ namespace ElegantBoutiqueHouse.Controllers
             return Ok(result);
         }
 
-        // ===============================
+        
         // 5️⃣ DELETE CATEGORY (flag = 5)
-        // ===============================
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

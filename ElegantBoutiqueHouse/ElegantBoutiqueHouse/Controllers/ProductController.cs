@@ -19,9 +19,8 @@ namespace ElegantBoutiqueHouse.Controllers
             _context = context;
         }
 
-        // ===============================
         // 1️⃣ GET ALL PRODUCTS (flag = 1)
-        // ===============================
+        
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {

@@ -30,7 +30,7 @@ export class AdminOrderComponent implements OnInit {
     this.loadOrders();
   }
 
-  // ================= LOAD ORDERS =================
+  //  LOAD ORDERS 
   loadOrders(): void {
     this.loading = true;
 
@@ -48,7 +48,7 @@ export class AdminOrderComponent implements OnInit {
     });
   }
 
-  // ================= SEARCH =================
+  //  SEARCH ORDERS
   searchOrders(): void {
     const q = this.searchQuery.trim().toLowerCase();
 

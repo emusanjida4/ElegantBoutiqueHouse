@@ -18,9 +18,9 @@ namespace ElegantBoutiqueHouse.Controllers
             _context = context;
         }
 
-        // ===============================
+       
         // 1️⃣ GET CART BY USER ID (flag=1)
-        // ===============================
+        
         [HttpGet("User/{userId}")]
         public async Task<IActionResult> GetCartByUser(int userId)
         {
@@ -43,9 +43,9 @@ namespace ElegantBoutiqueHouse.Controllers
 
         
 
-        // ===============================
+       
         // 2️⃣ GET CART ITEM BY ID (flag=2)
-        // ===============================
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -63,9 +63,9 @@ namespace ElegantBoutiqueHouse.Controllers
             return Ok(item);
         }
 
-        // ===============================
+        
         // 3️⃣ ADD TO CART (flag=3)
-        // ===============================
+        
         [HttpPost]
         public async Task<IActionResult> AddToCart(AddToCart model)
         {
@@ -87,9 +87,9 @@ namespace ElegantBoutiqueHouse.Controllers
             return Ok(result);
         }
 
-        // ===============================
+       
         // 4️⃣ UPDATE CART (flag=4)
-        // ===============================
+        
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCart(int id, AddToCart model)
         {
@@ -108,9 +108,9 @@ namespace ElegantBoutiqueHouse.Controllers
             return Ok(result);
         }
 
-        // ===============================
+       
         // 5️⃣ DELETE CART ITEM (flag=5)
-        // ===============================
+       
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCartItem(int id)
         {
@@ -144,9 +144,9 @@ namespace ElegantBoutiqueHouse.Controllers
             return Ok(result);
         }
 
-        // ===============================
+       
         // 7️⃣ DECREMENT CART ITEM (flag=7)
-        // ===============================
+        
         [HttpGet("decrement/{id}")]
         public async Task<IActionResult> DecrementCart(int id)
         {

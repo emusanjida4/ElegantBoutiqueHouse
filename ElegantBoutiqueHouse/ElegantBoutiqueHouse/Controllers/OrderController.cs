@@ -21,9 +21,9 @@ namespace ElegantBoutiqueHouse.Controllers
             _bKashService = bKashService;
         }
 
-        // ===============================
+        
         // 1️⃣ GET ALL ORDERS
-        // ===============================
+        
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -40,9 +40,8 @@ namespace ElegantBoutiqueHouse.Controllers
             return Ok(orders);
         }
 
-        // ===============================
         // 2️⃣ GET ORDER BY ID
-        // ===============================
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -62,6 +61,7 @@ namespace ElegantBoutiqueHouse.Controllers
         [HttpGet("items/{orderId}")]
         public async Task<IActionResult> GetOrderItems(int orderId)
         {
+            // 2️⃣ GET product  BY order ID
             var query = @"
         SELECT 
             oi.ProductId,
@@ -83,9 +83,9 @@ namespace ElegantBoutiqueHouse.Controllers
 
 
 
-        // ===============================
+        
         // 3️⃣ CREATE ORDER
-        // ===============================
+        
         [HttpPost]
         public async Task<IActionResult> Create(Order model)
         {
@@ -272,9 +272,9 @@ namespace ElegantBoutiqueHouse.Controllers
 
             return Ok(result);
         }
-        // ===============================
+       
         // 6️⃣ GET ORDERS BY USER ID
-        // ===============================
+       
         [HttpGet("user/{userId}")]
         public async Task<IActionResult> GetByUserId(int userId)
         {
